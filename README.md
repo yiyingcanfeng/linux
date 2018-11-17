@@ -5,6 +5,6 @@
   change-repo.sh 更换yum源，默认使用的是阿里的源  
   ss-install.sh 一键安装安装ss，你懂得  
   usual-software.sh 一些实用的软件工具  
-  tsinghua-repo 清华的软件源配置  
-  ustc-repo 中科大的软件源配置  
+  tsinghua-repo 清华大学的软件源配置  
+  ustc-repo 中国科技大学的软件源配置  
 
