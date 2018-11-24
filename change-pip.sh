@@ -1,3 +1,5 @@
+#!/bin/bash
+mkdir ~/.pip
 cat > ~/.pip/pip.conf<<- EOF
 [global]
 index-url = https://mirrors.aliyun.com/pypi/simple/
