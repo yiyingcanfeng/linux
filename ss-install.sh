@@ -1,6 +1,6 @@
 #!/bin/bash
 yum install -y epel-release
-yum install -y python34-pip #yum提供的python3默认是3.4版本的
+yum install -y python34-pip #yum提供的pip3默认是3.4版本的
 pip3 install shadowsocks
 #可支持多个端口,如有需要，按照json格式自己修改
 config_path=$(pwd)                   #配置文件目录,默认是当前目录
