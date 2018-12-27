@@ -49,3 +49,38 @@ WantedBy=multi-user.target
 EOF
 systemctl daemon-reload
 systemctl start tomcat
+
+#mysql  http://mirrors.tuna.tsinghua.edu.cn/mysql
+touch /etc/yum.repos.d/mysql-community.repo
+cat > /etc/yum.repos.d/mysql-community.repo <<- "EOF"
+[mysql-connectors-community]
+name=MySQL Connectors Community
+baseurl=http://mirrors.tuna.tsinghua.edu.cn/mysql/yum/mysql-connectors-community-el7
+enabled=1
+gpgcheck=0
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-mysql
+
+[mysql-tools-community]
+name=MySQL Tools Community
+baseurl=http://mirrors.tuna.tsinghua.edu.cn/mysql/yum/mysql-tools-community-el7
+enabled=1
+gpgcheck=0
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-mysql
+
+[mysql57-community]
+name=MySQL 5.7 Community Server
+baseurl=http://mirrors.tuna.tsinghua.edu.cn/mysql/yum/mysql57-community-el7
+enabled=1
+gpgcheck=0
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-mysql
+
+[mysql80-community]
+name=MySQL 8.0 Community Server
+baseurl=http://mirrors.tuna.tsinghua.edu.cn/mysql/yum/mysql80-community-el7
+enabled=0
+gpgcheck=0
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-mysql
+
+EOF
+
+yum install mysql-community-server
