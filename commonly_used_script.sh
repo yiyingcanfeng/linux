@@ -7,22 +7,27 @@ setenforce 0
 systemctl  stop firewalld
 systemctl  disable  firewalld
 
-#!/bin/bash
+#更换基础yum源
 mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.backup
 curl -o /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo
 yum makecache
 
+#更换EPEL yum源
+#EPEL (Extra Packages for Enterprise Linux) 是由 Fedora Special Interest Group 为企业 Linux 创建、维护和管理的一个高质量附加包集合，适用于但不仅限于 Red Hat Enterprise Linux (RHEL), CentOS, Scientific Linux (SL), Oracle Linux (OL)
 yum install -y epel-release
 mv /etc/yum.repos.d/epel.repo /etc/yum.repos.d/epel.repo.backup
 mv /etc/yum.repos.d/epel-testing.repo /etc/yum.repos.d/epel-testing.repo.backup
 curl -o /etc/yum.repos.d/epel.repo http://mirrors.aliyun.com/repo/epel-7.repo
 yum makecache
+yum update -y
 
+#这些软件大部分在EPEL源里
 yum install -y bash-completion git wget vim yum-utils python34-pip screen lrzsz supervisor iotop ncdu pv htop net-tools sl iftop lynx links
-#openjdk
+
+#安装openjdk
 yum install -y java-1.8.0-openjdk-devel.x86_64
 
-#tomcat 
+#安装tomcat 
 #https://tomcat.apache.org/download-90.cgi 注：请随时关注官网的最新版本，新版本发布后旧版本的链接会失效！
 cd /usr
 wget https://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-9/v9.0.14/bin/apache-tomcat-9.0.14.tar.gz
@@ -50,7 +55,7 @@ EOF
 systemctl daemon-reload
 systemctl start tomcat
 
-#mysql  http://mirrors.tuna.tsinghua.edu.cn/mysql
+#安装mysql http://mirrors.tuna.tsinghua.edu.cn/mysql
 touch /etc/yum.repos.d/mysql-community.repo
 cat > /etc/yum.repos.d/mysql-community.repo <<- "EOF"
 [mysql-connectors-community]
@@ -83,4 +88,4 @@ gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-mysql
 
 EOF
 
-yum install mysql-community-server
+yum install mysql-community-server -y
