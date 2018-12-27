@@ -1,0 +1,46 @@
+[
+  {
+    "name": "centos",
+    "is_master": true,
+    "status": "success",
+    "last_update": "2018-12-27 03:59:52 +0800",
+    "last_update_ts": 1545854392,
+    "last_ended": "2018-12-27 03:59:52 +0800",
+    "last_ended_ts": 1545854392,
+    "upstream": "rsync://rsync.mirrors.ustc.edu.cn/centos/",
+    "size": "unknown"
+  },
+  {
+    "name": "deepin-cd",
+    "is_master": true,
+    "status": "success",
+    "last_update": "2018-12-27 03:41:24 +0800",
+    "last_update_ts": 1545853284,
+    "last_ended": "2018-12-27 03:41:24 +0800",
+    "last_ended_ts": 1545853284,
+    "upstream": "rsync://rsync.deepin.com/releases/",
+    "size": "unknown"
+  },
+  {
+    "name": "deepin",
+    "is_master": true,
+    "status": "success",
+    "last_update": "2018-12-27 03:45:41 +0800",
+    "last_update_ts": 1545853541,
+    "last_ended": "2018-12-27 03:45:41 +0800",
+    "last_ended_ts": 1545853541,
+    "upstream": "rsync://rsync.deepin.com/deepin/",
+    "size": "unknown"
+  },
+  {
+    "name": "epel",
+    "is_master": true,
+    "status": "success",
+    "last_update": "2018-12-27 04:33:24 +0800",
+    "last_update_ts": 1545856404,
+    "last_ended": "2018-12-27 04:33:24 +0800",
+    "last_ended_ts": 1545856404,
+    "upstream": "rsync://rsync.mirrors.ustc.edu.cn/epel/",
+    "size": "unknown"
+  }
+]

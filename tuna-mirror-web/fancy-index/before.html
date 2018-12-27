@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="清华大学开源软件镜像站，致力于为国内和校内用户提供高质量的开源软件镜像、Linux镜像源服务，帮助用户更方便地获取开源软件。本镜像站由清华大学TUNA团队负责维护。">
+<meta name="keywords" content="镜像站,镜像源,Linux,软件源,开源">
+<meta name="author" content="TUNA">
+<link rel="shortcut icon" href="/static/img/favicon.png">
+<title>清华大学开源软件镜像站 | Tsinghua Open Source Mirror</title>
+<link rel="stylesheet" href="/static/css/bootstrap.css">
+<link rel="stylesheet" href="/static/css/bootstrap-select.min.css">
+<link rel="stylesheet" href="/static/css/font-awesome.min.css" >
+<link rel="stylesheet" href="/static/css/style.css">
+<link rel="stylesheet" href="/static/css/spinkit.css">
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+<script src="/static/js/bootstrap-select.min.js"></script>
+<script src="/static/js/vue.min.js"></script>
+<script src="/static/js/markup.min.js"></script>
+<script src="/static/js/webfont.js"></script>
+</head>
+
+	<body>
+		<div class="navbar navbar-default" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/"><img src="/static/img/logo-small.png" srcset="/static/img/logo-small.png 1x, /static/img/logo-small@2x.png 2x, /static/img/logo-small@3x.png 3x, /static/img/logo-small@4x.png 4x" alt=""/> 清华大学开源软件镜像站</a>
+    </div>
+    <div class="navbar-collapse collapse navbar-right">
+      <ul class="nav navbar-nav">
+        <li><a href="https://tuna.moe/">HOME</a></li>
+        <li><a href="https://tuna.moe/events/">EVENTS</a></li>
+        <li><a href="https://tuna.moe/blog/">BLOG</a></li>
+        <li><a href="https://tuna.moe/feed.xml">RSS</a></li>
+	<li><a href="https://podcast.tuna.moe/">PODCAST</a></li>
+        <li class="active"><a href="http://mirrors.tuna.tsinghua.edu.cn/">MIRRORS</a></li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</div>
+
+
+		<div id="mirrors">
+			<div class="spacing hidden-xs"></div>
+
+			<div class="container">
+				<div class="row">
+					
+					<div class="col-md-12 table-responsive" id="mirror-list">
+						<div>
+							<div class="col-md-8 col-xs-12 vbottom"><h3><span class="fa fa-cube"></span>  Index of <span id="path"><script>
+								document.write(location.pathname);
+							</script></span></h3></div><!--
+							--><div class="col-md-4 col-xs-12 text-right-md text-left-xs vbottom" v-if="nowBrowsingMirror">
+								<strong>Last Update:</strong> {{nowBrowsingMirror.last_update}}
+								<span v-if="nowBrowsingMirror.show_status" :class="['label', 'label-status', nowBrowsingMirror.label, 'hidden-xs']">{{nowBrowsingMirror.status}}</span>
+							</div>
+						</div>
+					
+<!--
+	vim: ts=2 sts=2 sw=2 noexpandtab
+-->

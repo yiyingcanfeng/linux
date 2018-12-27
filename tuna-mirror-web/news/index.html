@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html>
+	<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="清华大学开源软件镜像站，致力于为国内和校内用户提供高质量的开源软件镜像、Linux镜像源服务，帮助用户更方便地获取开源软件。本镜像站由清华大学TUNA团队负责维护。">
+<meta name="keywords" content="镜像站,镜像源,Linux,软件源,开源">
+<meta name="author" content="TUNA">
+<link rel="shortcut icon" href="/static/img/favicon.png">
+<title> 镜像站新闻 | 清华大学开源软件镜像站 | Tsinghua Open Source Mirror</title>
+<link rel="stylesheet" href="/static/css/bootstrap.css">
+<link rel="stylesheet" href="/static/css/bootstrap-select.min.css">
+<link rel="stylesheet" href="/static/css/font-awesome.min.css" >
+<link rel="stylesheet" href="/static/css/style.css">
+<link rel="stylesheet" href="/static/css/spinkit.css">
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+<script src="/static/js/bootstrap-select.min.js"></script>
+<script src="/static/js/vue.min.js"></script>
+<script src="/static/js/markup.min.js"></script>
+<script src="/static/js/webfont.js"></script>
+</head>
+
+<body>
+	<div class="navbar navbar-default" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/"><img src="/static/img/logo-small.png" srcset="/static/img/logo-small.png 1x, /static/img/logo-small@2x.png 2x, /static/img/logo-small@3x.png 3x, /static/img/logo-small@4x.png 4x" alt=""/> 清华大学开源软件镜像站</a>
+    </div>
+    <div class="navbar-collapse collapse navbar-right">
+      <ul class="nav navbar-nav">
+        <li><a href="https://tuna.moe/">HOME</a></li>
+        <li><a href="https://tuna.moe/events/">EVENTS</a></li>
+        <li><a href="https://tuna.moe/blog/">BLOG</a></li>
+        <li><a href="https://tuna.moe/feed.xml">RSS</a></li>
+	<li><a href="https://podcast.tuna.moe/">PODCAST</a></li>
+        <li class="active"><a href="http://mirrors.tuna.tsinghua.edu.cn/">MIRRORS</a></li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</div>
+
+
+<div id="news-page">
+	<div class="spacing"></div>
+	<div class="container">
+	  <div class="row">
+			<div class="col-md-2"></div>
+			<div class="col-md-8">
+				<div>
+					<h2><span class="fa fa-newspaper-o"></span> 镜像站新闻</h2>
+					<div id="news-content">
+						
+						<article>
+							<div class="head" id="oh-my-tuna">
+								<h3><a href="/news/oh-my-tuna/"># 号外：现推出“一键使用TUNA”服务</a></h3>
+							</div>
+							<div class="meta">
+								<span class="fa fa-calendar"></span> 2018-04-01 <span class="fa fa-user" style="margin-left: 1em"> TUNA Staff</span>
+							</div>
+							<div class="content"><p>随着 TUNA 协会的现代化建设进入新时代，镜像站面临的主要矛盾已经转化为用户日益增长的高速下载需要和各类软件不简单不直观的配置之间的矛盾。只有正确认识这一主要矛盾，才能确定正确的战略、策略、政策和办法，促进矛盾解决，推动 TUNA 协会进步。</p>
+
+<p>必须认识到，TUNA 主要矛盾的变化，是关系全局的历史性变化，对协会工作提出了许多新要求。在新任会长 Xavier Yao (a.k.a. Pero) 的带领下，TUNA 协会的同学们勇于担当，攻坚克难，开发出了适应时代潮流、贴合用户需要的新一代工具“一键使用 TUNA” 脚本，又名 <code class="highlighter-rouge">oh-my-tuna</code> 。它目前支持更改下列软件的配置，将其直接指向 TUNA 镜像站：</p>
+
+<ul>
+  <li>Anaconda</li>
+  <li>Arch Linux</li>
+  <li>TeX Live (by tlmgr)</li>
+  <li>Debian GNU/Linux</li>
+  <li>Homebrew</li>
+  <li>PyPI</li>
+  <li>Ubuntu Linux</li>
+</ul>
+
+<p>您可以选择仅更改当前用户的配置，也可以更改全局配置。如果不满意，随时可以撤销这些更改。这一切，只需要一行命令：<code class="highlighter-rouge">python oh-my-tuna.py</code> ！</p>
+
+<p>项目托管在 <a href="https://tuna.moe/oh-my-tuna">TUNA 主页</a> 上，您也可以访问 <a href="https://github.com/tuna/oh-my-tuna">GitHub</a> 阅读源码、获取更详细的说明，也欢迎各位对本项目作出贡献！</p>
+
+<p>在将来，我们的目标是将其支持的系统/软件范围进一步扩展到（包括且不限于）：</p>
+
+<ul>
+  <li>TUNA 镜像的尽可能多的系统/软件</li>
+  <li>Macrohard<sup>TM</sup> Windoge<sup>TM</sup></li>
+  <li>42</li>
+</ul>
+
+<p>TUNA 成员要紧密团结在会长周围，高举开源精神伟大旗帜，锐意进取，埋头苦干，为实现推进镜像站建设、完成 Linux 发行版统一、维护开源界和平与促进共同发展三大历史任务，为决胜全面建成中国最好的镜像站、夺取新时代开源精神伟大胜利、实现社区伟大复兴的开源梦、实现用户对高速下载的向往继续奋斗！</p>
+</div>
+						</article>
+						<hr />
+						
+						<article>
+							<div class="head" id="move-to-youngcow-yun">
+								<h3><a href="/news/move-to-youngcow-yun/"># 镜像站扩容维护通知</a></h3>
+							</div>
+							<div class="meta">
+								<span class="fa fa-calendar"></span> 2018-02-27 <span class="fa fa-user" style="margin-left: 1em"> Miao Wang</span>
+							</div>
+							<div class="content"><p>近期，为提高服务质量，TUNA 镜像站将实施重大升级改造。预计在实施升级改造后，镜像站对外服务的能力将会有明显提升。在升级改造期间，到达镜像站的网络可能出现不稳定等情况，对外提供服务的带宽可能有所减少。本次改造时间预计最早会在 3 月 10 日前完成，对于带来的不便，我们深表歉意。如遇问题，请到 <a href="https://github.com/tuna/issues/issues">tuna/issues</a> 反馈。</p>
+
+<p><strong>Update 1</strong>:  从本通知发出之时起，为配合升级改造，archlinux 每月历史镜像功能（<a href="https://arch-archive.tuna.tsinghua.edu.cn/">https://arch-archive.tuna.tsinghua.edu.cn/</a>）暂时停止提供服务。</p>
+
+<p><strong>Update 2</strong>:  上述维护已经完成。</p>
+</div>
+						</article>
+						<hr />
+						
+						<article>
+							<div class="head" id="bravo-no-space">
+								<h3><a href="/news/bravo-no-space/"># 镜像站服务器故障通知</a></h3>
+							</div>
+							<div class="meta">
+								<span class="fa fa-calendar"></span> 2017-12-25 <span class="fa fa-user" style="margin-left: 1em"> Miao Wang</span>
+							</div>
+							<div class="content"><p>由于镜像站服务器的固态硬盘空间不足，从即日起，部分镜像文件的存储从固态硬盘中迁移至高转速机械硬盘中，涉及到的镜像列表见下：</p>
+
+<ul>
+  <li>AOSP</li>
+  <li>CocoaPods</li>
+  <li>chromiumos</li>
+  <li>git-repo</li>
+  <li>homebrew</li>
+  <li>lineageOS</li>
+  <li>linux-stable.git</li>
+  <li>linux.git</li>
+  <li>llvm</li>
+  <li>openthos-src</li>
+  <li>pybombs</li>
+</ul>
+
+<p>在故障期间，用户使用上述镜像时，可能遇到访问速度下降的问题，对于由此造成的不便，我们深表歉意。此故障将在固态硬盘扩容后解决。</p>
+
+<p><strong>Update1</strong>: 扩容作业已经完成，服务恢复正常。</p>
+</div>
+						</article>
+						<hr />
+						
+						<article>
+							<div class="head" id="neomirrors-extend">
+								<h3><a href="/news/neomirrors-extend/"># 镜像站扩容维护通知</a></h3>
+							</div>
+							<div class="meta">
+								<span class="fa fa-calendar"></span> 2017-10-17 <span class="fa fa-user" style="margin-left: 1em"> Miao Wang</span>
+							</div>
+							<div class="content"><p>为提升镜像站的服务能力和服务水平，近期镜像站将会对服务器的存储系统进行扩容作业。在扩容作业期间，镜像站对外提供的带宽会有所减少。为此造成的不便，我们深表歉意。</p>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>时间节点</th>
+      <th>维护项目</th>
+      <th>可能影响</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>10 月 17 日 至 23 日</td>
+      <td>镜像站服务器甲扩容作业</td>
+      <td>服务带宽降低</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Update1</strong>: 扩容作业已经全部完成，服务恢复正常。</p>
+</div>
+						</article>
+						<hr />
+						
+						<article>
+							<div class="head" id="stop-https-on-ftp2-c-d">
+								<h3><a href="/news/stop-https-on-ftp2-c-d/"># 停用 ftp2.cn.debian.org 的 HTTPS 访问</a></h3>
+							</div>
+							<div class="meta">
+								<span class="fa fa-calendar"></span> 2017-09-19 <span class="fa fa-user" style="margin-left: 1em"> Miao Wang</span>
+							</div>
+							<div class="content"><p>由于 Debian 将给 &lt;CC&gt;.debian.org 域名设置 CAA 记录，并禁止给 *.&lt;CC&gt;.debian.org 签署 HTTPS 证书，所以我们无法再提供 https://ftp2.cn.debian.org 的访问。</p>
+
+<p>由于国内 ISP 经常会错误地缓存镜像站的内容，所以我们不鼓励用户使用 HTTP 访问镜像站，请大家把地址更改为 <a href="https://mirrors.tuna.tsinghua.edu.cn">https://mirrors.tuna.tsinghua.edu.cn</a></p>
+
+<p>目前 ftp2.cn.debian.org 的证书将于 2017 年 11 月 25 日 过期，我们会在此之前取消 https://ftp2.cn.debian.org 的访问。</p>
+
+<p>备注：镜像站的安全性<strong>不靠</strong> HTTPS 保证，提供 HTTPS 访问仅为了避免 ISP 错误缓存内容，引起各种缓存不一致的问题。</p>
+
+<p>Debian 的公告见 <a href="https://lists.debian.org/debian-mirrors-announce/2017/09/msg00000.html">https://lists.debian.org/debian-mirrors-announce/2017/09/msg00000.html</a>，以下为邮件摘录：</p>
+
+<blockquote>
+  <p>Hi,</p>
+
+  <p>the debian mirrors team needs to be able to point the
+ftp.&lt;CC&gt;.debian.org aliases at different backends based on their  status.
+As such, the only service that is guaranteed to be available at these
+names is HTTP. Offering HTTPS on these names means breakage whenever
+they are pointed at a different mirror.</p>
+
+  <p>Accordingly, we have set CAA records (RFC 6844) on the &lt;CC&gt;.debian.org
+domains to disallow any certificate issuance, and we’d like to ask
+mirror operators who were offering HTTPS under these names to stop doing
+so. They are of course free to continue offering the service under a
+non-debian.org domain name.</p>
+
+  <p>Thanks,</p>
+
+  <p>Julien</p>
+</blockquote>
+</div>
+						</article>
+						<hr />
+						
+						<article>
+							<div class="head" id="move-to-Lee-Shau-kee">
+								<h3><a href="/news/move-to-Lee-Shau-kee/"># 镜像站维护通知</a></h3>
+							</div>
+							<div class="meta">
+								<span class="fa fa-calendar"></span> 2017-08-02 <span class="fa fa-user" style="margin-left: 1em"> Miao Wang</span>
+							</div>
+							<div class="content"><p>根据清华大学信息化技术中心的统一安排，近期镜像站服务器及其依赖的网络基础设施将会陆续由主楼机房搬迁／割接至李兆基机房。在割接期间，到达镜像站的网络可能出现不稳定等情况；在服务器迁移期间，镜像站的带宽可能有所减少。为此造成的不便，我们深表歉意。具体的时间安排如下，望周知。</p>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>时间节点</th>
+      <th>维护项目</th>
+      <th>可能影响</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>8 月 3 日 10 时至 13 时</td>
+      <td>镜像站服务器甲搬迁</td>
+      <td>服务带宽降低</td>
+    </tr>
+    <tr>
+      <td>8 月 3 日 13 时至 17 时</td>
+      <td>镜像站服务器乙搬迁</td>
+      <td>服务带宽降低，Arch 每周归档镜像不可用</td>
+    </tr>
+    <tr>
+      <td>8 月 3 日 20 时</td>
+      <td>镜像站服务器迁移完成</td>
+      <td>服务恢复正常。若在此之前发生意外故障，则启用备用维护页面。</td>
+    </tr>
+    <tr>
+      <td>8 月 5 日</td>
+      <td>镜像站域名服务器搬迁</td>
+      <td>流量图、直播间、Wiki、NTP 服务，以及 AOSP、homebrew 等 git 仓库镜像不可用。</td>
+    </tr>
+    <tr>
+      <td>8 月 12 日</td>
+      <td>全部服务器迁移／网络割接工作结束</td>
+      <td>全部服务恢复正常</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Update1</strong>: 目前我们管理的所有服务器的搬迁工作已经全部完成，暂未发现服务故障。目前，我们已经接获有关服务带宽下降的报告，但暂未确定造成的原因。我们正在会同信息化技术中心的技术人员排查可能的因素，由此带来的不便，我们深表歉意。</p>
+
+<p><strong>Update2</strong>: 我们非常高兴地通知大家，在信息化技术中心的技术人员的全力配合下，带宽下降的原因已经排查清楚，问题已经得到解决。在近一段时间内，我们将会密切监测服务器性能指标。如遇问题，请到 <a href="https://github.com/tuna/issues/issues">tuna/issues</a> 反馈。</p>
+</div>
+						</article>
+						<hr />
+						
+						<article>
+							<div class="head" id="llvm-repos">
+								<h3><a href="/news/llvm-repos/"># 新增 LLVM 编译器套件 Git 仓库镜像</a></h3>
+							</div>
+							<div class="meta">
+								<span class="fa fa-calendar"></span> 2017-05-28 <span class="fa fa-user" style="margin-left: 1em"> Harry Chen</span>
+							</div>
+							<div class="content"><p>TUNA 镜像站新增来自 LLVM 编译器套件的多个 Git 仓库镜像。</p>
+
+<p><a href="http://llvm.org">LLVM</a> 是著名的开源编译器基础设施，由编译器后端（llvm）、编译器前端（clang）、调试器（lldb）、C++运行库（libcxx）等多个套件组成。
+为方便用户获取其源码，我们对官方的大部分仓库进行了镜像。详细说明以及使用方法请参见 <a href="/help/llvm/">LLVM Git Repos 镜像使用帮助</a></p>
+</div>
+						</article>
+						<hr />
+						
+						<article>
+							<div class="head" id="lineage-and-adobe-fonts">
+								<h3><a href="/news/lineage-and-adobe-fonts/"># 新增 Lineage 与 Adobe 开源字体镜像</a></h3>
+							</div>
+							<div class="meta">
+								<span class="fa fa-calendar"></span> 2017-05-11 <span class="fa fa-user" style="margin-left: 1em"> Xavier Yao</span>
+							</div>
+							<div class="content"><p>TUNA 镜像站新增 LineageOS 源代码和 ROM 镜像，及 Adobe 各开源字体镜像。</p>
+
+<p>LineageOS 是一个面向智能手机和平板电脑的自由、开源的 Android 分支。它是深受欢迎的定制 ROM CyanogenMod 的继任者，在 2016 年 12 月 Cyanogen 公司突然宣布停止开发并关闭项目基础设施后复刻而生。ROM 下载方式参见<a href="/help/lineage-rom/">Lineage ROM下载方式</a>，源码下载方式见<a href="/help/lineageOS/">Lineage OS源码下载方式</a></p>
+
+<p>Adobe 开源字体包括思源黑体、思源宋体、Source Code Pro等，TUNA镜像站提供各字体及其源代码的下载。</p>
+</div>
+						</article>
+						<hr />
+						
+						<article>
+							<div class="head" id="april-fools-day">
+								<h3><a href="/news/april-fools-day/"># 我们做出了一个艰难的决定</a></h3>
+							</div>
+							<div class="meta">
+								<span class="fa fa-calendar"></span> 2017-04-01 <span class="fa fa-user" style="margin-left: 1em"> TUNA 镜像站全体运维人员</span>
+							</div>
+							<div class="content"><p>由于 TUNA 镜像站经营不善，团长带着女朋友跑了，整个组织濒临破产边缘。经第一届金枪鱼全体代表大会讨论研究决定，TUNA 名下的 Telegram 群组和镜像站将启用免费使用+付费增值模式。具体收费标准如下：</p>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>项目</th>
+      <th>会员</th>
+      <th>黄金会员</th>
+      <th>钻石会员</th>
+      <th>SVIP</th>
+      <th>备注</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>收费标准</td>
+      <td>免费</td>
+      <td>15元/月 <strong>¥179/年</strong></td>
+      <td>30元/月 <strong>¥359/年</strong></td>
+      <td>50元/月 <strong>¥599/年</strong></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Telegram 发言</td>
+      <td>5条/周</td>
+      <td>30条/周</td>
+      <td>90条/周</td>
+      <td><strong>无限</strong></td>
+      <td>超出部分 1元/条</td>
+    </tr>
+    <tr>
+      <td>Telegram 发言置顶</td>
+      <td>无</td>
+      <td>1条/月</td>
+      <td>3条/月</td>
+      <td><strong>10条/月</strong></td>
+      <td>超出部分 10元/条</td>
+    </tr>
+    <tr>
+      <td>镜像源限速</td>
+      <td>100KB/s</td>
+      <td>1MB/s</td>
+      <td>5MB/s</td>
+      <td><strong>不限速</strong></td>
+      <td>需使用专用包管理器<code class="highlighter-rouge">tuna-get</code>，<code class="highlighter-rouge">apt-get</code>等官方包管理器限速100KB/s</td>
+    </tr>
+    <tr>
+      <td>包管理器去广告</td>
+      <td>无</td>
+      <td>5s后可跳过</td>
+      <td>可跳过</td>
+      <td><strong>无广告</strong></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>其它特权</td>
+      <td>无</td>
+      <td>无</td>
+      <td><strong>Telegram群红名</strong></td>
+      <td><strong>上线提醒</strong></td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<p>此标准发布即日起不执行。</p>
+</div>
+						</article>
+						<hr />
+						
+						<article>
+							<div class="head" id="ipv6-failure">
+								<h3><a href="/news/ipv6-failure/"># 镜像站 IPv6 国际链路故障</a></h3>
+							</div>
+							<div class="meta">
+								<span class="fa fa-calendar"></span> 2017-03-14 <span class="fa fa-user" style="margin-left: 1em"> Harry Chen</span>
+							</div>
+							<div class="content"><p>由于 CERNET 2 的 IPv6 国际链路出现故障，TUNA 镜像站的多个镜像同步均失败。在此期间，您可以暂时使用官方镜像列表中的其他镜像站。对于对您带来的不便，我们深表歉意。</p>
+</div>
+						</article>
+						<hr />
+						
+						<article>
+							<div class="head" id="chromiumos">
+								<h3><a href="/news/chromiumos/"># 新增 Chromium OS 镜像</a></h3>
+							</div>
+							<div class="meta">
+								<span class="fa fa-calendar"></span> 2016-12-27 <span class="fa fa-user" style="margin-left: 1em"> Yiqun Hui</span>
+							</div>
+							<div class="content"><p>TUNA 镜像站新增chromium OS源代码镜像。</p>
+
+<p>由于各方面原因，该镜像暂时只镜像master分支，即只有出现在<a href="https://chromium.googlesource.com/chromiumos/manifest/+/master/full.xml">这个文件</a>中的项目才会被同步。</p>
+
+<p>使用方法见 <a href="/help/chromiumos/">chromium OS 镜像使用帮助</a>。</p>
+</div>
+						</article>
+						<hr />
+						
+						<article>
+							<div class="head" id="hardware-maintenance">
+								<h3><a href="/news/hardware-maintenance/"># 镜像站将于 12/4 10:30 进行停机维护</a></h3>
+							</div>
+							<div class="meta">
+								<span class="fa fa-calendar"></span> 2016-12-03 <span class="fa fa-user" style="margin-left: 1em"> Harry Chen</span>
+							</div>
+							<div class="content"><p>TUNA 镜像站将于北京时间2016年12月4日上午10时30分进行停机维护，届时将暂时停止镜像服务。预计 12:00 前可恢复正常服务。对于给您带来的不便，我们深表歉意。</p>
+</div>
+						</article>
+						<hr />
+						
+						<article>
+							<div class="head" id="rsync-unrestricted">
+								<h3><a href="/news/rsync-unrestricted/"># 不再对 rsync 服务磁盘 I/O 进行限制</a></h3>
+							</div>
+							<div class="meta">
+								<span class="fa fa-calendar"></span> 2016-11-30 <span class="fa fa-user" style="margin-left: 1em"> Xavier Yao</span>
+							</div>
+							<div class="content"><p>各服务恢复正常。</p>
+</div>
+						</article>
+						<hr />
+						
+						<article>
+							<div class="head" id="rsync-restriction">
+								<h3><a href="/news/rsync-restriction/"># 暂时对 rsync 服务磁盘 I/O 进行限制</a></h3>
+							</div>
+							<div class="meta">
+								<span class="fa fa-calendar"></span> 2016-11-17 <span class="fa fa-user" style="margin-left: 1em"> Yichuan Gao</span>
+							</div>
+							<div class="content"><p>受近期 <a href="https://servers.ustclug.org/2016/11/mirrors-services-outage/">中科大开源软件镜像站故障</a> 的影响，TUNA Mirrors 流量大幅上升，目前已接近带宽极限，对磁盘阵列的 I/O 产生了较大压力。为了保证阵列正常工作，我们将优先保证 HTTP/HTTPS 服务质量，而在高峰期对 rsync 服务的磁盘 I/O 进行限制。届时以 TUNA 为上游进行 rsync 同步速度将会下降，敬请谅解。如果方便，请尽量选择凌晨错峰同步。恢复时间将会另行通知。</p>
+</div>
+						</article>
+						<hr />
+						
+						<article>
+							<div class="head" id="tensorflow-and-others">
+								<h3><a href="/news/tensorflow-and-others/"># 新增 Tensorflow 等一系列镜像</a></h3>
+							</div>
+							<div class="meta">
+								<span class="fa fa-calendar"></span> 2016-11-06 <span class="fa fa-user" style="margin-left: 1em"> Xavier Yao & Harry Chen</span>
+							</div>
+							<div class="content"><p>TUNA 镜像站新增一系列镜像。</p>
+
+<ul>
+  <li>tensorflow:  Google 开发的、采用数据流图（data flow graphs）、用于数值计算的开源软件库，被广泛应用于深度学习等领域。使用方法见 <a href="/help/tensorflow/">TensorFlow 镜像使用帮助</a>。</li>
+  <li>arch4edu: 用于 ArchLinux 的一系列科研、教学所需工具</li>
+  <li>ros: 用于开发机器人的工具包</li>
+  <li>elvish: TUNA 前会长 <a href="https://github.com/xiaq">xiaq</a> 开发的革命性 Shell ，详见 <a href="https://elvish.io/">这里</a></li>
+  <li>HHVM: 由 Facebook 开发的高性能 PHP 虚拟机</li>
+  <li>steamos: 不解释，剁手专用</li>
+  <li>bjlx: <a href="http://www.bjlx.org.cn/">北京龙芯 &amp; Debian 俱乐部</a> 的公开源</li>
+  <li>loongson: 用于龙芯电脑的软件包</li>
+  <li>elasticstack: ELK 系列数据分析工具，5.x 之后改名为 elastic stack</li>
+</ul>
+</div>
+						</article>
+						<hr />
+						
+						<article>
+							<div class="head" id="bunch-of-news">
+								<h3><a href="/news/bunch-of-news/"># 新增一系列镜像</a></h3>
+							</div>
+							<div class="meta">
+								<span class="fa fa-calendar"></span> 2016-08-18 <span class="fa fa-user" style="margin-left: 1em"> Justin Wong</span>
+							</div>
+							<div class="content"><p>新学期开始啦，暑假我们没闲着，新增了以下一大票镜像～</p>
+
+<ul>
+  <li>VirtualBox: 著名开源虚拟机软件 <a href="/help/virtualbox/">使用帮助</a></li>
+  <li>Dell 服务器管理工具</li>
+  <li>grafana: 数据可视化工具</li>
+  <li>jenkins: 持续集成工具</li>
+  <li>influxdata: 由 Telegraf, InfluxDB, Chronograf, Kapacitor 组成的 TICK 开源时间序列工具栈</li>
+  <li>mysql: 常用开源数据库</li>
+  <li>parrot: 基于 Debian 的安全操作系统</li>
+  <li>rubygems: Ruby 包仓库</li>
+</ul>
+
+<p>祝大家新学期取得新成绩</p>
+</div>
+						</article>
+						<hr />
+						
+						<article>
+							<div class="head" id="homebrew-bottles">
+								<h3><a href="/news/homebrew-bottles/"># 新增 Homebrew-bottles 镜像</a></h3>
+							</div>
+							<div class="meta">
+								<span class="fa fa-calendar"></span> 2016-05-07 <span class="fa fa-user" style="margin-left: 1em"> Xavier Yao</span>
+							</div>
+							<div class="content"><p>TUNA mirrors 新增 Homebrew-bottles 镜像。</p>
+
+<p><a href="http://brew.sh">Homebrew</a> 是 OS X 操作系统最常用的包管理器之一。<a href="http://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles">Homebrew-bottles</a> 镜像提供了供 Homebrew 使用的预编译二进制软件包。配置方法见 <a href="https://mirrors.tuna.tsinghua.edu.cn/help/homebrew-bottles/">Homebrew bottles 镜像使用帮助</a>。</p>
+
+<p>本镜像站同时提供 Homebrew 的 formula 索引的镜像（即 <code class="highlighter-rouge">brew update</code> 时所更新内容），配置方法请参考 <a href="https://mirrors.tuna.tsinghua.edu.cn/help/homebrew/">Homebrew 镜像使用帮助</a>。</p>
+</div>
+						</article>
+						<hr />
+						
+						<article>
+							<div class="head" id="homebrew">
+								<h3><a href="/news/homebrew/"># Homebrew 镜像结构调整</a></h3>
+							</div>
+							<div class="meta">
+								<span class="fa fa-calendar"></span> 2016-05-06 <span class="fa fa-user" style="margin-left: 1em"> Justin Wong</span>
+							</div>
+							<div class="content"><p>由于 Homebrew 官方将原 homebrew 拆成了 brew.git 和 homebrew-core.git 两个仓库，我们随官方也做出了结构调整。
+配置方法请见<a href="/help/homebrew/">Homebrew镜像使用帮助</a>。</p>
+</div>
+						</article>
+						<hr />
+						
+						<article>
+							<div class="head" id="alpine-anaconda">
+								<h3><a href="/news/alpine-anaconda/"># 新增 Alpine, Anaconda 镜像</a></h3>
+							</div>
+							<div class="meta">
+								<span class="fa fa-calendar"></span> 2016-04-07 <span class="fa fa-user" style="margin-left: 1em"> Justin Wong</span>
+							</div>
+							<div class="content"><p><a href="http://www.alpinelinux.org/">Alpine Linux</a> 是一个轻量级 Linux 发行版，具有安全性高、系统体积小等特点，非常适合 docker 等容器使用。</p>
+
+<p><a href="https://www.continuum.io/why-anaconda">Anaconda</a> 是一个面向科学计算的 Python 发行版，支持全平台，提供了大量的科学计算、数据分析包，
+我们提供了 Anaconda 安装包和仓库镜像。使用方法请见<a href="/help/anaconda/">Anaconda镜像帮助</a>。</p>
+</div>
+						</article>
+						<hr />
+						
+						<article>
+							<div class="head" id="bananian">
+								<h3><a href="/news/bananian/"># 新增 Bananian 镜像</a></h3>
+							</div>
+							<div class="meta">
+								<span class="fa fa-calendar"></span> 2016-04-03 <span class="fa fa-user" style="margin-left: 1em"> Justin Wong</span>
+							</div>
+							<div class="content"><p><a href="https://www.bananian.org/">Bananian</a> 是为 <a href="http://www.bananapi.org/">Banana Pi</a> 制作的，基于官方 Debian 仓库的发行版，
+其内核和 bootloader 为 Banana Pi 做了定制化。</p>
+
+<p>使用方法请见<a href="/help/bananian/">Bananian镜像帮助</a>。</p>
+</div>
+						</article>
+						<hr />
+						
+						<article>
+							<div class="head" id="openwrt-trunk">
+								<h3><a href="/news/openwrt-trunk/"># 暂停 OpenWRT Trunk 镜像</a></h3>
+							</div>
+							<div class="meta">
+								<span class="fa fa-calendar"></span> 2016-04-01 <span class="fa fa-user" style="margin-left: 1em"> Justin Wong</span>
+							</div>
+							<div class="content"><p>由于 OpenWRT Trunk 部分几乎每天都会完全重建，给镜像站带来较大流量压力，经调研后，发现用户很少直接使用未经测试的 Trunk 内容，
+因此我们决定暂停 OpenWRT Trunk 镜像。</p>
+
+<p>OpenWRT Release 镜像不受影响。</p>
+
+<p>如有疑问，请到 https://github.com/tuna/issues 提交意见反馈。</p>
+</div>
+						</article>
+						<hr />
+						
+						<article>
+							<div class="head" id="packman-mongodb-anaconda">
+								<h3><a href="/news/packman-mongodb-anaconda/"># Packman, MongoDB, Anaconda 镜像</a></h3>
+							</div>
+							<div class="meta">
+								<span class="fa fa-calendar"></span> 2016-02-24 <span class="fa fa-user" style="margin-left: 1em"> Justin Wong</span>
+							</div>
+							<div class="content"><p>TUNA mirrors 新增 Packman, MongoDB, Anaconda 镜像。</p>
+
+<ul>
+  <li>Packman 主要为 OpenSUSE 提供额外的软件包，包括音视频解码器、多媒体应用、游戏等</li>
+  <li>MongoDB 是一个文档型 NoSQL 数据库，镜像内容包括 RHEL/CentOS, Ubuntu 和 Debian 的二进制软件包，参考 <a href="/help/mongodb">使用帮助</a></li>
+  <li>Anaconda 是一个面向科学计算的 Python 发行版，方便数据科学家在工作站上安装 Python 及其科学计算包</li>
+</ul>
+
+</div>
+						</article>
+						<hr />
+						
+						<article>
+							<div class="head" id="aosp-monthly">
+								<h3><a href="/news/aosp-monthly/"># AOSP 每月打包</a></h3>
+							</div>
+							<div class="meta">
+								<span class="fa fa-calendar"></span> 2015-12-21 <span class="fa fa-user" style="margin-left: 1em"> Justin Wong</span>
+							</div>
+							<div class="content"><p>由于从 TUNA 初始化 AOSP 工程时需要下载 36GB 数据，过程中任何网络故障都可能造成同步失败，因此我们决定每月对
+AOSP 完整工程进行一次打包，用户可以通过 HTTP 下载。解压后使用 Android 的 <code class="highlighter-rouge">repo</code> 工具直接同步即可。</p>
+
+<p>首先到 http://mirrors.tuna.tsinghua.edu.cn/aosp-monthly/ 选择合适自己的构建包，aosp-latest.tar.xz 经过了 xz 压缩，
+体积相对 aosp-latest.tar 小一些，但是也有 27G 大小，请权衡自己的网络带宽和计算能力。</p>
+
+<p>使用方法如下:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wget http://mirrors.tuna.tsinghua.edu.cn/aosp-monthly/aosp-latest.tar # 下载初始化包
+tar xf aosp-latest.tar
+cd AOSP   # 解压得到的 AOSP 工程目录
+repo sync # 正常同步
+</code></pre></div></div>
+
+<p>初始化完之后，以后每次就只需要执行 <code class="highlighter-rouge">repo sync</code> 和 TUNA 保持同步就可以了。</p>
+
+<p>详情参考 <a href="/help/AOSP">AOSP 镜像使用帮助</a>。</p>
+</div>
+						</article>
+						<hr />
+						
+						<article>
+							<div class="head" id="gitlab-ce">
+								<h3><a href="/news/gitlab-ce/"># Chakra, Mageia, gitlab-ce 镜像</a></h3>
+							</div>
+							<div class="meta">
+								<span class="fa fa-calendar"></span> 2015-11-11 <span class="fa fa-user" style="margin-left: 1em"> Justin Wong</span>
+							</div>
+							<div class="content"><p>TUNA mirrors 新增 Chakra, Mageia 和 GitLab Community Edition 镜像。</p>
+
+<ul>
+  <li>Chakra 是衍生自 Arch Linux 的，以 KDE 和 Qt 为一等公民的轻量级 Linux 发行版</li>
+  <li>Mageia 被认为是对显卡驱动支持最好的发行版之一，distrowatch 上排名前十且汉化很好</li>
+  <li>gitlab-ce 是 GitLab 的社区版，详情见 <a href="/help/gitlab-ce">gitlab-ce 使用帮助</a></li>
+</ul>
+</div>
+						</article>
+						<hr />
+						
+						<article>
+							<div class="head" id="cygwin">
+								<h3><a href="/news/cygwin/"># Cygwin 镜像</a></h3>
+							</div>
+							<div class="meta">
+								<span class="fa fa-calendar"></span> 2015-11-04 <span class="fa fa-user" style="margin-left: 1em"> Justin Wong</span>
+							</div>
+							<div class="content"><p>TUNA mirrors 新增 Cygwin 镜像。</p>
+</div>
+						</article>
+						<hr />
+						
+						<article>
+							<div class="head" id="aosp-doc-fix">
+								<h3><a href="/news/aosp-doc-fix/"># AOSP 文档更新</a></h3>
+							</div>
+							<div class="meta">
+								<span class="fa fa-calendar"></span> 2015-10-13 <span class="fa fa-user" style="margin-left: 1em"> Justin Wong</span>
+							</div>
+							<div class="content"><p>经用户反馈，原 AOSP 文档建立次级镜像部分有误，现已更正。详情见 <a href="/help/AOSP">AOSP 镜像帮助</a>。</p>
+</div>
+						</article>
+						<hr />
+						
+						<article>
+							<div class="head" id="docker-update">
+								<h3><a href="/news/docker-update/"># Docker APT/YUM 镜像更新</a></h3>
+							</div>
+							<div class="meta">
+								<span class="fa fa-calendar"></span> 2015-10-10 <span class="fa fa-user" style="margin-left: 1em"> Justin Wong</span>
+							</div>
+							<div class="content"><p>Docker 官方部署了<a href="https://blog.docker.com/2015/07/new-apt-and-yum-repos/">新的 docker 源</a>, 我们也对
+docker 镜像作出相应调整。</p>
+
+<p>现在的镜像地址为:</p>
+
+<ul>
+  <li>APT: http://mirrors.tuna.tsinghua.edu.cn/docker/apt/repo</li>
+  <li>YUM: http://mirrors.tuna.tsinghua.edu.cn/docker/yum/repo</li>
+</ul>
+
+<p>请根据 <a href="/help/docker">docker镜像帮助</a> 调整至正确的打开方式。</p>
+</div>
+						</article>
+						<hr />
+						
+						<article>
+							<div class="head" id="aosp-maintenance">
+								<h3><a href="/news/aosp-maintenance/"># AOSP 镜像调整</a></h3>
+							</div>
+							<div class="meta">
+								<span class="fa fa-calendar"></span> 2015-10-09 <span class="fa fa-user" style="margin-left: 1em"> Justin Wong</span>
+							</div>
+							<div class="content"><p>国庆长假后，AOSP镜像业务量激增，造成 mirrors 服务器严重超载。</p>
+
+<p>我们尝试了如下策略降低服务器负载:</p>
+
+<ul>
+  <li>将服务更改为对 https://android.googlesource.com/ 的反向代理，但一段时间后即被 Google 做了流量限制</li>
+  <li>更新 Git 版本，使用 Git 2.0+ 引入的 Bitmap 索引对所有仓库进行了一次 repack</li>
+</ul>
+
+<p>经过接近两天的折腾，Bitmap 索引显著降低了服务器负载，在 10 月 10 日 AOSP 占满服务器带宽的情况下，Git 服务
+的CPU和内存占用率都在合理范围内。</p>
+
+<p>目前 AOSP 镜像业务已完全恢复。</p>
+
+<p>我们顺便完善了 AOSP 镜像的文档，如果你是团队用户，我们强烈建议你通过 TUNA 镜像建立次级镜像，减小 TUNA mirrors
+负载。详情请参考 <a href="/help/AOSP">AOSP 镜像帮助</a>。</p>
+</div>
+						</article>
+						<hr />
+						
+					</div>
+				</div>
+			</div><!-- news content -->
+			<div class="col-md-2"></div>
+	  </div>
+	</div><!--/container -->
+	<div class="spacing"></div>
+</div>
+
+	
+<div id="footerwrap" class="tuna-foot-1">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4 col-md-4">
+        <p>本站由清华大学信息化技术中心支持创办，由清华大学 TUNA 协会运行维护。</p>
+        <p>清华大学 TUNA 协会，全名清华大学学生网络与开源软件协会，是由清华大学热爱网络技术和开源软件的极客组成的学生技术社团。</p>
+        <p>本站相关源码可在 <a href="https://github.com/tuna/tunasync"><em>这里(镜像管理器)</em></a> 和 <a href="https://github.com/tuna/mirror-web"><em>这里(镜像站网页)</em></a> 获取。</p>
+        <p>根据相关法律法规，本站不对欧盟用户提供服务。</p>
+      </div>
+
+      <div class="col-lg-4 col-md-4">
+        <h4>Contact Us</h4>
+        <div>
+          <ul class="social">
+            <li>
+            <a href="https://groups.google.com/forum/#!forum/tuna-general"><i class="fa fa-envelope"></i> Mailing List</a>
+            </li>
+            <li>
+            IRC: <a href="https://webchat.freenode.net/?channels=%23tuna">#tuna at freenode</a>
+            </li>
+            <li>
+            <a href="https://github.com/tuna/"><i class="fa fa-github"></i> GitHub </a>
+            </li>
+            <li>
+            <a href="http://weibo.com/u/5402274706"><i class="fa fa-weibo"></i> 新浪微博</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-4"  align="center">
+        <img class="img-responsive" style="margin-top:5%" src="/static/img/logo-white.png" srcset="/static/img/logo-white.png 1x, /static/img/logo-white@2x.png 2x, /static/img/logo-white@3x.png 3x, /static/img/logo-white@4x.png 4x" />
+      </div>
+    </div><!--/row -->
+  </div><!--/container -->
+</div><!--/footerwrap -->
+
+<div id="footerwrap" class="tuna-foot-2">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4 col-md-4">
+        <p>本站由清华大学信息化技术中心支持创办，由清华大学 TUNA 协会运行维护。</p>
+        <p>清华大学 TUNA 协会，全名清华大学学生网络与开源软件协会，是由清华大学热爱网络技术和开源软件的极客组成的学生技术社团。</p>
+        <p>本站相关源码可在 <a href="https://github.com/tuna/tunasync"><em>这里(镜像管理器)</em></a> 和 <a href="https://github.com/tuna/mirror-web"><em>这里(镜像站网页)</em></a> 获取。</p>
+        <p>根据相关法律法规，本站不对欧盟用户提供服务。</p>
+      </div>
+
+      <div class="col-lg-4 col-md-4">
+        <h4>Contact Us</h4>
+        <div>
+          <ul class="social">
+            <li>
+            <a href="https://groups.google.com/forum/#!forum/tuna-general"><i class="fa fa-envelope"></i> Mailing List</a>
+            </li>
+            <li>
+            IRC: <a href="https://webchat.freenode.net/?channels=%23tuna">#tuna at freenode</a>
+            </li>
+            <li>
+            <a href="https://github.com/tuna/"><i class="fa fa-github"></i> GitHub </a>
+            </li>
+            <li>
+            <a href="http://weibo.com/u/5402274706"><i class="fa fa-weibo"></i> 新浪微博</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-4"  align="center">
+        <img class="img-responsive" style="margin-top:5%" src="/static/img/logo-white.png" srcset="/static/img/logo-white.png 1x, /static/img/logo-white@2x.png 2x, /static/img/logo-white@3x.png 3x, /static/img/logo-white@4x.png 4x" />
+      </div>
+    </div><!--/row -->
+  </div><!--/container -->
+</div><!--/footerwrap -->
+
+
+<script>
+WebFont.load({
+	custom: {
+		families: ['Lato']
+	}
+});
+</script>
+
+</body>
+
+</html>
+<!--
+vim: ts=2 sts=2 sw=2 noexpandtab
+-->

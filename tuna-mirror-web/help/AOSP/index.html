@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html>
+	<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="清华大学开源软件镜像站，致力于为国内和校内用户提供高质量的开源软件镜像、Linux镜像源服务，帮助用户更方便地获取开源软件。本镜像站由清华大学TUNA团队负责维护。">
+<meta name="keywords" content="镜像站,镜像源,Linux,软件源,开源">
+<meta name="author" content="TUNA">
+<link rel="shortcut icon" href="/static/img/favicon.png">
+<title> Aosp | 镜像站使用帮助 | 清华大学开源软件镜像站 | Tsinghua Open Source Mirror</title>
+<link rel="stylesheet" href="/static/css/bootstrap.css">
+<link rel="stylesheet" href="/static/css/bootstrap-select.min.css">
+<link rel="stylesheet" href="/static/css/font-awesome.min.css" >
+<link rel="stylesheet" href="/static/css/style.css">
+<link rel="stylesheet" href="/static/css/spinkit.css">
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+<script src="/static/js/bootstrap-select.min.js"></script>
+<script src="/static/js/vue.min.js"></script>
+<script src="/static/js/markup.min.js"></script>
+<script src="/static/js/webfont.js"></script>
+</head>
+
+<body>
+	<div class="navbar navbar-default" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/"><img src="/static/img/logo-small.png" srcset="/static/img/logo-small.png 1x, /static/img/logo-small@2x.png 2x, /static/img/logo-small@3x.png 3x, /static/img/logo-small@4x.png 4x" alt=""/> 清华大学开源软件镜像站</a>
+    </div>
+    <div class="navbar-collapse collapse navbar-right">
+      <ul class="nav navbar-nav">
+        <li><a href="https://tuna.moe/">HOME</a></li>
+        <li><a href="https://tuna.moe/events/">EVENTS</a></li>
+        <li><a href="https://tuna.moe/blog/">BLOG</a></li>
+        <li><a href="https://tuna.moe/feed.xml">RSS</a></li>
+	<li><a href="https://podcast.tuna.moe/">PODCAST</a></li>
+        <li class="active"><a href="http://mirrors.tuna.tsinghua.edu.cn/">MIRRORS</a></li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</div>
+
+
+
+<div id="help-page">
+	<div class="container">
+	  <div class="row">
+		  <div class="col-sm-2 hidden-xs">
+				<ul class="nav nav-pills nav-stacked" id="help-nav">
+					
+					<li class="active"><a href="/help/AOSP/">AOSP</a></li>
+					
+					<li><a href="/help/AUR/">AUR</a></li>
+					
+					<li><a href="/help/CRAN/">CRAN</a></li>
+					
+					<li><a href="/help/CTAN/">CTAN</a></li>
+					
+					<li><a href="/help/CocoaPods/">CocoaPods</a></li>
+					
+					<li><a href="/help/anaconda/">anaconda</a></li>
+					
+					<li><a href="/help/archlinux/">archlinux</a></li>
+					
+					<li><a href="/help/archlinuxcn/">archlinuxcn</a></li>
+					
+					<li><a href="/help/bananian/">bananian</a></li>
+					
+					<li><a href="/help/bioconductor/">bioconductor</a></li>
+					
+					<li><a href="/help/centos/">centos</a></li>
+					
+					<li><a href="/help/chromiumos/">chromiumos</a></li>
+					
+					<li><a href="/help/cygwin/">cygwin</a></li>
+					
+					<li><a href="/help/debian/">debian</a></li>
+					
+					<li><a href="/help/docker-ce/">docker-ce</a></li>
+					
+					<li><a href="/help/elpa/">elpa</a></li>
+					
+					<li><a href="/help/epel/">epel</a></li>
+					
+					<li><a href="/help/fedora/">fedora</a></li>
+					
+					<li><a href="/help/gentoo-portage/">gentoo-portage</a></li>
+					
+					<li><a href="/help/gentoo-prefix-portage/">gentoo-portage-prefix</a></li>
+					
+					<li><a href="/help/git-repo/">git-repo</a></li>
+					
+					<li><a href="/help/gitlab-ce/">gitlab-ce</a></li>
+					
+					<li><a href="/help/gitlab-ci-multi-runner/">gitlab-ci-multi-runner</a></li>
+					
+					<li><a href="/help/gitlab-runner/">gitlab-runner</a></li>
+					
+					<li><a href="/help/grafana/">grafana</a></li>
+					
+					<li><a href="/help/hackage/">hackage</a></li>
+					
+					<li><a href="/help/homebrew/">homebrew</a></li>
+					
+					<li><a href="/help/homebrew-bottles/">homebrew-bottles</a></li>
+					
+					<li><a href="/help/lineage-rom/">lineage-rom</a></li>
+					
+					<li><a href="/help/lineageOS/">lineageOS</a></li>
+					
+					<li><a href="/help/linux-stable.git/">linux-stable.git</a></li>
+					
+					<li><a href="/help/linux.git/">linux.git</a></li>
+					
+					<li><a href="/help/llvm/">llvm</a></li>
+					
+					<li><a href="/help/lxc-images/">lxc-images</a></li>
+					
+					<li><a href="/help/mongodb/">mongodb</a></li>
+					
+					<li><a href="/help/msys2/">msys2</a></li>
+					
+					<li><a href="/help/nodejs-release/">nodejs-release</a></li>
+					
+					<li><a href="/help/nodesource/">nodesource</a></li>
+					
+					<li><a href="/help/openthos-src/">openthos-src</a></li>
+					
+					<li><a href="/help/pybombs/">pybombs</a></li>
+					
+					<li><a href="/help/pypi/">pypi</a></li>
+					
+					<li><a href="/help/raspbian/">raspbian</a></li>
+					
+					<li><a href="/help/repo-ck/">repo-ck</a></li>
+					
+					<li><a href="/help/repoforge/">repoforge</a></li>
+					
+					<li><a href="/help/rpmfusion/">rpmfusion</a></li>
+					
+					<li><a href="/help/rubygems/">rubygems</a></li>
+					
+					<li><a href="/help/stackage/">stackage</a></li>
+					
+					<li><a href="/help/tensorflow/">tensorflow</a></li>
+					
+					<li><a href="/help/termux/">termux</a></li>
+					
+					<li><a href="/help/ubuntu/">ubuntu</a></li>
+					
+					<li><a href="/help/virtualbox/">virtualbox</a></li>
+					
+				</ul>
+			</div><!-- sidenave -->
+			<div class="col-sm-10">
+				<div class="visible-xs">
+					<form class="form-inline">
+						<div class="form-group">
+							<label>选择帮助条目: </label>
+							<select class="form-control" id="help-select">
+								
+								<option data-help-url="/help/AOSP/" selected>AOSP</option>
+								
+								<option data-help-url="/help/AUR/">AUR</option>
+								
+								<option data-help-url="/help/CRAN/">CRAN</option>
+								
+								<option data-help-url="/help/CTAN/">CTAN</option>
+								
+								<option data-help-url="/help/CocoaPods/">CocoaPods</option>
+								
+								<option data-help-url="/help/anaconda/">anaconda</option>
+								
+								<option data-help-url="/help/archlinux/">archlinux</option>
+								
+								<option data-help-url="/help/archlinuxcn/">archlinuxcn</option>
+								
+								<option data-help-url="/help/bananian/">bananian</option>
+								
+								<option data-help-url="/help/bioconductor/">bioconductor</option>
+								
+								<option data-help-url="/help/centos/">centos</option>
+								
+								<option data-help-url="/help/chromiumos/">chromiumos</option>
+								
+								<option data-help-url="/help/cygwin/">cygwin</option>
+								
+								<option data-help-url="/help/debian/">debian</option>
+								
+								<option data-help-url="/help/docker-ce/">docker-ce</option>
+								
+								<option data-help-url="/help/elpa/">elpa</option>
+								
+								<option data-help-url="/help/epel/">epel</option>
+								
+								<option data-help-url="/help/fedora/">fedora</option>
+								
+								<option data-help-url="/help/gentoo-portage/">gentoo-portage</option>
+								
+								<option data-help-url="/help/gentoo-prefix-portage/">gentoo-portage-prefix</option>
+								
+								<option data-help-url="/help/git-repo/">git-repo</option>
+								
+								<option data-help-url="/help/gitlab-ce/">gitlab-ce</option>
+								
+								<option data-help-url="/help/gitlab-ci-multi-runner/">gitlab-ci-multi-runner</option>
+								
+								<option data-help-url="/help/gitlab-runner/">gitlab-runner</option>
+								
+								<option data-help-url="/help/grafana/">grafana</option>
+								
+								<option data-help-url="/help/hackage/">hackage</option>
+								
+								<option data-help-url="/help/homebrew/">homebrew</option>
+								
+								<option data-help-url="/help/homebrew-bottles/">homebrew-bottles</option>
+								
+								<option data-help-url="/help/lineage-rom/">lineage-rom</option>
+								
+								<option data-help-url="/help/lineageOS/">lineageOS</option>
+								
+								<option data-help-url="/help/linux-stable.git/">linux-stable.git</option>
+								
+								<option data-help-url="/help/linux.git/">linux.git</option>
+								
+								<option data-help-url="/help/llvm/">llvm</option>
+								
+								<option data-help-url="/help/lxc-images/">lxc-images</option>
+								
+								<option data-help-url="/help/mongodb/">mongodb</option>
+								
+								<option data-help-url="/help/msys2/">msys2</option>
+								
+								<option data-help-url="/help/nodejs-release/">nodejs-release</option>
+								
+								<option data-help-url="/help/nodesource/">nodesource</option>
+								
+								<option data-help-url="/help/openthos-src/">openthos-src</option>
+								
+								<option data-help-url="/help/pybombs/">pybombs</option>
+								
+								<option data-help-url="/help/pypi/">pypi</option>
+								
+								<option data-help-url="/help/raspbian/">raspbian</option>
+								
+								<option data-help-url="/help/repo-ck/">repo-ck</option>
+								
+								<option data-help-url="/help/repoforge/">repoforge</option>
+								
+								<option data-help-url="/help/rpmfusion/">rpmfusion</option>
+								
+								<option data-help-url="/help/rubygems/">rubygems</option>
+								
+								<option data-help-url="/help/stackage/">stackage</option>
+								
+								<option data-help-url="/help/tensorflow/">tensorflow</option>
+								
+								<option data-help-url="/help/termux/">termux</option>
+								
+								<option data-help-url="/help/ubuntu/">ubuntu</option>
+								
+								<option data-help-url="/help/virtualbox/">virtualbox</option>
+								
+							</select>
+						</div>
+					</form>
+				</div>
+				<div id="help-content">
+					<h2 id="android-镜像使用帮助">Android 镜像使用帮助</h2>
+
+<p><strong>注意: 本镜像是 AOSP 镜像，Android SDK因版权原因，我们不能提供镜像服务。</strong></p>
+
+<p>参考 Google 教程 <a href="https://source.android.com/source/downloading.html">https://source.android.com/source/downloading.html</a>，
+将 <code class="highlighter-rouge">https://android.googlesource.com/</code> 全部使用 <code class="highlighter-rouge">https://aosp.tuna.tsinghua.edu.cn/</code> 代替即可。</p>
+
+<p>由于使用 HTTPS 协议更安全，并且更便于我们灵活处理，所以强烈推荐使用 HTTPS 协议同步 AOSP 镜像。</p>
+
+<p><strong>由于 AOSP 镜像造成CPU/内存负载过重，我们限制了并发数量，因此建议：</strong></p>
+<ol>
+  <li>sync的时候并发数不宜太高，否则会出现 503 错误，即<code class="highlighter-rouge">-j</code>后面的数字不能太大，建议选择4。</li>
+  <li>请尽量选择流量较小时错峰同步。</li>
+</ol>
+
+<ul>
+  <li><strong>2017-08-28 : 更新镜像大小信息</strong></li>
+  <li><strong>2016-06-24 : 关闭 git:// 协议，仅支持 HTTPS</strong></li>
+  <li><strong>2016-04-03 : 删除每月初始化包中的冗余内容，使用方法更新</strong></li>
+  <li><strong>2015-12-21 : 增加每月初始化包，少量修正文档错误</strong></li>
+  <li><strong>2015-10-13 : 修复上游替换文档错误</strong></li>
+  <li><strong>2015-10-13 : 修复次级镜像文档错误</strong></li>
+  <li><strong>2015-10-09 : 恢复 git://aosp.tuna.tsinghua.edu.cn/aosp/ 访问</strong></li>
+  <li><strong>2015-10-08 : 镜像地址更新为 https://aosp.tuna.tsinghua.edu.cn/ (结尾没有/android)</strong></li>
+</ul>
+
+<h3 id="过程摘录">过程摘录</h3>
+
+<p>(参考 <a href="https://lug.ustc.edu.cn/wiki/mirrors/help/aosp">https://lug.ustc.edu.cn/wiki/mirrors/help/aosp</a> 编写)</p>
+
+<p>下载 repo 工具:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mkdir ~/bin
+<span class="nv">PATH</span><span class="o">=</span>~/bin:<span class="nv">$PATH</span>
+curl https://storage.googleapis.com/git-repo-downloads/repo <span class="o">&gt;</span> ~/bin/repo
+chmod a+x ~/bin/repo
+</code></pre></div></div>
+
+<p>或者使用tuna的<a href="https://mirrors.tuna.tsinghua.edu.cn/help/git-repo/">git-repo镜像</a></p>
+
+<h4 id="使用每月更新的初始化包">使用每月更新的初始化包</h4>
+
+<p>由于首次同步需要下载约 30GB 数据，过程中任何网络故障都可能造成同步失败，我们强烈建议您使用初始化包进行初始化。</p>
+
+<p>下载 <a href="https://mirrors.tuna.tsinghua.edu.cn/aosp-monthly/aosp-latest.tar">https://mirrors.tuna.tsinghua.edu.cn/aosp-monthly/aosp-latest.tar</a>，下载完成后记得根据 checksum.txt 的内容校验一下。</p>
+
+<p>由于所有代码都是从隐藏的 <code class="highlighter-rouge">.repo</code> 目录中 checkout 出来的，所以我们只保留了 <code class="highlighter-rouge">.repo</code> 目录，下载后解压
+再 <code class="highlighter-rouge">repo sync</code> 一遍即可得到完整的目录。</p>
+
+<p>使用方法如下:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wget <span class="nt">-c</span> https://mirrors.tuna.tsinghua.edu.cn/aosp-monthly/aosp-latest.tar <span class="c"># 下载初始化包</span>
+<span class="nb">tar </span>xf aosp-latest.tar
+<span class="nb">cd </span>AOSP   <span class="c"># 解压得到的 AOSP 工程目录</span>
+<span class="c"># 这时 ls 的话什么也看不到，因为只有一个隐藏的 .repo 目录</span>
+repo sync <span class="c"># 正常同步一遍即可得到完整目录</span>
+<span class="c"># 或 repo sync -l 仅checkout代码</span>
+</code></pre></div></div>
+
+<p>此后，每次只需运行 <code class="highlighter-rouge">repo sync</code> 即可保持同步。
+<strong>我们强烈建议您保持每天同步，并尽量选择凌晨等低峰时间</strong></p>
+
+<h4 id="传统初始化方法">传统初始化方法</h4>
+
+<p>建立工作目录:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mkdir WORKING_DIRECTORY
+cd WORKING_DIRECTORY
+</code></pre></div></div>
+
+<p>初始化仓库:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>repo init -u https://aosp.tuna.tsinghua.edu.cn/platform/manifest
+</code></pre></div></div>
+
+<p><strong>如果提示无法连接到 gerrit.googlesource.com，请参照<a href="/help/git-repo">git-repo的帮助页面</a>的更新一节。</strong></p>
+
+<p>如果需要某个特定的 Android 版本(<a href="https://source.android.com/source/build-numbers.html#source-code-tags-and-builds">列表</a>)：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>repo init -u https://aosp.tuna.tsinghua.edu.cn/platform/manifest -b android-4.0.1_r1
+</code></pre></div></div>
+
+<p>同步源码树（以后只需执行这条命令来同步）：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>repo sync
+</code></pre></div></div>
+
+<h3 id="建立次级镜像">建立次级镜像</h3>
+
+<p>由于 AOSP 镜像需求量巨大，且 Git 服务占资源较多，TUNA 服务器因 AOSP 产生的负载已经占主要部分。
+如果你是团队用户，我们强烈建议你通过 TUNA 建立次级镜像，再分享给团队内其他用户，减轻 TUNA 服务器压力。
+建立 AOSP 镜像需要占用约 164G 磁盘。</p>
+
+<p>具体步骤为:</p>
+
+<p>下载 <code class="highlighter-rouge">repo</code> 工具和建立工作目录（略）</p>
+
+<p>初始化:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>repo init -u https://aosp.tuna.tsinghua.edu.cn/mirror/manifest --mirror
+</code></pre></div></div>
+
+<p>最后同步源码树:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>repo sync
+</code></pre></div></div>
+
+<p>同步完成后，运行 <code class="highlighter-rouge">git daemon --verbose --export-all  --base-path=WORKING_DIR WORKING_DIR</code> (<code class="highlighter-rouge">WORKING_DIR</code>为代码树所在目录) 。</p>
+
+<p>此后，其他用户使用 <code class="highlighter-rouge">git://ip.to.mirror/</code> 作为镜像即可。</p>
+
+<h3 id="替换已有的-aosp-源代码的-remote">替换已有的 AOSP 源代码的 remote</h3>
+
+<p>如果你之前已经通过某种途径获得了 AOSP 的源码(或者你只是 init 这一步完成后)，
+你希望以后通过 TUNA 同步 AOSP 部分的代码，只需要将
+<code class="highlighter-rouge">.repo/manifest.xml</code> 把其中的 aosp 这个 remote 的 fetch 从
+<code class="highlighter-rouge">https://android.googlesource.com</code> 改为 <code class="highlighter-rouge">https://aosp.tuna.tsinghua.edu.cn/</code>。</p>
+
+<div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;manifest&gt;
+
+   &lt;remote  name="aosp"
+<span class="gd">-           fetch="https://android.googlesource.com"
+</span><span class="gi">+           fetch="https://aosp.tuna.tsinghua.edu.cn"
+</span>            review="android-review.googlesource.com" /&gt;
+
+   &lt;remote  name="github"
+</code></pre></div></div>
+
+<p>同时，修改 <code class="highlighter-rouge">.repo/manifests.git/config</code>，将</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>url = https://android.googlesource.com/platform/manifest
+</code></pre></div></div>
+
+<p>更改为</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>url = https://aosp.tuna.tsinghua.edu.cn/platform/manifest
+</code></pre></div></div>
+
+<h3 id="faq">FAQ</h3>
+
+<ol>
+  <li>镜像的是什么？
+    <ul>
+      <li>AOSP 的 git 仓库</li>
+    </ul>
+  </li>
+  <li>为何不能通过浏览器访问？
+    <ul>
+      <li>暂时没有 gitweb, 而且反正是 git bare 仓库，没有可以直接看到的内容。</li>
+    </ul>
+  </li>
+  <li>出现 <code class="highlighter-rouge">curl: (22) The requested URL returned error: 404 Not Found
+Server does not provide clone.bundle; ignoring.</code> 怎么办？
+    <ul>
+      <li>无视即可。</li>
+    </ul>
+  </li>
+</ol>
+
+				</div>
+			</div><!-- help content -->
+	  </div>
+	</div><!--/container -->
+</div><!--/mirrors -->
+
+	
+<div id="footerwrap" class="tuna-foot-1">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4 col-md-4">
+        <p>本站由清华大学信息化技术中心支持创办，由清华大学 TUNA 协会运行维护。</p>
+        <p>清华大学 TUNA 协会，全名清华大学学生网络与开源软件协会，是由清华大学热爱网络技术和开源软件的极客组成的学生技术社团。</p>
+        <p>本站相关源码可在 <a href="https://github.com/tuna/tunasync"><em>这里(镜像管理器)</em></a> 和 <a href="https://github.com/tuna/mirror-web"><em>这里(镜像站网页)</em></a> 获取。</p>
+        <p>根据相关法律法规，本站不对欧盟用户提供服务。</p>
+      </div>
+
+      <div class="col-lg-4 col-md-4">
+        <h4>Contact Us</h4>
+        <div>
+          <ul class="social">
+            <li>
+            <a href="https://groups.google.com/forum/#!forum/tuna-general"><i class="fa fa-envelope"></i> Mailing List</a>
+            </li>
+            <li>
+            IRC: <a href="https://webchat.freenode.net/?channels=%23tuna">#tuna at freenode</a>
+            </li>
+            <li>
+            <a href="https://github.com/tuna/"><i class="fa fa-github"></i> GitHub </a>
+            </li>
+            <li>
+            <a href="http://weibo.com/u/5402274706"><i class="fa fa-weibo"></i> 新浪微博</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-4"  align="center">
+        <img class="img-responsive" style="margin-top:5%" src="/static/img/logo-white.png" srcset="/static/img/logo-white.png 1x, /static/img/logo-white@2x.png 2x, /static/img/logo-white@3x.png 3x, /static/img/logo-white@4x.png 4x" />
+      </div>
+    </div><!--/row -->
+  </div><!--/container -->
+</div><!--/footerwrap -->
+
+<div id="footerwrap" class="tuna-foot-2">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4 col-md-4">
+        <p>本站由清华大学信息化技术中心支持创办，由清华大学 TUNA 协会运行维护。</p>
+        <p>清华大学 TUNA 协会，全名清华大学学生网络与开源软件协会，是由清华大学热爱网络技术和开源软件的极客组成的学生技术社团。</p>
+        <p>本站相关源码可在 <a href="https://github.com/tuna/tunasync"><em>这里(镜像管理器)</em></a> 和 <a href="https://github.com/tuna/mirror-web"><em>这里(镜像站网页)</em></a> 获取。</p>
+        <p>根据相关法律法规，本站不对欧盟用户提供服务。</p>
+      </div>
+
+      <div class="col-lg-4 col-md-4">
+        <h4>Contact Us</h4>
+        <div>
+          <ul class="social">
+            <li>
+            <a href="https://groups.google.com/forum/#!forum/tuna-general"><i class="fa fa-envelope"></i> Mailing List</a>
+            </li>
+            <li>
+            IRC: <a href="https://webchat.freenode.net/?channels=%23tuna">#tuna at freenode</a>
+            </li>
+            <li>
+            <a href="https://github.com/tuna/"><i class="fa fa-github"></i> GitHub </a>
+            </li>
+            <li>
+            <a href="http://weibo.com/u/5402274706"><i class="fa fa-weibo"></i> 新浪微博</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-4"  align="center">
+        <img class="img-responsive" style="margin-top:5%" src="/static/img/logo-white.png" srcset="/static/img/logo-white.png 1x, /static/img/logo-white@2x.png 2x, /static/img/logo-white@3x.png 3x, /static/img/logo-white@4x.png 4x" />
+      </div>
+    </div><!--/row -->
+  </div><!--/container -->
+</div><!--/footerwrap -->
+
+
+<script>
+WebFont.load({
+	custom: {
+		families: ['Lato']
+	}
+});
+</script>
+
+</body>
+
+<script src="/static/js/help.js"></script>
+
+</html>
+<!--
+vim: ts=2 sts=2 sw=2 noexpandtab
+-->

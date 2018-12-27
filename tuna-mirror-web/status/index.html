@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+	<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="清华大学开源软件镜像站，致力于为国内和校内用户提供高质量的开源软件镜像、Linux镜像源服务，帮助用户更方便地获取开源软件。本镜像站由清华大学TUNA团队负责维护。">
+<meta name="keywords" content="镜像站,镜像源,Linux,软件源,开源">
+<meta name="author" content="TUNA">
+<link rel="shortcut icon" href="/static/img/favicon.png">
+<title>清华大学开源软件镜像站 | Tsinghua Open Source Mirror</title>
+<link rel="stylesheet" href="/static/css/bootstrap.css">
+<link rel="stylesheet" href="/static/css/bootstrap-select.min.css">
+<link rel="stylesheet" href="/static/css/font-awesome.min.css" >
+<link rel="stylesheet" href="/static/css/style.css">
+<link rel="stylesheet" href="/static/css/spinkit.css">
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+<script src="/static/js/bootstrap-select.min.js"></script>
+<script src="/static/js/vue.min.js"></script>
+<script src="/static/js/markup.min.js"></script>
+<script src="/static/js/webfont.js"></script>
+</head>
+
+<body>
+	<div class="navbar navbar-default" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/"><img src="/static/img/logo-small.png" srcset="/static/img/logo-small.png 1x, /static/img/logo-small@2x.png 2x, /static/img/logo-small@3x.png 3x, /static/img/logo-small@4x.png 4x" alt=""/> 清华大学开源软件镜像站</a>
+    </div>
+    <div class="navbar-collapse collapse navbar-right">
+      <ul class="nav navbar-nav">
+        <li><a href="https://tuna.moe/">HOME</a></li>
+        <li><a href="https://tuna.moe/events/">EVENTS</a></li>
+        <li><a href="https://tuna.moe/blog/">BLOG</a></li>
+        <li><a href="https://tuna.moe/feed.xml">RSS</a></li>
+	<li><a href="https://podcast.tuna.moe/">PODCAST</a></li>
+        <li class="active"><a href="http://mirrors.tuna.tsinghua.edu.cn/">MIRRORS</a></li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</div>
+
+	<div id="status-page">
+		<div class="spacing hidden-xs"></div>
+		<div class="container">
+			<h3 id="server-status"> # 服务器监控 </h3>
+			<h4> # 网络流量 </h4>
+			<div class="row">
+				<div class="col-md-6">
+					<div class="thumbnail">
+					<img class="img-responsive" src="/static/status/service_traffic_IPv4-day.png">
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="thumbnail">
+					<img class="img-responsive" src="/static/status/service_traffic_IPv6-day.png">
+					</div>
+				</div>
+			</div>
+			<h4># 磁盘状态 </h4>
+			<div class="row">
+				<div class="col-md-12"><strong>磁盘占用</strong>: </div>
+				<div class="col-md-12">
+				<div class="progress">
+					<div id="disk-usage-bar" class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">
+					</div>
+				</div>
+				</div>
+				<div class="col-md-6">
+					<div class="thumbnail">
+					<img class="img-responsive" src="/static/status/diskstats_iops-day.png">
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="thumbnail">
+					<img class="img-responsive" src="/static/status/diskstats_throughput-day.png">
+					</div>
+				</div>
+			</div>
+			<h4># CPU / 内存</h4>
+			<div class="row">
+				<div class="col-md-6">
+					<div class="thumbnail">
+					<img class="img-responsive" src="/static/status/cpu-day.png">
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="thumbnail">
+					<img class="img-responsive" src="/static/status/memory-day.png">
+					</div>
+				</div>
+			</div>
+			<h3 id="syncing-status"># 同步状态</h3>
+			<table class="table table-condensed flat-md">
+				<thead class="hidden-xs hidden-sm">
+					<tr>
+						<th class="col-xs-12 col-md-2">Name</th>
+						<th class="col-xs-12 col-md-2">Last Update</th>
+						<th class="col-xs-12 col-md-5">Upstream</th>
+						<th class="col-xs-12 col-md-1">Status</th>
+						<th class="col-xs-12 col-md-2">Size</th>
+					</tr>
+				</thead>
+				<tbody id="mirror-list">
+				</tbody>
+			</table>
+		</div><!--/container -->
+	</div><!--/status -->
+	
+<div id="footerwrap" class="tuna-foot-1">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4 col-md-4">
+        <p>本站由清华大学信息化技术中心支持创办，由清华大学 TUNA 协会运行维护。</p>
+        <p>清华大学 TUNA 协会，全名清华大学学生网络与开源软件协会，是由清华大学热爱网络技术和开源软件的极客组成的学生技术社团。</p>
+        <p>本站相关源码可在 <a href="https://github.com/tuna/tunasync"><em>这里(镜像管理器)</em></a> 和 <a href="https://github.com/tuna/mirror-web"><em>这里(镜像站网页)</em></a> 获取。</p>
+        <p>根据相关法律法规，本站不对欧盟用户提供服务。</p>
+      </div>
+
+      <div class="col-lg-4 col-md-4">
+        <h4>Contact Us</h4>
+        <div>
+          <ul class="social">
+            <li>
+            <a href="https://groups.google.com/forum/#!forum/tuna-general"><i class="fa fa-envelope"></i> Mailing List</a>
+            </li>
+            <li>
+            IRC: <a href="https://webchat.freenode.net/?channels=%23tuna">#tuna at freenode</a>
+            </li>
+            <li>
+            <a href="https://github.com/tuna/"><i class="fa fa-github"></i> GitHub </a>
+            </li>
+            <li>
+            <a href="http://weibo.com/u/5402274706"><i class="fa fa-weibo"></i> 新浪微博</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-4"  align="center">
+        <img class="img-responsive" style="margin-top:5%" src="/static/img/logo-white.png" srcset="/static/img/logo-white.png 1x, /static/img/logo-white@2x.png 2x, /static/img/logo-white@3x.png 3x, /static/img/logo-white@4x.png 4x" />
+      </div>
+    </div><!--/row -->
+  </div><!--/container -->
+</div><!--/footerwrap -->
+
+<div id="footerwrap" class="tuna-foot-2">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4 col-md-4">
+        <p>本站由清华大学信息化技术中心支持创办，由清华大学 TUNA 协会运行维护。</p>
+        <p>清华大学 TUNA 协会，全名清华大学学生网络与开源软件协会，是由清华大学热爱网络技术和开源软件的极客组成的学生技术社团。</p>
+        <p>本站相关源码可在 <a href="https://github.com/tuna/tunasync"><em>这里(镜像管理器)</em></a> 和 <a href="https://github.com/tuna/mirror-web"><em>这里(镜像站网页)</em></a> 获取。</p>
+        <p>根据相关法律法规，本站不对欧盟用户提供服务。</p>
+      </div>
+
+      <div class="col-lg-4 col-md-4">
+        <h4>Contact Us</h4>
+        <div>
+          <ul class="social">
+            <li>
+            <a href="https://groups.google.com/forum/#!forum/tuna-general"><i class="fa fa-envelope"></i> Mailing List</a>
+            </li>
+            <li>
+            IRC: <a href="https://webchat.freenode.net/?channels=%23tuna">#tuna at freenode</a>
+            </li>
+            <li>
+            <a href="https://github.com/tuna/"><i class="fa fa-github"></i> GitHub </a>
+            </li>
+            <li>
+            <a href="http://weibo.com/u/5402274706"><i class="fa fa-weibo"></i> 新浪微博</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-4"  align="center">
+        <img class="img-responsive" style="margin-top:5%" src="/static/img/logo-white.png" srcset="/static/img/logo-white.png 1x, /static/img/logo-white@2x.png 2x, /static/img/logo-white@3x.png 3x, /static/img/logo-white@4x.png 4x" />
+      </div>
+    </div><!--/row -->
+  </div><!--/container -->
+</div><!--/footerwrap -->
+
+
+<script>
+WebFont.load({
+	custom: {
+		families: ['Lato']
+	}
+});
+</script>
+
+	
+	<script id="template" type="x-tmpl-markup">
+{{mirrors}}
+<tr class="status-{{status}} row">
+	<td class="col-xs-4">Name</td>
+	<td class="col-md-2 col-xs-8">{{name}}{{if is_master|falsy}}[slave]{{/if}}</td>
+	<td class="col-xs-4">Last Update</td>
+	<td class="col-md-2 col-xs-8">{{last_update}}</td>
+	<td class="col-xs-4">Upstream</td>
+	<td class="col-md-5 col-xs-8">{{upstream}}</td>
+	<td class="col-xs-4">Status</td>
+	<td class="col-md-1 col-xs-8">{{status}}</td>
+	<td class="col-xs-4">Size</td>
+	<td class="col-md-2 col-xs-8">{{size}}</td>
+</tr>
+{{/mirrors}}
+	</script>
+	
+	<script src="/static/js/status.js"></script>
+</body>
+</html>
+<!--
+vim: ts=2 sts=2 sw=2 noexpandtab
+-->

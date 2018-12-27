@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html>
+	<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="清华大学开源软件镜像站，致力于为国内和校内用户提供高质量的开源软件镜像、Linux镜像源服务，帮助用户更方便地获取开源软件。本镜像站由清华大学TUNA团队负责维护。">
+<meta name="keywords" content="镜像站,镜像源,Linux,软件源,开源">
+<meta name="author" content="TUNA">
+<link rel="shortcut icon" href="/static/img/favicon.png">
+<title> Gitlab Runner | 镜像站使用帮助 | 清华大学开源软件镜像站 | Tsinghua Open Source Mirror</title>
+<link rel="stylesheet" href="/static/css/bootstrap.css">
+<link rel="stylesheet" href="/static/css/bootstrap-select.min.css">
+<link rel="stylesheet" href="/static/css/font-awesome.min.css" >
+<link rel="stylesheet" href="/static/css/style.css">
+<link rel="stylesheet" href="/static/css/spinkit.css">
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+<script src="/static/js/bootstrap-select.min.js"></script>
+<script src="/static/js/vue.min.js"></script>
+<script src="/static/js/markup.min.js"></script>
+<script src="/static/js/webfont.js"></script>
+</head>
+
+<body>
+	<div class="navbar navbar-default" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/"><img src="/static/img/logo-small.png" srcset="/static/img/logo-small.png 1x, /static/img/logo-small@2x.png 2x, /static/img/logo-small@3x.png 3x, /static/img/logo-small@4x.png 4x" alt=""/> 清华大学开源软件镜像站</a>
+    </div>
+    <div class="navbar-collapse collapse navbar-right">
+      <ul class="nav navbar-nav">
+        <li><a href="https://tuna.moe/">HOME</a></li>
+        <li><a href="https://tuna.moe/events/">EVENTS</a></li>
+        <li><a href="https://tuna.moe/blog/">BLOG</a></li>
+        <li><a href="https://tuna.moe/feed.xml">RSS</a></li>
+	<li><a href="https://podcast.tuna.moe/">PODCAST</a></li>
+        <li class="active"><a href="http://mirrors.tuna.tsinghua.edu.cn/">MIRRORS</a></li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</div>
+
+
+
+<div id="help-page">
+	<div class="container">
+	  <div class="row">
+		  <div class="col-sm-2 hidden-xs">
+				<ul class="nav nav-pills nav-stacked" id="help-nav">
+					
+					<li><a href="/help/AOSP/">AOSP</a></li>
+					
+					<li><a href="/help/AUR/">AUR</a></li>
+					
+					<li><a href="/help/CRAN/">CRAN</a></li>
+					
+					<li><a href="/help/CTAN/">CTAN</a></li>
+					
+					<li><a href="/help/CocoaPods/">CocoaPods</a></li>
+					
+					<li><a href="/help/anaconda/">anaconda</a></li>
+					
+					<li><a href="/help/archlinux/">archlinux</a></li>
+					
+					<li><a href="/help/archlinuxcn/">archlinuxcn</a></li>
+					
+					<li><a href="/help/bananian/">bananian</a></li>
+					
+					<li><a href="/help/bioconductor/">bioconductor</a></li>
+					
+					<li><a href="/help/centos/">centos</a></li>
+					
+					<li><a href="/help/chromiumos/">chromiumos</a></li>
+					
+					<li><a href="/help/cygwin/">cygwin</a></li>
+					
+					<li><a href="/help/debian/">debian</a></li>
+					
+					<li><a href="/help/docker-ce/">docker-ce</a></li>
+					
+					<li><a href="/help/elpa/">elpa</a></li>
+					
+					<li><a href="/help/epel/">epel</a></li>
+					
+					<li><a href="/help/fedora/">fedora</a></li>
+					
+					<li><a href="/help/gentoo-portage/">gentoo-portage</a></li>
+					
+					<li><a href="/help/gentoo-prefix-portage/">gentoo-portage-prefix</a></li>
+					
+					<li><a href="/help/git-repo/">git-repo</a></li>
+					
+					<li><a href="/help/gitlab-ce/">gitlab-ce</a></li>
+					
+					<li><a href="/help/gitlab-ci-multi-runner/">gitlab-ci-multi-runner</a></li>
+					
+					<li class="active"><a href="/help/gitlab-runner/">gitlab-runner</a></li>
+					
+					<li><a href="/help/grafana/">grafana</a></li>
+					
+					<li><a href="/help/hackage/">hackage</a></li>
+					
+					<li><a href="/help/homebrew/">homebrew</a></li>
+					
+					<li><a href="/help/homebrew-bottles/">homebrew-bottles</a></li>
+					
+					<li><a href="/help/lineage-rom/">lineage-rom</a></li>
+					
+					<li><a href="/help/lineageOS/">lineageOS</a></li>
+					
+					<li><a href="/help/linux-stable.git/">linux-stable.git</a></li>
+					
+					<li><a href="/help/linux.git/">linux.git</a></li>
+					
+					<li><a href="/help/llvm/">llvm</a></li>
+					
+					<li><a href="/help/lxc-images/">lxc-images</a></li>
+					
+					<li><a href="/help/mongodb/">mongodb</a></li>
+					
+					<li><a href="/help/msys2/">msys2</a></li>
+					
+					<li><a href="/help/nodejs-release/">nodejs-release</a></li>
+					
+					<li><a href="/help/nodesource/">nodesource</a></li>
+					
+					<li><a href="/help/openthos-src/">openthos-src</a></li>
+					
+					<li><a href="/help/pybombs/">pybombs</a></li>
+					
+					<li><a href="/help/pypi/">pypi</a></li>
+					
+					<li><a href="/help/raspbian/">raspbian</a></li>
+					
+					<li><a href="/help/repo-ck/">repo-ck</a></li>
+					
+					<li><a href="/help/repoforge/">repoforge</a></li>
+					
+					<li><a href="/help/rpmfusion/">rpmfusion</a></li>
+					
+					<li><a href="/help/rubygems/">rubygems</a></li>
+					
+					<li><a href="/help/stackage/">stackage</a></li>
+					
+					<li><a href="/help/tensorflow/">tensorflow</a></li>
+					
+					<li><a href="/help/termux/">termux</a></li>
+					
+					<li><a href="/help/ubuntu/">ubuntu</a></li>
+					
+					<li><a href="/help/virtualbox/">virtualbox</a></li>
+					
+				</ul>
+			</div><!-- sidenave -->
+			<div class="col-sm-10">
+				<div class="visible-xs">
+					<form class="form-inline">
+						<div class="form-group">
+							<label>选择帮助条目: </label>
+							<select class="form-control" id="help-select">
+								
+								<option data-help-url="/help/AOSP/">AOSP</option>
+								
+								<option data-help-url="/help/AUR/">AUR</option>
+								
+								<option data-help-url="/help/CRAN/">CRAN</option>
+								
+								<option data-help-url="/help/CTAN/">CTAN</option>
+								
+								<option data-help-url="/help/CocoaPods/">CocoaPods</option>
+								
+								<option data-help-url="/help/anaconda/">anaconda</option>
+								
+								<option data-help-url="/help/archlinux/">archlinux</option>
+								
+								<option data-help-url="/help/archlinuxcn/">archlinuxcn</option>
+								
+								<option data-help-url="/help/bananian/">bananian</option>
+								
+								<option data-help-url="/help/bioconductor/">bioconductor</option>
+								
+								<option data-help-url="/help/centos/">centos</option>
+								
+								<option data-help-url="/help/chromiumos/">chromiumos</option>
+								
+								<option data-help-url="/help/cygwin/">cygwin</option>
+								
+								<option data-help-url="/help/debian/">debian</option>
+								
+								<option data-help-url="/help/docker-ce/">docker-ce</option>
+								
+								<option data-help-url="/help/elpa/">elpa</option>
+								
+								<option data-help-url="/help/epel/">epel</option>
+								
+								<option data-help-url="/help/fedora/">fedora</option>
+								
+								<option data-help-url="/help/gentoo-portage/">gentoo-portage</option>
+								
+								<option data-help-url="/help/gentoo-prefix-portage/">gentoo-portage-prefix</option>
+								
+								<option data-help-url="/help/git-repo/">git-repo</option>
+								
+								<option data-help-url="/help/gitlab-ce/">gitlab-ce</option>
+								
+								<option data-help-url="/help/gitlab-ci-multi-runner/">gitlab-ci-multi-runner</option>
+								
+								<option data-help-url="/help/gitlab-runner/" selected>gitlab-runner</option>
+								
+								<option data-help-url="/help/grafana/">grafana</option>
+								
+								<option data-help-url="/help/hackage/">hackage</option>
+								
+								<option data-help-url="/help/homebrew/">homebrew</option>
+								
+								<option data-help-url="/help/homebrew-bottles/">homebrew-bottles</option>
+								
+								<option data-help-url="/help/lineage-rom/">lineage-rom</option>
+								
+								<option data-help-url="/help/lineageOS/">lineageOS</option>
+								
+								<option data-help-url="/help/linux-stable.git/">linux-stable.git</option>
+								
+								<option data-help-url="/help/linux.git/">linux.git</option>
+								
+								<option data-help-url="/help/llvm/">llvm</option>
+								
+								<option data-help-url="/help/lxc-images/">lxc-images</option>
+								
+								<option data-help-url="/help/mongodb/">mongodb</option>
+								
+								<option data-help-url="/help/msys2/">msys2</option>
+								
+								<option data-help-url="/help/nodejs-release/">nodejs-release</option>
+								
+								<option data-help-url="/help/nodesource/">nodesource</option>
+								
+								<option data-help-url="/help/openthos-src/">openthos-src</option>
+								
+								<option data-help-url="/help/pybombs/">pybombs</option>
+								
+								<option data-help-url="/help/pypi/">pypi</option>
+								
+								<option data-help-url="/help/raspbian/">raspbian</option>
+								
+								<option data-help-url="/help/repo-ck/">repo-ck</option>
+								
+								<option data-help-url="/help/repoforge/">repoforge</option>
+								
+								<option data-help-url="/help/rpmfusion/">rpmfusion</option>
+								
+								<option data-help-url="/help/rubygems/">rubygems</option>
+								
+								<option data-help-url="/help/stackage/">stackage</option>
+								
+								<option data-help-url="/help/tensorflow/">tensorflow</option>
+								
+								<option data-help-url="/help/termux/">termux</option>
+								
+								<option data-help-url="/help/ubuntu/">ubuntu</option>
+								
+								<option data-help-url="/help/virtualbox/">virtualbox</option>
+								
+							</select>
+						</div>
+					</form>
+				</div>
+				<div id="help-content">
+					<h2 id="gitlab-runner-镜像使用帮助">Gitlab Runner 镜像使用帮助</h2>
+
+<p><strong>注意: gitlab-runner 镜像仅支持 x86-64 架构</strong></p>
+
+<h3 id="debianubuntu-用户">Debian/Ubuntu 用户</h3>
+
+<p>首先信任 GitLab 的 GPG 公钥:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl https://packages.gitlab.com/gpg.key 2&gt; /dev/null | sudo apt-key add - &amp;&gt;/dev/null
+</code></pre></div></div>
+
+<p>再选择你的 Debian/Ubuntu 版本，文本框中内容写进 <code class="highlighter-rouge">/etc/apt/sources.list.d/gitlab-runner.list</code></p>
+
+<form class="form-inline">
+<div class="form-group">
+	<label>你的Debian/Ubuntu版本: </label>
+	<select class="form-control release-select" data-template="#apt-template" data-target="#apt-content">
+		<option data-os="debian" data-release="wheezy">Debian 7 (Wheezy)</option>
+		<option data-os="debian" data-release="jessie">Debian 8 (Jessie)</option>
+		<option data-os="debian" data-release="stretch" selected="">Debian 9 (Stretch)</option>
+		<option data-os="ubuntu" data-release="trusty">Ubuntu 14.04 LTS</option>
+		<option data-os="ubuntu" data-release="xenial">Ubuntu 16.04 LTS</option>
+	</select>
+</div>
+</form>
+
+<p></p>
+<pre>
+<code id="apt-content">
+</code>
+</pre>
+
+<p>安装 gitlab-runner:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo apt-get update
+sudo apt-get install gitlab-runner
+</code></pre></div></div>
+
+<script id="apt-template" type="x-tmpl-markup">
+deb {{if os_name|equals>ubuntu}}https{{else}}http{{/if}}://mirrors.tuna.tsinghua.edu.cn/gitlab-runner/{{os_name}} {{release_name}} main
+</script>
+
+<h3 id="centosrhel">CentOS/RHEL</h3>
+
+<p>新建 <code class="highlighter-rouge">/etc/yum.repos.d/gitlab-runner.repo</code>，内容为</p>
+
+<form class="form-inline">
+<div class="form-group">
+	<label>你的CentOS/RHEL版本: </label>
+	<select class="form-control release-select" data-template="#yum-template" data-target="#yum-content">
+		<option data-release="el6">CentOS 6</option>
+		<option data-release="el7" selected="">CentOS 7</option>
+		<option data-release="el6">RHEL 6</option>
+		<option data-release="el7">RHEL 7</option>
+	</select>
+</div>
+</form>
+
+<p></p>
+<pre>
+<code id="yum-content">
+</code>
+</pre>
+
+<p>再执行</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo yum makecache
+sudo yum install gitlab-runner
+</code></pre></div></div>
+
+<script id="yum-template" type="x-tmpl-markup">
+[gitlab-runner]
+name=gitlab-runner
+baseurl=https://mirrors.tuna.tsinghua.edu.cn/gitlab-runner/yum/{{release_name}}
+repo_gpgcheck=0
+gpgcheck=0
+enabled=1
+gpgkey=https://packages.gitlab.com/gpg.key
+</script>
+
+
+				</div>
+			</div><!-- help content -->
+	  </div>
+	</div><!--/container -->
+</div><!--/mirrors -->
+
+	
+<div id="footerwrap" class="tuna-foot-1">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4 col-md-4">
+        <p>本站由清华大学信息化技术中心支持创办，由清华大学 TUNA 协会运行维护。</p>
+        <p>清华大学 TUNA 协会，全名清华大学学生网络与开源软件协会，是由清华大学热爱网络技术和开源软件的极客组成的学生技术社团。</p>
+        <p>本站相关源码可在 <a href="https://github.com/tuna/tunasync"><em>这里(镜像管理器)</em></a> 和 <a href="https://github.com/tuna/mirror-web"><em>这里(镜像站网页)</em></a> 获取。</p>
+        <p>根据相关法律法规，本站不对欧盟用户提供服务。</p>
+      </div>
+
+      <div class="col-lg-4 col-md-4">
+        <h4>Contact Us</h4>
+        <div>
+          <ul class="social">
+            <li>
+            <a href="https://groups.google.com/forum/#!forum/tuna-general"><i class="fa fa-envelope"></i> Mailing List</a>
+            </li>
+            <li>
+            IRC: <a href="https://webchat.freenode.net/?channels=%23tuna">#tuna at freenode</a>
+            </li>
+            <li>
+            <a href="https://github.com/tuna/"><i class="fa fa-github"></i> GitHub </a>
+            </li>
+            <li>
+            <a href="http://weibo.com/u/5402274706"><i class="fa fa-weibo"></i> 新浪微博</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-4"  align="center">
+        <img class="img-responsive" style="margin-top:5%" src="/static/img/logo-white.png" srcset="/static/img/logo-white.png 1x, /static/img/logo-white@2x.png 2x, /static/img/logo-white@3x.png 3x, /static/img/logo-white@4x.png 4x" />
+      </div>
+    </div><!--/row -->
+  </div><!--/container -->
+</div><!--/footerwrap -->
+
+<div id="footerwrap" class="tuna-foot-2">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4 col-md-4">
+        <p>本站由清华大学信息化技术中心支持创办，由清华大学 TUNA 协会运行维护。</p>
+        <p>清华大学 TUNA 协会，全名清华大学学生网络与开源软件协会，是由清华大学热爱网络技术和开源软件的极客组成的学生技术社团。</p>
+        <p>本站相关源码可在 <a href="https://github.com/tuna/tunasync"><em>这里(镜像管理器)</em></a> 和 <a href="https://github.com/tuna/mirror-web"><em>这里(镜像站网页)</em></a> 获取。</p>
+        <p>根据相关法律法规，本站不对欧盟用户提供服务。</p>
+      </div>
+
+      <div class="col-lg-4 col-md-4">
+        <h4>Contact Us</h4>
+        <div>
+          <ul class="social">
+            <li>
+            <a href="https://groups.google.com/forum/#!forum/tuna-general"><i class="fa fa-envelope"></i> Mailing List</a>
+            </li>
+            <li>
+            IRC: <a href="https://webchat.freenode.net/?channels=%23tuna">#tuna at freenode</a>
+            </li>
+            <li>
+            <a href="https://github.com/tuna/"><i class="fa fa-github"></i> GitHub </a>
+            </li>
+            <li>
+            <a href="http://weibo.com/u/5402274706"><i class="fa fa-weibo"></i> 新浪微博</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-4"  align="center">
+        <img class="img-responsive" style="margin-top:5%" src="/static/img/logo-white.png" srcset="/static/img/logo-white.png 1x, /static/img/logo-white@2x.png 2x, /static/img/logo-white@3x.png 3x, /static/img/logo-white@4x.png 4x" />
+      </div>
+    </div><!--/row -->
+  </div><!--/container -->
+</div><!--/footerwrap -->
+
+
+<script>
+WebFont.load({
+	custom: {
+		families: ['Lato']
+	}
+});
+</script>
+
+</body>
+
+<script src="/static/js/help.js"></script>
+
+</html>
+<!--
+vim: ts=2 sts=2 sw=2 noexpandtab
+-->

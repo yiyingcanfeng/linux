@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+	<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="清华大学开源软件镜像站，致力于为国内和校内用户提供高质量的开源软件镜像、Linux镜像源服务，帮助用户更方便地获取开源软件。本镜像站由清华大学TUNA团队负责维护。">
+<meta name="keywords" content="镜像站,镜像源,Linux,软件源,开源">
+<meta name="author" content="TUNA">
+<link rel="shortcut icon" href="/static/img/favicon.png">
+<title> 号外：现推出“一键使用TUNA”服务 | 镜像站新闻 | 清华大学开源软件镜像站 | Tsinghua Open Source Mirror</title>
+<link rel="stylesheet" href="/static/css/bootstrap.css">
+<link rel="stylesheet" href="/static/css/bootstrap-select.min.css">
+<link rel="stylesheet" href="/static/css/font-awesome.min.css" >
+<link rel="stylesheet" href="/static/css/style.css">
+<link rel="stylesheet" href="/static/css/spinkit.css">
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+<script src="/static/js/bootstrap-select.min.js"></script>
+<script src="/static/js/vue.min.js"></script>
+<script src="/static/js/markup.min.js"></script>
+<script src="/static/js/webfont.js"></script>
+</head>
+
+<body>
+	<div class="navbar navbar-default" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/"><img src="/static/img/logo-small.png" srcset="/static/img/logo-small.png 1x, /static/img/logo-small@2x.png 2x, /static/img/logo-small@3x.png 3x, /static/img/logo-small@4x.png 4x" alt=""/> 清华大学开源软件镜像站</a>
+    </div>
+    <div class="navbar-collapse collapse navbar-right">
+      <ul class="nav navbar-nav">
+        <li><a href="https://tuna.moe/">HOME</a></li>
+        <li><a href="https://tuna.moe/events/">EVENTS</a></li>
+        <li><a href="https://tuna.moe/blog/">BLOG</a></li>
+        <li><a href="https://tuna.moe/feed.xml">RSS</a></li>
+	<li><a href="https://podcast.tuna.moe/">PODCAST</a></li>
+        <li class="active"><a href="http://mirrors.tuna.tsinghua.edu.cn/">MIRRORS</a></li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</div>
+
+
+<div id="news-page">
+	<div class="spacing"></div>
+	<div class="container">
+	  <div class="row">
+			<div class="col-md-2"></div>
+			<div class="col-md-8">
+				<div>
+					<div id="news-content">
+						<article>
+							<div class="head">
+								<h3># 号外：现推出“一键使用TUNA”服务</h3>
+							</div>
+							<div class="meta">
+								<span class="fa fa-calendar"></span> 2018-04-01 <span class="fa fa-user" style="margin-left: 1em"> TUNA Staff</span>
+							</div>
+							<div class="content"><p>随着 TUNA 协会的现代化建设进入新时代，镜像站面临的主要矛盾已经转化为用户日益增长的高速下载需要和各类软件不简单不直观的配置之间的矛盾。只有正确认识这一主要矛盾，才能确定正确的战略、策略、政策和办法，促进矛盾解决，推动 TUNA 协会进步。</p>
+
+<p>必须认识到，TUNA 主要矛盾的变化，是关系全局的历史性变化，对协会工作提出了许多新要求。在新任会长 Xavier Yao (a.k.a. Pero) 的带领下，TUNA 协会的同学们勇于担当，攻坚克难，开发出了适应时代潮流、贴合用户需要的新一代工具“一键使用 TUNA” 脚本，又名 <code class="highlighter-rouge">oh-my-tuna</code> 。它目前支持更改下列软件的配置，将其直接指向 TUNA 镜像站：</p>
+
+<ul>
+  <li>Anaconda</li>
+  <li>Arch Linux</li>
+  <li>TeX Live (by tlmgr)</li>
+  <li>Debian GNU/Linux</li>
+  <li>Homebrew</li>
+  <li>PyPI</li>
+  <li>Ubuntu Linux</li>
+</ul>
+
+<p>您可以选择仅更改当前用户的配置，也可以更改全局配置。如果不满意，随时可以撤销这些更改。这一切，只需要一行命令：<code class="highlighter-rouge">python oh-my-tuna.py</code> ！</p>
+
+<p>项目托管在 <a href="https://tuna.moe/oh-my-tuna">TUNA 主页</a> 上，您也可以访问 <a href="https://github.com/tuna/oh-my-tuna">GitHub</a> 阅读源码、获取更详细的说明，也欢迎各位对本项目作出贡献！</p>
+
+<p>在将来，我们的目标是将其支持的系统/软件范围进一步扩展到（包括且不限于）：</p>
+
+<ul>
+  <li>TUNA 镜像的尽可能多的系统/软件</li>
+  <li>Macrohard<sup>TM</sup> Windoge<sup>TM</sup></li>
+  <li>42</li>
+</ul>
+
+<p>TUNA 成员要紧密团结在会长周围，高举开源精神伟大旗帜，锐意进取，埋头苦干，为实现推进镜像站建设、完成 Linux 发行版统一、维护开源界和平与促进共同发展三大历史任务，为决胜全面建成中国最好的镜像站、夺取新时代开源精神伟大胜利、实现社区伟大复兴的开源梦、实现用户对高速下载的向往继续奋斗！</p>
+</div>
+						</article>
+					</div>
+				</div>
+			</div><!-- news content -->
+			<div class="col-md-2"></div>
+	  </div>
+	</div><!--/container -->
+	<div class="spacing"></div>
+</div>
+
+	
+<div id="footerwrap" class="tuna-foot-1">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4 col-md-4">
+        <p>本站由清华大学信息化技术中心支持创办，由清华大学 TUNA 协会运行维护。</p>
+        <p>清华大学 TUNA 协会，全名清华大学学生网络与开源软件协会，是由清华大学热爱网络技术和开源软件的极客组成的学生技术社团。</p>
+        <p>本站相关源码可在 <a href="https://github.com/tuna/tunasync"><em>这里(镜像管理器)</em></a> 和 <a href="https://github.com/tuna/mirror-web"><em>这里(镜像站网页)</em></a> 获取。</p>
+        <p>根据相关法律法规，本站不对欧盟用户提供服务。</p>
+      </div>
+
+      <div class="col-lg-4 col-md-4">
+        <h4>Contact Us</h4>
+        <div>
+          <ul class="social">
+            <li>
+            <a href="https://groups.google.com/forum/#!forum/tuna-general"><i class="fa fa-envelope"></i> Mailing List</a>
+            </li>
+            <li>
+            IRC: <a href="https://webchat.freenode.net/?channels=%23tuna">#tuna at freenode</a>
+            </li>
+            <li>
+            <a href="https://github.com/tuna/"><i class="fa fa-github"></i> GitHub </a>
+            </li>
+            <li>
+            <a href="http://weibo.com/u/5402274706"><i class="fa fa-weibo"></i> 新浪微博</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-4"  align="center">
+        <img class="img-responsive" style="margin-top:5%" src="/static/img/logo-white.png" srcset="/static/img/logo-white.png 1x, /static/img/logo-white@2x.png 2x, /static/img/logo-white@3x.png 3x, /static/img/logo-white@4x.png 4x" />
+      </div>
+    </div><!--/row -->
+  </div><!--/container -->
+</div><!--/footerwrap -->
+
+<div id="footerwrap" class="tuna-foot-2">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4 col-md-4">
+        <p>本站由清华大学信息化技术中心支持创办，由清华大学 TUNA 协会运行维护。</p>
+        <p>清华大学 TUNA 协会，全名清华大学学生网络与开源软件协会，是由清华大学热爱网络技术和开源软件的极客组成的学生技术社团。</p>
+        <p>本站相关源码可在 <a href="https://github.com/tuna/tunasync"><em>这里(镜像管理器)</em></a> 和 <a href="https://github.com/tuna/mirror-web"><em>这里(镜像站网页)</em></a> 获取。</p>
+        <p>根据相关法律法规，本站不对欧盟用户提供服务。</p>
+      </div>
+
+      <div class="col-lg-4 col-md-4">
+        <h4>Contact Us</h4>
+        <div>
+          <ul class="social">
+            <li>
+            <a href="https://groups.google.com/forum/#!forum/tuna-general"><i class="fa fa-envelope"></i> Mailing List</a>
+            </li>
+            <li>
+            IRC: <a href="https://webchat.freenode.net/?channels=%23tuna">#tuna at freenode</a>
+            </li>
+            <li>
+            <a href="https://github.com/tuna/"><i class="fa fa-github"></i> GitHub </a>
+            </li>
+            <li>
+            <a href="http://weibo.com/u/5402274706"><i class="fa fa-weibo"></i> 新浪微博</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-4"  align="center">
+        <img class="img-responsive" style="margin-top:5%" src="/static/img/logo-white.png" srcset="/static/img/logo-white.png 1x, /static/img/logo-white@2x.png 2x, /static/img/logo-white@3x.png 3x, /static/img/logo-white@4x.png 4x" />
+      </div>
+    </div><!--/row -->
+  </div><!--/container -->
+</div><!--/footerwrap -->
+
+
+<script>
+WebFont.load({
+	custom: {
+		families: ['Lato']
+	}
+});
+</script>
+
+</body>
+
+</html>
+<!--
+vim: ts=2 sts=2 sw=2 noexpandtab
+-->

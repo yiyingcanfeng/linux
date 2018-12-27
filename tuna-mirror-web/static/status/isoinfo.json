@@ -1,0 +1,85 @@
+[
+
+  {
+    "urls": [
+      {
+        "name": "7 (x86_64, NetInstall)",
+        "url": "/centos/7.6.1810/isos/x86_64/CentOS-7-x86_64-NetInstall-1810.iso"
+      },
+      {
+        "name": "7 (x86_64, Minimal)",
+        "url": "/centos/7.6.1810/isos/x86_64/CentOS-7-x86_64-Minimal-1810.iso"
+      },
+      {
+        "name": "7 (x86_64, LiveKDE)",
+        "url": "/centos/7.6.1810/isos/x86_64/CentOS-7-x86_64-LiveKDE-1810.iso"
+      },
+      {
+        "name": "7 (x86_64, LiveGNOME)",
+        "url": "/centos/7.6.1810/isos/x86_64/CentOS-7-x86_64-LiveGNOME-1810.iso"
+      },
+      {
+        "name": "7 (x86_64, Everything)",
+        "url": "/centos/7.6.1810/isos/x86_64/CentOS-7-x86_64-Everything-1810.iso"
+      },
+      {
+        "name": "7 (x86_64, DVD)",
+        "url": "/centos/7.6.1810/isos/x86_64/CentOS-7-x86_64-DVD-1810.iso"
+      },
+      {
+        "name": "6.10 (x86_64, netinstall)",
+        "url": "/centos/6.10/isos/x86_64/CentOS-6.10-x86_64-netinstall.iso"
+      },
+      {
+        "name": "6.10 (x86_64, minimal)",
+        "url": "/centos/6.10/isos/x86_64/CentOS-6.10-x86_64-minimal.iso"
+      },
+      {
+        "name": "6.10 (x86_64, bin-DVD2)",
+        "url": "/centos/6.10/isos/x86_64/CentOS-6.10-x86_64-bin-DVD2.iso"
+      },
+      {
+        "name": "6.10 (x86_64, bin-DVD1)",
+        "url": "/centos/6.10/isos/x86_64/CentOS-6.10-x86_64-bin-DVD1.iso"
+      },
+      {
+        "name": "6.10 (x86_64, LiveDVD)",
+        "url": "/centos/6.10/isos/x86_64/CentOS-6.10-x86_64-LiveDVD.iso"
+      },
+      {
+        "name": "6.10 (i386, netinstall)",
+        "url": "/centos/6.10/isos/i386/CentOS-6.10-i386-netinstall.iso"
+      },
+      {
+        "name": "6.10 (i386, minimal)",
+        "url": "/centos/6.10/isos/i386/CentOS-6.10-i386-minimal.iso"
+      },
+      {
+        "name": "6.10 (i386, bin-DVD2)",
+        "url": "/centos/6.10/isos/i386/CentOS-6.10-i386-bin-DVD2.iso"
+      },
+      {
+        "name": "6.10 (i386, bin-DVD1)",
+        "url": "/centos/6.10/isos/i386/CentOS-6.10-i386-bin-DVD1.iso"
+      },
+      {
+        "name": "6.10 (i386, LiveDVD)",
+        "url": "/centos/6.10/isos/i386/CentOS-6.10-i386-LiveDVD.iso"
+      }
+    ],
+    "category": "os",
+    "distro": "CentOS"
+  },
+
+  {
+    "urls": [
+      {
+        "name": "15.8 (amd64)",
+        "url": "/deepin-cd/15.8/deepin-15.8-amd64.iso"
+      }
+    ],
+    "category": "os",
+    "distro": "Deepin"
+  }
+  
+]
