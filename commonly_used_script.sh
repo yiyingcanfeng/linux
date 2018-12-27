@@ -18,7 +18,7 @@ mv /etc/yum.repos.d/epel-testing.repo /etc/yum.repos.d/epel-testing.repo.backup
 curl -o /etc/yum.repos.d/epel.repo http://mirrors.aliyun.com/repo/epel-7.repo
 yum makecache
 
-yum install -y bash-completion git wget vim yum-utils python34-pip screen lrzsz supervisor iotop ncdu pv htop net-tools sl iftop
+yum install -y bash-completion git wget vim yum-utils python34-pip screen lrzsz supervisor iotop ncdu pv htop net-tools sl iftop lynx links
 #openjdk
 yum install -y java-1.8.0-openjdk-devel.x86_64
 
