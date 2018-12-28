@@ -22,7 +22,7 @@ yum makecache
 yum update -y
 
 #这些软件大部分在EPEL源里
-yum install -y bash-completion git wget vim yum-utils python34-pip screen lrzsz supervisor iotop ncdu pv htop net-tools sl iftop lynx links
+yum install -y bash-completion git wget vim yum-utils python34-pip unar screen lrzsz supervisor iotop ncdu pv htop net-tools sl iftop lynx links
 
 #安装openjdk
 yum install -y java-1.8.0-openjdk-devel.x86_64
