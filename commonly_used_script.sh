@@ -89,3 +89,23 @@ gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-mysql
 EOF
 
 yum install mysql-community-server -y
+
+#安装php
+yum install http://rpms.remirepo.net/enterprise/remi-release-7.rpm
+yum update
+yum install php73
+
+#安装mongodb
+echo "" > /etc/yum.repos.d/mongodb.repo
+for version in "3.0" "3.2" "3.4" "3.6" "4.0"; do
+cat >> /etc/yum.repos.d/mongodb.repo <<- EOF
+[mongodb-org-$version]
+name=MongoDB Repository
+baseurl=https://mirrors.tuna.tsinghua.edu.cn/mongodb/yum/el7-$version/
+gpgcheck=0
+enabled=1
+
+EOF
+done
+yum makecache
+yum install mongodb-org -y
