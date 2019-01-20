@@ -55,7 +55,7 @@ EOF
 systemctl daemon-reload
 systemctl start tomcat
 
-#安装mysql http://mirrors.tuna.tsinghua.edu.cn/mysql
+#安装mysql5.7 http://mirrors.tuna.tsinghua.edu.cn/mysql
 touch /etc/yum.repos.d/mysql-community.repo
 cat > /etc/yum.repos.d/mysql-community.repo <<- "EOF"
 [mysql-connectors-community]
