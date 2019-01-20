@@ -22,7 +22,7 @@ yum makecache
 yum update -y
 
 #这些软件大部分在EPEL源里
-yum install -y bash-completion git wget vim yum-utils python34-pip unar screen lrzsz supervisor iotop ncdu pv htop net-tools sl iftop lynx links
+yum install -y bash-completion git wget vim yum-utils python34-pip unar screen lrzsz supervisor iotop ncdu pv htop net-tools sl iftop lynx links crudini
 
 #安装openjdk
 yum install -y java-1.8.0-openjdk-devel.x86_64
@@ -92,7 +92,7 @@ yum install mysql-community-server -y
 
 #安装php
 yum install http://rpms.remirepo.net/enterprise/remi-release-7.rpm
-yum update
+yum makecache
 yum install php73
 
 #安装mongodb
@@ -109,3 +109,100 @@ EOF
 done
 yum makecache
 yum install mongodb-org -y
+
+#安装docker
+cat > /etc/yum.repos.d/docker-ce.repo <<- "EOF"
+[docker-ce-stable]
+name=Docker CE Stable - $basearch
+baseurl=https://mirrors.tuna.tsinghua.edu.cn/docker-ce/linux/centos/7/$basearch/stable
+enabled=1
+gpgcheck=1
+gpgkey=https://mirrors.tuna.tsinghua.edu.cn/docker-ce/linux/centos/gpg
+
+[docker-ce-stable-debuginfo]
+name=Docker CE Stable - Debuginfo $basearch
+baseurl=https://mirrors.tuna.tsinghua.edu.cn/docker-ce/linux/centos/7/debug-$basearch/stable
+enabled=0
+gpgcheck=1
+gpgkey=https://mirrors.tuna.tsinghua.edu.cn/docker-ce/linux/centos/gpg
+
+[docker-ce-stable-source]
+name=Docker CE Stable - Sources
+baseurl=https://mirrors.tuna.tsinghua.edu.cn/docker-ce/linux/centos/7/source/stable
+enabled=0
+gpgcheck=1
+gpgkey=https://mirrors.tuna.tsinghua.edu.cn/docker-ce/linux/centos/gpg
+
+[docker-ce-edge]
+name=Docker CE Edge - $basearch
+baseurl=https://mirrors.tuna.tsinghua.edu.cn/docker-ce/linux/centos/7/$basearch/edge
+enabled=0
+gpgcheck=1
+gpgkey=https://mirrors.tuna.tsinghua.edu.cn/docker-ce/linux/centos/gpg
+
+[docker-ce-edge-debuginfo]
+name=Docker CE Edge - Debuginfo $basearch
+baseurl=https://mirrors.tuna.tsinghua.edu.cn/docker-ce/linux/centos/7/debug-$basearch/edge
+enabled=0
+gpgcheck=1
+gpgkey=https://mirrors.tuna.tsinghua.edu.cn/docker-ce/linux/centos/gpg
+
+[docker-ce-edge-source]
+name=Docker CE Edge - Sources
+baseurl=https://mirrors.tuna.tsinghua.edu.cn/docker-ce/linux/centos/7/source/edge
+enabled=0
+gpgcheck=1
+gpgkey=https://mirrors.tuna.tsinghua.edu.cn/docker-ce/linux/centos/gpg
+
+[docker-ce-test]
+name=Docker CE Test - $basearch
+baseurl=https://mirrors.tuna.tsinghua.edu.cn/docker-ce/linux/centos/7/$basearch/test
+enabled=0
+gpgcheck=1
+gpgkey=https://mirrors.tuna.tsinghua.edu.cn/docker-ce/linux/centos/gpg
+
+[docker-ce-test-debuginfo]
+name=Docker CE Test - Debuginfo $basearch
+baseurl=https://mirrors.tuna.tsinghua.edu.cn/docker-ce/linux/centos/7/debug-$basearch/test
+enabled=0
+gpgcheck=1
+gpgkey=https://mirrors.tuna.tsinghua.edu.cn/docker-ce/linux/centos/gpg
+
+[docker-ce-test-source]
+name=Docker CE Test - Sources
+baseurl=https://mirrors.tuna.tsinghua.edu.cn/docker-ce/linux/centos/7/source/test
+enabled=0
+gpgcheck=1
+gpgkey=https://mirrors.tuna.tsinghua.edu.cn/docker-ce/linux/centos/gpg
+
+[docker-ce-nightly]
+name=Docker CE Nightly - $basearch
+baseurl=https://mirrors.tuna.tsinghua.edu.cn/docker-ce/linux/centos/7/$basearch/nightly
+enabled=0
+gpgcheck=1
+gpgkey=https://mirrors.tuna.tsinghua.edu.cn/docker-ce/linux/centos/gpg
+
+[docker-ce-nightly-debuginfo]
+name=Docker CE Nightly - Debuginfo $basearch
+baseurl=https://mirrors.tuna.tsinghua.edu.cn/docker-ce/linux/centos/7/debug-$basearch/nightly
+enabled=0
+gpgcheck=1
+gpgkey=https://mirrors.tuna.tsinghua.edu.cn/docker-ce/linux/centos/gpg
+
+[docker-ce-nightly-source]
+name=Docker CE Nightly - Sources
+baseurl=https://mirrors.tuna.tsinghua.edu.cn/docker-ce/linux/centos/7/source/nightly
+enabled=0
+gpgcheck=1
+gpgkey=https://mirrors.tuna.tsinghua.edu.cn/docker-ce/linux/centos/gpg
+
+EOF
+yum install docker-ce -y
+systemctl start docker
+#配置国内docker加速器
+cat >  /etc/docker/daemon.json <<- "EOF"
+{
+  "registry-mirrors": ["https://registry.docker-cn.com"]
+}
+EOF
+systemctl restart docker
