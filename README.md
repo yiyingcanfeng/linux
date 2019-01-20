@@ -11,3 +11,4 @@
   tunasync/   [清华大学镜像管理器](https://github.com/tuna/tunasync)配置文件、supervisor配置  
   tuna-mirror-web/  [TUNA mirrors 主页](https://github.com/tuna/mirror-web)前端源码(略作修改)  
   tunasync_status.sh 镜像同步状态前端需要使用的json数据生成脚本  
+  tunasync/tunasync-scripts  清华大学镜像管理器[自定义镜像脚本](https://github.com/tuna/tunasync-scripts)(修改了部分脚本)
