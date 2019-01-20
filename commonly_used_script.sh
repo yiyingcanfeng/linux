@@ -89,6 +89,23 @@ gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-mysql
 EOF
 
 yum install mysql-community-server -y
+#mysql配置
+password=1111 #root用户密码
+systemctl start mysqld
+systemctl enable mysqld
+passlog=$(grep 'temporary password'  /var/log/mysqld.log)
+pass=${passlog:${#passlog}-12:${#passlog}}
+mysql -uroot -p"${pass}" -e"alter user root@localhost identified by 'QQQqqq111...' " --connect-expired-password
+pass=QQQqqq111...
+mysql -uroot -p"${pass}" -e"set global validate_password_policy=0;" --connect-expired-password
+mysql -uroot -p"${pass}" -e"set global validate_password_length=4;" --connect-expired-password
+mysql -uroot -p"${pass}" -e"set global validate_password_mixed_case_count=0;" --connect-expired-password
+mysql -uroot -p"${pass}" -e"set global validate_password_number_count=0;" --connect-expired-password
+#echo 'enter your mysql password'
+#read password
+mysql -uroot -p"${pass}" -e"set password=password('${password}');" --connect-expired-password
+mysql -uroot -p"${password}" -e"update mysql.user set host='%' where user='root';" --connect-expired-password
+mysql -uroot -p"${password}" -e"flush privileges;" --connect-expired-password
 
 #安装php
 yum install http://rpms.remirepo.net/enterprise/remi-release-7.rpm
