@@ -4,67 +4,67 @@
     "urls": [
       {
         "name": "7 (x86_64, NetInstall)",
-        "url": "/centos/7.6.1810/isos/x86_64/CentOS-7-x86_64-NetInstall-1810.iso"
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/centos/7.6.1810/isos/x86_64/CentOS-7-x86_64-NetInstall-1810.iso"
       },
       {
         "name": "7 (x86_64, Minimal)",
-        "url": "/centos/7.6.1810/isos/x86_64/CentOS-7-x86_64-Minimal-1810.iso"
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/centos/7.6.1810/isos/x86_64/CentOS-7-x86_64-Minimal-1810.iso"
       },
       {
         "name": "7 (x86_64, LiveKDE)",
-        "url": "/centos/7.6.1810/isos/x86_64/CentOS-7-x86_64-LiveKDE-1810.iso"
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/centos/7.6.1810/isos/x86_64/CentOS-7-x86_64-LiveKDE-1810.iso"
       },
       {
         "name": "7 (x86_64, LiveGNOME)",
-        "url": "/centos/7.6.1810/isos/x86_64/CentOS-7-x86_64-LiveGNOME-1810.iso"
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/centos/7.6.1810/isos/x86_64/CentOS-7-x86_64-LiveGNOME-1810.iso"
       },
       {
         "name": "7 (x86_64, Everything)",
-        "url": "/centos/7.6.1810/isos/x86_64/CentOS-7-x86_64-Everything-1810.iso"
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/centos/7.6.1810/isos/x86_64/CentOS-7-x86_64-Everything-1810.iso"
       },
       {
         "name": "7 (x86_64, DVD)",
-        "url": "/centos/7.6.1810/isos/x86_64/CentOS-7-x86_64-DVD-1810.iso"
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/centos/7.6.1810/isos/x86_64/CentOS-7-x86_64-DVD-1810.iso"
       },
       {
         "name": "6.10 (x86_64, netinstall)",
-        "url": "/centos/6.10/isos/x86_64/CentOS-6.10-x86_64-netinstall.iso"
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/centos/6.10/isos/x86_64/CentOS-6.10-x86_64-netinstall.iso"
       },
       {
         "name": "6.10 (x86_64, minimal)",
-        "url": "/centos/6.10/isos/x86_64/CentOS-6.10-x86_64-minimal.iso"
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/centos/6.10/isos/x86_64/CentOS-6.10-x86_64-minimal.iso"
       },
       {
         "name": "6.10 (x86_64, bin-DVD2)",
-        "url": "/centos/6.10/isos/x86_64/CentOS-6.10-x86_64-bin-DVD2.iso"
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/centos/6.10/isos/x86_64/CentOS-6.10-x86_64-bin-DVD2.iso"
       },
       {
         "name": "6.10 (x86_64, bin-DVD1)",
-        "url": "/centos/6.10/isos/x86_64/CentOS-6.10-x86_64-bin-DVD1.iso"
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/centos/6.10/isos/x86_64/CentOS-6.10-x86_64-bin-DVD1.iso"
       },
       {
         "name": "6.10 (x86_64, LiveDVD)",
-        "url": "/centos/6.10/isos/x86_64/CentOS-6.10-x86_64-LiveDVD.iso"
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/centos/6.10/isos/x86_64/CentOS-6.10-x86_64-LiveDVD.iso"
       },
       {
         "name": "6.10 (i386, netinstall)",
-        "url": "/centos/6.10/isos/i386/CentOS-6.10-i386-netinstall.iso"
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/centos/6.10/isos/i386/CentOS-6.10-i386-netinstall.iso"
       },
       {
         "name": "6.10 (i386, minimal)",
-        "url": "/centos/6.10/isos/i386/CentOS-6.10-i386-minimal.iso"
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/centos/6.10/isos/i386/CentOS-6.10-i386-minimal.iso"
       },
       {
         "name": "6.10 (i386, bin-DVD2)",
-        "url": "/centos/6.10/isos/i386/CentOS-6.10-i386-bin-DVD2.iso"
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/centos/6.10/isos/i386/CentOS-6.10-i386-bin-DVD2.iso"
       },
       {
         "name": "6.10 (i386, bin-DVD1)",
-        "url": "/centos/6.10/isos/i386/CentOS-6.10-i386-bin-DVD1.iso"
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/centos/6.10/isos/i386/CentOS-6.10-i386-bin-DVD1.iso"
       },
       {
         "name": "6.10 (i386, LiveDVD)",
-        "url": "/centos/6.10/isos/i386/CentOS-6.10-i386-LiveDVD.iso"
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/centos/6.10/isos/i386/CentOS-6.10-i386-LiveDVD.iso"
       }
     ],
     "category": "os",
@@ -75,11 +75,11 @@
     "urls": [
       {
         "name": "15.8 (amd64)",
-        "url": "/deepin-cd/15.8/deepin-15.8-amd64.iso"
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/deepin-cd/15.8/deepin-15.8-amd64.iso"
       },
       {
         "name": "15.9 (amd64)",
-        "url": "/deepin-cd/15.9/deepin-15.9-amd64.iso"
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/deepin-cd/15.9/deepin-15.9-amd64.iso"
       }
     ],
     "category": "os",
@@ -91,51 +91,51 @@
     "urls": [
       {
         "name": "18.10 (amd64, Desktop LiveDVD)",
-        "url": "/ubuntu-releases/cosmic/ubuntu-18.10-desktop-amd64.iso"
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/ubuntu-releases/cosmic/ubuntu-18.10-desktop-amd64.iso"
       },
       {
         "name": "18.04.1 (amd64, Desktop LiveDVD)",
-        "url": "/ubuntu-releases/bionic/ubuntu-18.04.1-desktop-amd64.iso"
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/ubuntu-releases/bionic/ubuntu-18.04.1-desktop-amd64.iso"
       },
       {
         "name": "16.04.5 (amd64, Desktop LiveDVD)",
-        "url": "/ubuntu-releases/xenial/ubuntu-16.04.5-desktop-amd64.iso"
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/ubuntu-releases/xenial/ubuntu-16.04.5-desktop-amd64.iso"
       },
       {
         "name": "16.04.5 (i386, Desktop LiveDVD)",
-        "url": "/ubuntu-releases/xenial/ubuntu-16.04.5-desktop-i386.iso"
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/ubuntu-releases/xenial/ubuntu-16.04.5-desktop-i386.iso"
       },
       {
         "name": "14.04.5 (amd64, Desktop LiveDVD)",
-        "url": "/ubuntu-releases/trusty/ubuntu-14.04.5-desktop-amd64.iso"
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/ubuntu-releases/trusty/ubuntu-14.04.5-desktop-amd64.iso"
       },
       {
         "name": "14.04.5 (i386, Desktop LiveDVD)",
-        "url": "/ubuntu-releases/trusty/ubuntu-14.04.5-desktop-i386.iso"
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/ubuntu-releases/trusty/ubuntu-14.04.5-desktop-i386.iso"
       },
       {
         "name": "18.10 (amd64, Server)",
-        "url": "/ubuntu-releases/cosmic/ubuntu-18.10-live-server-amd64.iso"
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/ubuntu-releases/cosmic/ubuntu-18.10-live-server-amd64.iso"
       },
       {
         "name": "18.04.1.0 (amd64, Server)",
-        "url": "/ubuntu-releases/bionic/ubuntu-18.04.1.0-live-server-amd64.iso"
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/ubuntu-releases/bionic/ubuntu-18.04.1.0-live-server-amd64.iso"
       },
       {
         "name": "18.04.1 (amd64, Server)",
-        "url": "/ubuntu-releases/bionic/ubuntu-18.04.1-live-server-amd64.iso"
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/ubuntu-releases/bionic/ubuntu-18.04.1-live-server-amd64.iso"
       },
       {
         "name": "16.04.5 (amd64, Server)",
-        "url": "/ubuntu-releases/xenial/ubuntu-16.04.5-server-amd64.iso"
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/ubuntu-releases/xenial/ubuntu-16.04.5-server-amd64.iso"
       },
       {
         "name": "16.04.5 (i386, Server)",
-        "url": "/ubuntu-releases/xenial/ubuntu-16.04.5-server-i386.iso"
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/ubuntu-releases/xenial/ubuntu-16.04.5-server-i386.iso"
       },
       {
         "name": "14.04.5 (amd64, Server)",
-        "url": "/ubuntu-releases/trusty/ubuntu-14.04.5-server-amd64.iso"
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/ubuntu-releases/trusty/ubuntu-14.04.5-server-amd64.iso"
       },
       {
         "name": "14.04.5 (i386, Server)",
@@ -143,11 +143,11 @@
       },
       {
         "name": "12.04.5 (amd64, Server)",
-        "url": "/ubuntu-releases/precise/ubuntu-12.04.5-server-amd64.iso"
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/ubuntu-releases/precise/ubuntu-12.04.5-server-amd64.iso"
       },
       {
         "name": "12.04.5 (i386, Server)",
-        "url": "/ubuntu-releases/precise/ubuntu-12.04.5-server-i386.iso"
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/ubuntu-releases/precise/ubuntu-12.04.5-server-i386.iso"
       }
     ]
   },
@@ -157,35 +157,35 @@
     "urls": [
       {
         "name": "mysql-installer-community-5.7.24.0.msi",
-        "url": "/mysql/downloads/MySQLInstaller/mysql-installer-community-5.7.24.0.msi"
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/mysql/downloads/MySQLInstaller/mysql-installer-community-5.7.24.0.msi"
       },
       {
         "name": "mysql-5.7.24-winx64.zip",
-        "url": "/mysql/downloads/MySQL-5.7/mysql-5.7.24-winx64.zip"
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/mysql/downloads/MySQL-5.7/mysql-5.7.24-winx64.zip"
       },
       {
         "name": "mysql-5.7.24-macos10.14-x86_64.dmg",
-        "url": "/mysql/downloads/MySQL-5.7/mysql-5.7.24-macos10.14-x86_64.dmg"
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/mysql/downloads/MySQL-5.7/mysql-5.7.24-macos10.14-x86_64.dmg"
       },
       {
         "name": "mysql-5.7.23-macos10.13-x86_64.dmg",
-        "url": "/mysql/downloads/MySQL-5.7/mysql-5.7.23-macos10.13-x86_64.dmg"
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/mysql/downloads/MySQL-5.7/mysql-5.7.23-macos10.13-x86_64.dmg"
       },
       {
         "name": "mysql-installer-community-8.0.13.0.msi",
-        "url": "/mysql/downloads/MySQLInstaller/mysql-installer-community-8.0.13.0.msi"
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/mysql/downloads/MySQLInstaller/mysql-installer-community-8.0.13.0.msi"
       },
       {
         "name": "mysql-8.0.13-winx64.zip",
-        "url": "/mysql/downloads/MySQL-8.0/mysql-8.0.13-winx64.zip"
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/mysql/downloads/MySQL-8.0/mysql-8.0.13-winx64.zip"
       },
       {
         "name": "mysql-8.0.13-macos10.14-x86_64.dmg",
-        "url": "/mysql/downloads/MySQL-8.0/mysql-8.0.13-macos10.14-x86_64.dmg"
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/mysql/downloads/MySQL-8.0/mysql-8.0.13-macos10.14-x86_64.dmg"
       },
       {
         "name": "mysql-8.0.12-macos10.13-x86_64.dmg",
-        "url": "/mysql/downloads/MySQL-8.0/mysql-8.0.12-macos10.13-x86_64.dmg"
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/mysql/downloads/MySQL-8.0/mysql-8.0.12-macos10.13-x86_64.dmg"
       }
     ]
   },
@@ -195,7 +195,7 @@
     "urls": [
       {
         "name": "apache-maven-3.6.0-bin.zip",
-        "url": "/apache/maven/maven-3/3.6.0/binaries/apache-maven-3.6.0-bin.zip"
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/apache/maven/maven-3/3.6.0/binaries/apache-maven-3.6.0-bin.zip"
       }
     ]
   },
@@ -205,39 +205,39 @@
     "urls": [
       {
         "name": "apache-tomcat-9.0.14-windows-x64.zip",
-        "url": "/apache/tomcat/tomcat-9/v9.0.14/bin/apache-tomcat-9.0.14-windows-x64.zip"
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-9/v9.0.14/bin/apache-tomcat-9.0.14-windows-x64.zip"
       },
       {
         "name": "apache-tomcat-9.0.14.tar.gz",
-        "url": "/apache/tomcat/tomcat-9/v9.0.14/bin/apache-tomcat-9.0.14.tar.gz"
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-9/v9.0.14/bin/apache-tomcat-9.0.14.tar.gz"
       },
       {
         "name": "apache-tomcat-9.0.14.exe",
-        "url": "/apache/tomcat/tomcat-9/v9.0.14/bin/apache-tomcat-9.0.14.exe"
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-9/v9.0.14/bin/apache-tomcat-9.0.14.exe"
       },
       {
         "name": "apache-tomcat-8.5.37-windows-x64.zip",
-        "url": "/apache/tomcat/tomcat-9/v9.0.14/bin/apache-tomcat-8.5.37-windows-x64.zip"
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-9/v9.0.14/bin/apache-tomcat-8.5.37-windows-x64.zip"
       },
       {
         "name": "apache-tomcat-8.5.37.tar.gz",
-        "url": "/apache/tomcat/tomcat-8/v8.5.37/bin/apache-tomcat-8.5.37.tar.gz"
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-8/v8.5.37/bin/apache-tomcat-8.5.37.tar.gz"
       },
       {
         "name": "apache-tomcat-8.5.37.exe",
-        "url": "/apache/tomcat/tomcat-8/v8.5.37/bin/apache-tomcat-8.5.37.exe"
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-8/v8.5.37/bin/apache-tomcat-8.5.37.exe"
       },
       {
         "name": "apache-tomcat-7.0.92-windows-x64.zip",
-        "url": "/apache/tomcat/tomcat-7/v7.0.92/bin/apache-tomcat-7.0.92-windows-x64.zip"
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-7/v7.0.92/bin/apache-tomcat-7.0.92-windows-x64.zip"
       },
       {
         "name": "apache-tomcat-7.0.92.tar.gz",
-        "url": "/apache/tomcat/tomcat-7/v7.0.92/bin/apache-tomcat-7.0.92.tar.gz"
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-7/v7.0.92/bin/apache-tomcat-7.0.92.tar.gz"
       },
       {
         "name": "apache-tomcat-7.0.92.exe",
-        "url": "/apache/tomcat/tomcat-7/v7.0.92/bin/apache-tomcat-7.0.92.exe"
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-7/v7.0.92/bin/apache-tomcat-7.0.92.exe"
       }
     ]
   },
@@ -247,7 +247,7 @@
     "urls": [
       {
         "name": "apache-jmeter-5.0.zip",
-        "url": "/apache/jmeter/binaries/apache-jmeter-5.0.zip"
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/apache/jmeter/binaries/apache-jmeter-5.0.zip"
       }
     ]
   },
@@ -257,27 +257,27 @@
     "urls": [
       {
         "name": "jdk-8u202-windows-x64.exe",
-        "url": "/jdk/8u202-b08/jdk-8u202-windows-x64.exe"
+        "url": "https://mirrors.huaweicloud.com/java/jdk/8u202-b08/jdk-8u202-windows-x64.exe"
       },
       {
         "name": "jdk-8u202-macosx-x64.dmg",
-        "url": "/jdk/8u202-b08/jdk-8u202-macosx-x64.dmg"
+        "url": "https://mirrors.huaweicloud.com/java/jdk/8u202-b08/jdk-8u202-macosx-x64.dmg"
       },
       {
         "name": "jdk-8u202-linux-x64.tar.gz",
-        "url": "/jdk/8u202-b08/jdk-8u202-linux-x64.tar.gz"
+        "url": "https://mirrors.huaweicloud.com/java/jdk/8u202-b08/jdk-8u202-linux-x64.tar.gz"
       },
       {
         "name": "jdk-11.0.2_windows-x64_bin.exe",
-        "url": "/jdk/11.0.2+9/jdk-11.0.2_windows-x64_bin.exe"
+        "url": "https://mirrors.huaweicloud.com/java/jdk/11.0.2+9/jdk-11.0.2_windows-x64_bin.exe"
       },
       {
         "name": "jdk-11.0.2_osx-x64_bin.dmg",
-        "url": "/jdk/11.0.2+9/jdk-11.0.2_osx-x64_bin.dmg"
+        "url": "https://mirrors.huaweicloud.com/java/jdk/11.0.2+9/jdk-11.0.2_osx-x64_bin.dmg"
       },
       {
         "name": "jdk-11.0.2_linux-x64_bin.tar.gz",
-        "url": "/jdk/11.0.2+9/jdk-11.0.2_linux-x64_bin.tar.gz"
+        "url": "https://mirrors.huaweicloud.com/java/jdk/11.0.2+9/jdk-11.0.2_linux-x64_bin.tar.gz"
       }
     ]
   },
@@ -287,7 +287,7 @@
     "urls": [
       {
         "name": "Git-2.20.1-64-bit.exe",
-        "url": "/git-for-windows/v2.20.1.windows.1/Git-2.20.1-64-bit.exe"
+        "url": "https://mirrors.huaweicloud.com/git-for-windows/v2.20.1.windows.1/Git-2.20.1-64-bit.exe"
       }
     ]
   },
@@ -297,7 +297,7 @@
     "urls": [
       {
         "name": "git-2.20.1-intel-universal-mavericks.dmg",
-        "url": "/git-for-macos/git-2.20.1-intel-universal-mavericks.dmg"
+        "url": "https://mirrors.huaweicloud.com/git-for-macos/git-2.20.1-intel-universal-mavericks.dmg"
       }
     ]
   },
@@ -307,15 +307,15 @@
     "urls": [
       {
         "name": "python-3.7.2-amd64.exe",
-        "url": "/python/3.7.2/python-3.7.2-amd64.exe"
+        "url": "https://mirrors.huaweicloud.com/python/3.7.2/python-3.7.2-amd64.exe"
       },
       {
         "name": "python-3.7.2.exe",
-        "url": "/python/3.7.2/python-3.7.2.exe"
+        "url": "https://mirrors.huaweicloud.com/python/3.7.2/python-3.7.2.exe"
       },
       {
         "name": "python-3.6.8-amd64.exe",
-        "url": "/python/3.6.8/python-3.6.8-amd64.exe"
+        "url": "https://mirrors.huaweicloud.com/python/3.6.8/python-3.6.8-amd64.exe"
       },
       {
         "name": "python-3.6.8.exe",
@@ -328,8 +328,38 @@
     "distro": "nodejs",
     "urls": [
       {
+        "name": "node-v8.9.4-x64.msi",
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/nodejs-release/v8.9.4/node-v8.9.4-x64.msi"
+      },
+      {
         "name": "node-v9.11.2-x64.msi",
-        "url": "/nodejs-release/v9.11.2/node-v9.11.2-x64.msi"
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/nodejs-release/v9.11.2/node-v9.11.2-x64.msi"
+      },
+      {
+        "name": "node-v10.15.0-x64.msi",
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/nodejs-release/v10.15.0/node-v10.15.0-x64.msi"
+      },
+      {
+        "name": "node-v11.7.0-x64.msi",
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/nodejs-release/v11.7.0/node-v11.7.0-x64.msi"
+      }
+    ]
+  },
+  {
+    "category": "app",
+    "distro": "gradle",
+    "urls": [
+      {
+        "name": "gradle-4.4-all.zip",
+        "url": "http://210.28.8.231/gradle/gradle-4.4-all.zip"
+      },
+      {
+        "name": "gradle-4.6-all.zip",
+        "url": "http://210.28.8.231/gradle/gradle-4.6-all.zip"
+      },
+      {
+        "name": "gradle-4.10-all.zip",
+        "url": "http://210.28.8.231/gradle/gradle-4.10-all.zip"
       }
     ]
   },
