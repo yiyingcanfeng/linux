@@ -107,7 +107,7 @@ $(document).ready(function () {
 			},
 			refreshMirrorList: function refreshMirrorList() {
 				var self = this;
-				$.getJSON("/static/tunasync.json", function (status_data) {
+				$.getJSON("static/tunasync.json", function (status_data) {
 					var mirrors = [],
 					    mir_data = $.merge(status_data, unlisted);
 					var mir_uniq = {}; // for deduplication
@@ -172,7 +172,7 @@ $(document).ready(function () {
 		},
 		created: function created() {
 			var self = this;
-			$.getJSON("/static/status/isoinfo.json", function (isoinfo) {
+			$.getJSON("static/status/isoinfo.json", function (isoinfo) {
 				self.distroList = isoinfo;
 				self.selected = self.curDistroList[0];
 				if (window.location.hash.match(/#iso-download(\?.*)?/)) {
