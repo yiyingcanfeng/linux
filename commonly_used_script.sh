@@ -1,9 +1,15 @@
 #!/bin/bash
-hostnamectl set-hostname aaa 
+# curl http://example.com/common-config.sh | bash
+
+# 修改主机名
+#hostnamectl set-hostname aaa
+# 禁用selinux
 sed -i 's/SELINUX=.*/SELINUX=permissive/g' /etc/selinux/config
+setenforce 0
+# 修改开机引导等待时间
 sed -i 's/GRUB_TIMEOUT=.*/GRUB_TIMEOUT=2/g' /etc/default/grub
 grub2-mkconfig -o /boot/grub2/grub.cfg
-setenforce 0
+# 请根据具体情况来决定是否关闭防火墙
 systemctl  stop firewalld
 systemctl  disable  firewalld
 
@@ -36,7 +42,17 @@ yum update -y
 #一些实用工具,这些大部分在EPEL源里
 yum install -y bash-completion git wget vim nano yum-utils unar screen lrzsz supervisor iotop iftop jnettop mytop apachetop atop htop ncdu nmap pv net-tools sl lynx links crudini the_silver_searcher tig cloc nload w3m axel tmux mc glances multitail
 # python3.6,包括对应版本的pip,php72
-yum install python36u-pip php72u -y
+yum install python36u-pip php72u redis5 -y
+# 使用国内pypi源
+mkdir -p ~/.pip
+cat > ~/.pip/pip.conf <<- "EOF"
+[global]
+index-url = https://mirrors.aliyun.com/pypi/simple/
+
+[install]
+trusted-host=mirrors.aliyun.com
+
+EOF
 # 一些基于python的实用或者有意思的工具
 pip3.6 install mycli icdiff you-get lolcat youtube-dl
 
@@ -73,13 +89,24 @@ git clone https://github.com/uuner/sedtris.git
 chmod 755 sedtris/*
 # ./sedtris/sedtris.sh
 #安装openjdk
-yum install -y java-1.8.0-openjdk-devel.x86_64
+yum install java-1.8.0-openjdk-devel.x86_64 -y
+
+#或者 oraclejdk
+# wget https://mirrors.huaweicloud.com/java/jdk/8u202-b08/jdk-8u202-linux-x64.tar.gz
+# tar -zxvf jdk-8u202-linux-x64.tar.gz -C /usr/
+# cat >> /etc/profile <<- "EOF"
+# export JAVA_HOME=/usr/jdk1.8.0_202
+# export PATH=$JAVA_HOME/bin:$PATH
+# export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
+
+# EOF
+# source /etc/profile
 
 #安装tomcat 
 #https://tomcat.apache.org/download-90.cgi 注：请随时关注官网的最新版本，新版本发布后旧版本的链接会失效！
 cd /usr
 wget https://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-9/v9.0.14/bin/apache-tomcat-9.0.14.tar.gz
-tar -zxvf apache-tomcat-9.0.14.tar.gz
+tar -zxf apache-tomcat-9.0.14.tar.gz
 touch /usr/lib/systemd/system/tomcat.service
 cat > /usr/lib/systemd/system/tomcat.service <<- "EOF"
 [Unit]  
@@ -104,7 +131,6 @@ systemctl daemon-reload
 systemctl start tomcat
 
 #安装mysql5.7 http://mirrors.tuna.tsinghua.edu.cn/mysql
-touch /etc/yum.repos.d/mysql-community.repo
 cat > /etc/yum.repos.d/mysql-community.repo <<- "EOF"
 [mysql-connectors-community]
 name=MySQL Connectors Community
@@ -138,7 +164,7 @@ EOF
 
 yum install mysql-community-server -y
 #mysql配置
-password=1111 #root用户密码
+MYSQL_PASSWORD=1111 #root用户密码
 systemctl start mysqld
 systemctl enable mysqld
 passlog=$(grep 'temporary password'  /var/log/mysqld.log)
@@ -151,14 +177,9 @@ mysql -uroot -p"${pass}" -e"set global validate_password_mixed_case_count=0;" --
 mysql -uroot -p"${pass}" -e"set global validate_password_number_count=0;" --connect-expired-password
 #echo 'enter your mysql password'
 #read password
-mysql -uroot -p"${pass}" -e"set password=password('${password}');" --connect-expired-password
-mysql -uroot -p"${password}" -e"update mysql.user set host='%' where user='root';" --connect-expired-password
-mysql -uroot -p"${password}" -e"flush privileges;" --connect-expired-password
-
-#安装php
-yum install http://rpms.remirepo.net/enterprise/remi-release-7.rpm
-yum makecache
-yum install php73
+mysql -uroot -p"${pass}" -e"set password=password('${MYSQL_PASSWORD}');" --connect-expired-password
+mysql -uroot -p"${MYSQL_PASSWORD}" -e"update mysql.user set host='%' where user='root';" --connect-expired-password
+mysql -uroot -p"${MYSQL_PASSWORD}" -e"flush privileges;" --connect-expired-password
 
 #安装mongodb
 echo "" > /etc/yum.repos.d/mongodb.repo
