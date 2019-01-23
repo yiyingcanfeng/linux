@@ -18,12 +18,60 @@ yum install -y epel-release
 mv /etc/yum.repos.d/epel.repo /etc/yum.repos.d/epel.repo.backup
 mv /etc/yum.repos.d/epel-testing.repo /etc/yum.repos.d/epel-testing.repo.backup
 curl -o /etc/yum.repos.d/epel.repo http://mirrors.aliyun.com/repo/epel-7.repo
+
+#配置ius源
+#IUS只为RHEL和CentOS这两个发行版提供较新版本的rpm包。如果在os或epel找不到某个软件的新版rpm，软件官方又只提供源代码包的时候，可以来ius源中找，几乎都能找到。比如，python3.6(包括对应版本的pip，epel源里有python3.6但没有对应版本的pip),php7.2,redis5等等
+cat > /etc/yum.repos.d/ius.repo <<- "EOF"
+[ius]
+name=ius
+baseurl=https://mirrors.aliyun.com/ius/stable/CentOS/7/$basearch
+gpgcheck=0
+enable=1
+
+EOF
 yum makecache
 yum update -y
 
-#这些软件大部分在EPEL源里
-yum install -y bash-completion git wget vim yum-utils python34-pip unar screen lrzsz supervisor iotop ncdu pv htop net-tools sl iftop lynx links crudini the_silver_searcher
 
+#一些实用工具,这些大部分在EPEL源里
+yum install -y bash-completion git wget vim nano yum-utils nodejs unar screen lrzsz supervisor iotop iftop jnettop mytop apachetop atop htop ncdu nmap pv net-tools sl lynx links crudini the_silver_searcher tig cloc nload w3m axel tmux mc glances multitail
+# python3.6,包括对应版本的pip,php72
+yum install python36u-pip php72u -y
+# 一些基于python的实用或者有意思的工具
+pip3.6 install mycli icdiff you-get lolcat youtube-dl
+
+#配置nodejs10的yum源，安装 nodejs 10(epel源里有nodejs，但版本比较老)
+yum install https://mirrors.tuna.tsinghua.edu.cn/nodesource/rpm_10.x/el/7/x86_64/nodesource-release-el7-1.noarch.rpm
+cat > /etc/yum.repos.d/nodesource-el7.repo <<- "EOF"
+[nodesource]
+name=Node.js Packages for Enterprise Linux 7 - $basearch
+baseurl=https://mirrors.tuna.tsinghua.edu.cn/nodesource/rpm_10.x/el/7/$basearch
+enabled=1
+gpgcheck=0
+
+[nodesource-source]
+name=Node.js for Enterprise Linux 7 - $basearch - Source
+baseurl=https://mirrors.tuna.tsinghua.edu.cn/nodesource/rpm_10.x/el/7/SRPMS
+enabled=0
+gpgcheck=1
+
+EOF
+yum makecache
+yum install python36u-pip php72u -y
+# 更换国内npm源
+npm config set registry https://mirrors.huaweicloud.com/repository/npm/
+npm cache clean -f
+# 一些基于python的实用或者有意思的工具
+npm install --global get-port-cli hasha-cli http-server
+
+# 2048游戏的shell实现
+curl https://raw.githubusercontent.com/mydzor/bash2048/master/bash2048.sh -o 2048.sh && chmod 755 2048.sh
+# 扫雷游戏的shell实现
+curl https://raw.githubusercontent.com/feherke/Bash-script/master/minesweeper/minesweeper.sh -o minesweeper.sh && chmod 755 minesweeper.sh
+# 命令行下的俄罗斯方块游戏
+git clone https://github.com/uuner/sedtris.git
+chmod 755 sedtris/*
+# ./sedtris/sedtris.sh
 #安装openjdk
 yum install -y java-1.8.0-openjdk-devel.x86_64
 
