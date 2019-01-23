@@ -34,14 +34,14 @@ yum update -y
 
 
 #一些实用工具,这些大部分在EPEL源里
-yum install -y bash-completion git wget vim nano yum-utils nodejs unar screen lrzsz supervisor iotop iftop jnettop mytop apachetop atop htop ncdu nmap pv net-tools sl lynx links crudini the_silver_searcher tig cloc nload w3m axel tmux mc glances multitail
+yum install -y bash-completion git wget vim nano yum-utils unar screen lrzsz supervisor iotop iftop jnettop mytop apachetop atop htop ncdu nmap pv net-tools sl lynx links crudini the_silver_searcher tig cloc nload w3m axel tmux mc glances multitail
 # python3.6,包括对应版本的pip,php72
 yum install python36u-pip php72u -y
 # 一些基于python的实用或者有意思的工具
 pip3.6 install mycli icdiff you-get lolcat youtube-dl
 
 #配置nodejs10的yum源，安装 nodejs 10(epel源里有nodejs，但版本比较老)
-yum install https://mirrors.tuna.tsinghua.edu.cn/nodesource/rpm_10.x/el/7/x86_64/nodesource-release-el7-1.noarch.rpm
+yum install https://mirrors.tuna.tsinghua.edu.cn/nodesource/rpm_10.x/el/7/x86_64/nodesource-release-el7-1.noarch.rpm -y
 cat > /etc/yum.repos.d/nodesource-el7.repo <<- "EOF"
 [nodesource]
 name=Node.js Packages for Enterprise Linux 7 - $basearch
@@ -57,11 +57,11 @@ gpgcheck=1
 
 EOF
 yum makecache
-yum install python36u-pip php72u -y
+yum install nodejs -y
 # 更换国内npm源
 npm config set registry https://mirrors.huaweicloud.com/repository/npm/
 npm cache clean -f
-# 一些基于python的实用或者有意思的工具
+# 一些基于nodejs的实用或者有意思的工具
 npm install --global get-port-cli hasha-cli http-server
 
 # 2048游戏的shell实现
