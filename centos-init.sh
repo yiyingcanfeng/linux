@@ -54,7 +54,7 @@ trusted-host=mirrors.aliyun.com
 
 EOF
 # 一些基于python的实用或者有意思的工具
-pip3.6 install mycli icdiff you-get lolcat youtube-dl
+pip3.6 install cheat mycli icdiff you-get lolcat youtube-dl
 
 #配置nodejs10的yum源，安装 nodejs 10(epel源里有nodejs，但版本比较老)
 yum install https://mirrors.tuna.tsinghua.edu.cn/nodesource/rpm_10.x/el/7/x86_64/nodesource-release-el7-1.noarch.rpm -y
