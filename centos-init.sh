@@ -75,7 +75,7 @@ EOF
 yum makecache
 yum install nodejs -y
 # 更换国内npm源
-npm config set registry https://mirrors.huaweicloud.com/repository/npm/
+npm config set registry https://registry.npm.taobao.org/
 npm cache clean -f
 # 一些基于nodejs的实用或者有意思的工具
 npm install --global get-port-cli hasha-cli http-server
