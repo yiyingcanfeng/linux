@@ -1,5 +1,5 @@
 #!/bin/bash
-# curl http://example.com/common-config.sh | bash
+# curl https://yiyingcanfeng.github.io/centos-init.sh | bash
 
 # 修改主机名
 #hostnamectl set-hostname aaa
@@ -13,19 +13,19 @@ grub2-mkconfig -o /boot/grub2/grub.cfg
 systemctl  stop firewalld
 systemctl  disable  firewalld
 
-#更换基础yum源
+#更换yum源,使用阿里云的源
 mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.backup
 curl -o /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo
 yum makecache
 
-#更换EPEL yum源
+#配置EPEL源,使用阿里云的源
 #EPEL (Extra Packages for Enterprise Linux) 是由 Fedora Special Interest Group 为企业 Linux 创建、维护和管理的一个高质量附加包集合，适用于但不仅限于 Red Hat Enterprise Linux (RHEL), CentOS, Scientific Linux (SL), Oracle Linux (OL)
 yum install -y epel-release
 mv /etc/yum.repos.d/epel.repo /etc/yum.repos.d/epel.repo.backup
 mv /etc/yum.repos.d/epel-testing.repo /etc/yum.repos.d/epel-testing.repo.backup
 curl -o /etc/yum.repos.d/epel.repo http://mirrors.aliyun.com/repo/epel-7.repo
 
-#配置ius源
+#配置ius源,使用阿里云的源
 #IUS只为RHEL和CentOS这两个发行版提供较新版本的rpm包。如果在os或epel找不到某个软件的新版rpm，软件官方又只提供源代码包的时候，可以来ius源中找，几乎都能找到。比如，python3.6(包括对应版本的pip，epel源里有python3.6但没有对应版本的pip),php7.2,redis5等等
 cat > /etc/yum.repos.d/ius.repo <<- "EOF"
 [ius]
@@ -43,7 +43,7 @@ yum update -y
 yum install -y bash-completion git wget vim nano yum-utils unar screen lrzsz supervisor iotop iftop jnettop mytop apachetop atop htop ncdu nmap pv net-tools sl lynx links crudini the_silver_searcher tig cloc nload w3m axel tmux mc glances multitail
 # python3.6,包括对应版本的pip,php72
 yum install python36u-pip php72u redis5 -y
-# 使用国内pypi源
+# 使用国内pypi源,使用阿里云的源
 mkdir -p ~/.pip
 cat > ~/.pip/pip.conf <<- "EOF"
 [global]
@@ -56,7 +56,7 @@ EOF
 # 一些基于python的实用或者有意思的工具
 pip3.6 install cheat mycli icdiff you-get lolcat youtube-dl
 
-#配置nodejs10的yum源，安装 nodejs 10(epel源里有nodejs，但版本比较老)
+#配置nodejs10的yum源，安装 nodejs 10(epel源里有nodejs，但版本比较老),使用清华大学的源
 yum install https://mirrors.tuna.tsinghua.edu.cn/nodesource/rpm_10.x/el/7/x86_64/nodesource-release-el7-1.noarch.rpm -y
 cat > /etc/yum.repos.d/nodesource-el7.repo <<- "EOF"
 [nodesource]
@@ -102,35 +102,35 @@ yum install java-1.8.0-openjdk-devel.x86_64 -y
 # EOF
 # source /etc/profile
 
-#安装tomcat 
+#安装tomcat
 #https://tomcat.apache.org/download-90.cgi 注：请随时关注官网的最新版本，新版本发布后旧版本的链接会失效！
 cd /usr
 wget https://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-9/v9.0.14/bin/apache-tomcat-9.0.14.tar.gz
 tar -zxf apache-tomcat-9.0.14.tar.gz
 touch /usr/lib/systemd/system/tomcat.service
 cat > /usr/lib/systemd/system/tomcat.service <<- "EOF"
-[Unit]  
+[Unit]
 Description=Tomcat9.0.14
-After=syslog.target network.target remote-fs.target nss-lookup.target  
-      
-[Service]  
+After=syslog.target network.target remote-fs.target nss-lookup.target
+
+[Service]
 Type=forking
-Environment='CATALINA_OPTS=-Xms128M -Xmx512M -server -XX:+UseParallelGC' 
+Environment='CATALINA_OPTS=-Xms128M -Xmx512M -server -XX:+UseParallelGC'
 WorkingDirectory=/usr/apache-tomcat-9.0.14
 
-ExecStart=/usr/apache-tomcat-9.0.14/bin/startup.sh  
-ExecReload=/bin/kill -s HUP $MAINPID  
-ExecStop=/bin/kill -s QUIT $MAINPID  
-PrivateTmp=true  
-     
-[Install]  
-WantedBy=multi-user.target  
+ExecStart=/usr/apache-tomcat-9.0.14/bin/startup.sh
+ExecReload=/bin/kill -s HUP $MAINPID
+ExecStop=/bin/kill -s QUIT $MAINPID
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
 
 EOF
 systemctl daemon-reload
 systemctl start tomcat
 
-#安装mysql5.7 http://mirrors.tuna.tsinghua.edu.cn/mysql
+#安装mysql5.7 http://mirrors.tuna.tsinghua.edu.cn/mysql,使用清华大学的源
 cat > /etc/yum.repos.d/mysql-community.repo <<- "EOF"
 [mysql-connectors-community]
 name=MySQL Connectors Community
@@ -164,7 +164,9 @@ EOF
 
 yum install mysql-community-server -y
 #mysql配置
+if [[ "${MYSQL_PASSWORD}" == "" ]];then
 MYSQL_PASSWORD=1111 #root用户密码
+fi
 systemctl start mysqld
 systemctl enable mysqld
 passlog=$(grep 'temporary password'  /var/log/mysqld.log)
@@ -181,7 +183,7 @@ mysql -uroot -p"${pass}" -e"set password=password('${MYSQL_PASSWORD}');" --conne
 mysql -uroot -p"${MYSQL_PASSWORD}" -e"update mysql.user set host='%' where user='root';" --connect-expired-password
 mysql -uroot -p"${MYSQL_PASSWORD}" -e"flush privileges;" --connect-expired-password
 
-#安装mongodb
+#安装mongodb,使用清华大学的源
 echo "" > /etc/yum.repos.d/mongodb.repo
 for version in "3.0" "3.2" "3.4" "3.6" "4.0"; do
 cat >> /etc/yum.repos.d/mongodb.repo <<- EOF
@@ -196,7 +198,7 @@ done
 yum makecache
 yum install mongodb-org -y
 
-#安装docker
+#安装docker,使用清华大学的源
 cat > /etc/yum.repos.d/docker-ce.repo <<- "EOF"
 [docker-ce-stable]
 name=Docker CE Stable - $basearch
@@ -286,7 +288,7 @@ EOF
 yum install docker-ce -y
 systemctl start docker
 #配置国内docker加速器
-cat >  /etc/docker/daemon.json <<- "EOF"
+cat > /etc/docker/daemon.json <<- "EOF"
 {
   "registry-mirrors": ["https://registry.docker-cn.com"]
 }
