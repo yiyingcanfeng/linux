@@ -44,6 +44,7 @@ yum install -y bash-completion git wget vim nano yum-utils unar screen lrzsz sup
 # python3.6,包括对应版本的pip,php72
 yum install python36u-pip php72u redis5 -y
 # 使用国内pypi源,使用阿里云的源
+# 备选：http://pypi.douban.com/simple/  https://pypi.tuna.tsinghua.edu.cn/simple/
 mkdir -p ~/.pip
 cat > ~/.pip/pip.conf <<- "EOF"
 [global]
@@ -53,6 +54,7 @@ index-url = https://mirrors.aliyun.com/pypi/simple/
 trusted-host=mirrors.aliyun.com
 
 EOF
+pip3.6 install --upgrade pip
 # 一些基于python的实用或者有意思的工具
 pip3.6 install cheat mycli icdiff you-get lolcat youtube-dl
 
@@ -76,6 +78,7 @@ yum makecache
 yum install nodejs -y
 # 更换国内npm源
 npm config set registry https://registry.npm.taobao.org/
+# 备选：https://mirrors.huaweicloud.com/repository/npm/
 npm cache clean -f
 # 一些基于nodejs的实用或者有意思的工具
 npm install --global get-port-cli hasha-cli http-server
