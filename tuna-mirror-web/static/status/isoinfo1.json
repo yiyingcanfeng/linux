@@ -1,0 +1,576 @@
+[
+
+  {
+    "urls": [
+      {
+        "name": "7 (x86_64, NetInstall)",
+        "url": "/centos/7.6.1810/isos/x86_64/CentOS-7-x86_64-NetInstall-1810.iso"
+      },
+      {
+        "name": "7 (x86_64, Minimal)",
+        "url": "/centos/7.6.1810/isos/x86_64/CentOS-7-x86_64-Minimal-1810.iso"
+      },
+      {
+        "name": "7 (x86_64, LiveKDE)",
+        "url": "/centos/7.6.1810/isos/x86_64/CentOS-7-x86_64-LiveKDE-1810.iso"
+      },
+      {
+        "name": "7 (x86_64, LiveGNOME)",
+        "url": "/centos/7.6.1810/isos/x86_64/CentOS-7-x86_64-LiveGNOME-1810.iso"
+      },
+      {
+        "name": "7 (x86_64, Everything)",
+        "url": "/centos/7.6.1810/isos/x86_64/CentOS-7-x86_64-Everything-1810.iso"
+      },
+      {
+        "name": "7 (x86_64, DVD)",
+        "url": "/centos/7.6.1810/isos/x86_64/CentOS-7-x86_64-DVD-1810.iso"
+      },
+      {
+        "name": "6.10 (x86_64, netinstall)",
+        "url": "/centos/6.10/isos/x86_64/CentOS-6.10-x86_64-netinstall.iso"
+      },
+      {
+        "name": "6.10 (x86_64, minimal)",
+        "url": "/centos/6.10/isos/x86_64/CentOS-6.10-x86_64-minimal.iso"
+      },
+      {
+        "name": "6.10 (x86_64, bin-DVD2)",
+        "url": "/centos/6.10/isos/x86_64/CentOS-6.10-x86_64-bin-DVD2.iso"
+      },
+      {
+        "name": "6.10 (x86_64, bin-DVD1)",
+        "url": "/centos/6.10/isos/x86_64/CentOS-6.10-x86_64-bin-DVD1.iso"
+      },
+      {
+        "name": "6.10 (x86_64, LiveDVD)",
+        "url": "/centos/6.10/isos/x86_64/CentOS-6.10-x86_64-LiveDVD.iso"
+      },
+      {
+        "name": "6.10 (i386, netinstall)",
+        "url": "/centos/6.10/isos/i386/CentOS-6.10-i386-netinstall.iso"
+      },
+      {
+        "name": "6.10 (i386, minimal)",
+        "url": "/centos/6.10/isos/i386/CentOS-6.10-i386-minimal.iso"
+      },
+      {
+        "name": "6.10 (i386, bin-DVD2)",
+        "url": "/centos/6.10/isos/i386/CentOS-6.10-i386-bin-DVD2.iso"
+      },
+      {
+        "name": "6.10 (i386, bin-DVD1)",
+        "url": "/centos/6.10/isos/i386/CentOS-6.10-i386-bin-DVD1.iso"
+      },
+      {
+        "name": "6.10 (i386, LiveDVD)",
+        "url": "/centos/6.10/isos/i386/CentOS-6.10-i386-LiveDVD.iso"
+      }
+    ],
+    "category": "os",
+    "distro": "CentOS"
+  },
+
+  {
+    "urls": [
+      {
+        "name": "15.8 (amd64)",
+        "url": "/deepin-cd/15.8/deepin-15.8-amd64.iso"
+      },
+      {
+        "name": "15.9 (amd64)",
+        "url": "/deepin-cd/15.9/deepin-15.9-amd64.iso"
+      }
+    ],
+    "category": "os",
+    "distro": "Deepin"
+  },
+  {
+    "distro": "Ubuntu",
+    "category": "os",
+    "urls": [
+      {
+        "name": "18.10 (amd64, Desktop LiveDVD)",
+        "url": "/ubuntu-releases/cosmic/ubuntu-18.10-desktop-amd64.iso"
+      },
+      {
+        "name": "18.04.1 (amd64, Desktop LiveDVD)",
+        "url": "/ubuntu-releases/bionic/ubuntu-18.04.1-desktop-amd64.iso"
+      },
+      {
+        "name": "16.04.5 (amd64, Desktop LiveDVD)",
+        "url": "/ubuntu-releases/xenial/ubuntu-16.04.5-desktop-amd64.iso"
+      },
+      {
+        "name": "16.04.5 (i386, Desktop LiveDVD)",
+        "url": "/ubuntu-releases/xenial/ubuntu-16.04.5-desktop-i386.iso"
+      },
+      {
+        "name": "14.04.5 (amd64, Desktop LiveDVD)",
+        "url": "/ubuntu-releases/trusty/ubuntu-14.04.5-desktop-amd64.iso"
+      },
+      {
+        "name": "14.04.5 (i386, Desktop LiveDVD)",
+        "url": "/ubuntu-releases/trusty/ubuntu-14.04.5-desktop-i386.iso"
+      },
+      {
+        "name": "18.10 (amd64, Server)",
+        "url": "/ubuntu-releases/cosmic/ubuntu-18.10-live-server-amd64.iso"
+      },
+      {
+        "name": "18.04.1.0 (amd64, Server)",
+        "url": "/ubuntu-releases/bionic/ubuntu-18.04.1.0-live-server-amd64.iso"
+      },
+      {
+        "name": "18.04.1 (amd64, Server)",
+        "url": "/ubuntu-releases/bionic/ubuntu-18.04.1-live-server-amd64.iso"
+      },
+      {
+        "name": "16.04.5 (amd64, Server)",
+        "url": "/ubuntu-releases/xenial/ubuntu-16.04.5-server-amd64.iso"
+      },
+      {
+        "name": "16.04.5 (i386, Server)",
+        "url": "/ubuntu-releases/xenial/ubuntu-16.04.5-server-i386.iso"
+      },
+      {
+        "name": "14.04.5 (amd64, Server)",
+        "url": "/ubuntu-releases/trusty/ubuntu-14.04.5-server-amd64.iso"
+      },
+      {
+        "name": "14.04.5 (i386, Server)",
+        "url": "/ubuntu-releases/trusty/ubuntu-14.04.5-server-i386.iso"
+      },
+      {
+        "name": "12.04.5 (amd64, Server)",
+        "url": "/ubuntu-releases/precise/ubuntu-12.04.5-server-amd64.iso"
+      },
+      {
+        "name": "12.04.5 (i386, Server)",
+        "url": "/ubuntu-releases/precise/ubuntu-12.04.5-server-i386.iso"
+      }
+    ]
+  },
+
+  {
+    "urls": [
+      {
+        "name": "cn_windows_10_business_editions_version_1809_updated_jan_2019_x64_dvd_ee4a2f95.iso",
+        "url": "/windows/cn_windows_10_business_editions_version_1809_updated_jan_2019_x64_dvd_ee4a2f95.iso"
+      },
+      {
+        "name": "cn_windows_10_consumer_editions_version_1809_updated_jan_2019_x64_dvd_34b4d4fb.iso",
+        "url": "/windows/cn_windows_10_consumer_editions_version_1809_updated_jan_2019_x64_dvd_34b4d4fb.iso"
+      },
+      {
+        "name": "cn_windows_7_ultimate_with_sp1_x64_dvd_u_677408.iso",
+        "url": "/windows/cn_windows_7_ultimate_with_sp1_x64_dvd_u_677408.iso"
+      },
+      {
+        "name": "cn_windows_server_2016_updated_feb_2018_x64_dvd_11636703.iso",
+        "url": "/windows/cn_windows_server_2016_updated_feb_2018_x64_dvd_11636703.iso"
+      },
+      {
+        "name": "zh-hans_windows_xp_professional_with_service_pack_3_x86_cd_vl_x14-74070.iso",
+        "url": "/windows/zh-hans_windows_xp_professional_with_service_pack_3_x86_cd_vl_x14-74070.iso"
+      }
+    ],
+    "category": "os",
+    "distro": "Windows"
+  },
+  {
+    "category": "app",
+    "distro": "mysql",
+    "urls": [
+      {
+        "name": "mysql-installer-community-5.7.25.0.msi",
+        "url": "/mysql/downloads/MySQLInstaller/mysql-installer-community-5.7.25.0.msi"
+      },
+      {
+        "name": "mysql-5.7.25-winx64.zip",
+        "url": "/mysql/downloads/MySQL-5.7/mysql-5.7.25-winx64.zip"
+      },
+      {
+        "name": "mysql-5.7.25-macos10.14-x86_64.dmg",
+        "url": "/mysql/downloads/MySQL-5.7/mysql-5.7.25-macos10.14-x86_64.dmg"
+      },
+      {
+        "name": "mysql-5.7.23-macos10.13-x86_64.dmg",
+        "url": "/mysql/downloads/MySQL-5.7/mysql-5.7.23-macos10.13-x86_64.dmg"
+      },
+      {
+        "name": "mysql-installer-community-8.0.15.0.msi",
+        "url": "/mysql/downloads/MySQLInstaller/mysql-installer-community-8.0.15.0.msi"
+      },
+      {
+        "name": "mysql-8.0.15-winx64.zip",
+        "url": "/mysql/downloads/MySQL-8.0/mysql-8.0.15-winx64.zip"
+      },
+      {
+        "name": "mysql-8.0.15-macos10.14-x86_64.dmg",
+        "url": "/mysql/downloads/MySQL-8.0/mysql-8.0.15-macos10.14-x86_64.dmg"
+      },
+      {
+        "name": "mysql-8.0.12-macos10.13-x86_64.dmg",
+        "url": "/mysql/downloads/MySQL-8.0/mysql-8.0.12-macos10.13-x86_64.dmg"
+      }
+    ]
+  },
+  {
+    "category": "app",
+    "distro": "maven",
+    "urls": [
+      {
+        "name": "apache-maven-3.6.0-bin.zip",
+        "url": "/apache/maven/maven-3/3.6.0/binaries/apache-maven-3.6.0-bin.zip"
+      }
+    ]
+  },
+  {
+    "category": "app",
+    "distro": "tomcat",
+    "urls": [
+      {
+        "name": "apache-tomcat-9.0.16-windows-x64.zip",
+        "url": "/apache/tomcat/tomcat-9/v9.0.16/bin/apache-tomcat-9.0.16-windows-x64.zip"
+      },
+      {
+        "name": "apache-tomcat-9.0.16.tar.gz",
+        "url": "/apache/tomcat/tomcat-9/v9.0.16/bin/apache-tomcat-9.0.16.tar.gz"
+      },
+      {
+        "name": "apache-tomcat-9.0.16.exe",
+        "url": "/apache/tomcat/tomcat-9/v9.0.16/bin/apache-tomcat-9.0.16.exe"
+      },
+      {
+        "name": "apache-tomcat-8.5.37-windows-x64.zip",
+        "url": "/apache/tomcat/tomcat-8/v8.5.37/bin/apache-tomcat-8.5.37-windows-x64.zip"
+      },
+      {
+        "name": "apache-tomcat-8.5.37.tar.gz",
+        "url": "/apache/tomcat/tomcat-8/v8.5.37/bin/apache-tomcat-8.5.37.tar.gz"
+      },
+      {
+        "name": "apache-tomcat-8.5.37.exe",
+        "url": "/apache/tomcat/tomcat-8/v8.5.37/bin/apache-tomcat-8.5.37.exe"
+      },
+      {
+        "name": "apache-tomcat-8.5.38-windows-x64.zip",
+        "url": "/apache/tomcat/tomcat-8/v8.5.38/bin/apache-tomcat-8.5.38-windows-x64.zip"
+      },
+      {
+        "name": "apache-tomcat-8.5.38.tar.gz",
+        "url": "/apache/tomcat/tomcat-8/v8.5.38/bin/apache-tomcat-8.5.38.tar.gz"
+      },
+      {
+        "name": "apache-tomcat-8.5.38.exe",
+        "url": "/apache/tomcat/tomcat-8/v8.5.38/bin/apache-tomcat-8.5.38.exe"
+      },
+      {
+        "name": "apache-tomcat-7.0.92-windows-x64.zip",
+        "url": "/apache/tomcat/tomcat-7/v7.0.92/bin/apache-tomcat-7.0.92-windows-x64.zip"
+      },
+      {
+        "name": "apache-tomcat-7.0.92.tar.gz",
+        "url": "/apache/tomcat/tomcat-7/v7.0.92/bin/apache-tomcat-7.0.92.tar.gz"
+      },
+      {
+        "name": "apache-tomcat-7.0.92.exe",
+        "url": "/apache/tomcat/tomcat-7/v7.0.92/bin/apache-tomcat-7.0.92.exe"
+      }
+    ]
+  },
+  {
+    "category": "app",
+    "distro": "jdk",
+    "urls": [
+      {
+        "name": "jdk-8u202-windows-x64.exe",
+        "url": "/oracle-jdk/8u202-b08/jdk-8u202-windows-x64.exe"
+      },
+      {
+        "name": "jdk-8u202-macosx-x64.dmg",
+        "url": "/oracle-jdk/8u202-b08/jdk-8u202-macosx-x64.dmg"
+      },
+      {
+        "name": "jdk-8u202-linux-x64.tar.gz",
+        "url": "/oracle-jdk/8u202-b08/jdk-8u202-linux-x64.tar.gz"
+      },
+      {
+        "name": "jdk-11.0.2_windows-x64_bin.exe",
+        "url": "/oracle-jdk/11.0.2+9/jdk-11.0.2_windows-x64_bin.exe"
+      },
+      {
+        "name": "jdk-11.0.2_osx-x64_bin.dmg",
+        "url": "/oracle-jdk/11.0.2+9/jdk-11.0.2_osx-x64_bin.dmg"
+      },
+      {
+        "name": "jdk-11.0.2_linux-x64_bin.tar.gz",
+        "url": "/oracle-jdk/11.0.2+9/jdk-11.0.2_linux-x64_bin.tar.gz"
+      }
+    ]
+  },
+  {
+    "category": "app",
+    "distro": "eclipse",
+    "urls": [
+      {
+        "name": "eclipse-jee-2019-03-M2-win32-x86_64.zip",
+        "url": "/eclipse/2019-03/M2/eclipse-jee-2019-03-M2-win32-x86_64.zip"
+      },
+      {
+        "name": "eclipse-jee-2018-12-R-win32-x86_64.zip",
+        "url": "/eclipse/2018-12/R/eclipse-jee-2018-12-R-win32-x86_64.zip"
+      },
+      {
+        "name": "eclipse-jee-2018-09-win32-x86_64.zip",
+        "url": "/eclipse/2018-09/R/eclipse-jee-2018-09-win32-x86_64.zip"
+      },
+      {
+        "name": "eclipse-jee-photon-R-win32-x86_64.zip",
+        "url": "/eclipse/photon/R/eclipse-jee-photon-R-win32-x86_64.zip"
+      },
+      {
+        "name": "eclipse-jee-oxygen-3a-win32-x86_64.zip",
+        "url": "/eclipse/oxygen/3a/eclipse-jee-oxygen-3a-win32-x86_64.zip"
+      },
+      {
+        "name": "eclipse-jee-neon-3-win32-x86_64.zip",
+        "url": "/eclipse/neon/3/eclipse-jee-neon-3-win32-x86_64.zip"
+      }
+    ]
+  },
+  {
+    "category": "app",
+    "distro": "Jetbrains系列",
+    "urls": [
+      {
+        "name": "ideaIC-2018.3.4.win.zip",
+        "url": "https://download.jetbrains.8686c.com/idea/ideaIC-2018.3.4.win.zip"
+      },
+      {
+        "name": "ideaIC-2018.3.4.dmg",
+        "url": "https://download.jetbrains.8686c.com/idea/ideaIC-2018.3.4.dmg"
+      },
+      {
+        "name": "ideaIC-2018.3.4.tar.gz",
+        "url": "https://download.jetbrains.8686c.com/idea/ideaIC-2018.3.4.tar.gz"
+      },
+      {
+        "name": "ideaIU-2018.3.4.win.zip",
+        "url": "https://download.jetbrains.8686c.com/idea/ideaIU-2018.3.4.win.zip"
+      },
+      {
+        "name": "ideaIU-2018.3.4.dmg",
+        "url": "https://download.jetbrains.8686c.com/idea/ideaIU-2018.3.4.dmg"
+      },
+      {
+        "name": "ideaIU-2018.3.4.tar.gz",
+        "url": "https://download.jetbrains.8686c.com/idea/ideaIU-2018.3.4.tar.gz"
+      },
+      {
+        "name": "WebStorm-2018.3.4.exe",
+        "url": "https://download.jetbrains.8686c.com/webstorm/WebStorm-2018.3.4.exe"
+      },
+      {
+        "name": "WebStorm-2018.3.4.dmg",
+        "url": "https://download.jetbrains.8686c.com/webstorm/WebStorm-2018.3.4.dmg"
+      },
+      {
+        "name": "WebStorm-2018.3.4.tar.gz",
+        "url": "https://download.jetbrains.8686c.com/webstorm/WebStorm-2018.3.4.tar.gz"
+      },
+      {
+        "name": "pycharm-professional-2018.3.4.exe",
+        "url": "https://download.jetbrains.8686c.com/python/pycharm-professional-2018.3.4.exe"
+      },
+      {
+        "name": "pycharm-professional-2018.3.4.dmg",
+        "url": "https://download.jetbrains.8686c.com/python/pycharm-professional-2018.3.4.dmg"
+      },
+      {
+        "name": "pycharm-professional-2018.3.4.tar.gz",
+        "url": "https://download.jetbrains.8686c.com/python/pycharm-professional-2018.3.4.tar.gz"
+      },
+      {
+        "name": "CLion-2018.3.4.zip",
+        "url": "https://download.jetbrains.8686c.com/cpp/CLion-2018.3.4.zip"
+      },
+      {
+        "name": "CLion-2018.3.4.dmg",
+        "url": "https://download.jetbrains.8686c.com/cpp/CLion-2018.3.4.zip"
+      },
+      {
+        "name": "CLion-2018.3.4.tar.gz",
+        "url": "https://download.jetbrains.8686c.com/cpp/CLion-2018.3.4.tar.gz"
+      },
+      {
+        "name": "PhpStorm-2018.3.4.exe",
+        "url": "https://download.jetbrains.8686c.com/webide/PhpStorm-2018.3.4.exe"
+      },
+      {
+        "name": "PhpStorm-2018.3.4.dmg",
+        "url": "https://download.jetbrains.8686c.com/webide/PhpStorm-2018.3.4.dmg"
+      },
+      {
+        "name": "PhpStorm-2018.3.4.tar.gz",
+        "url": "https://download.jetbrains.8686c.com/webide/PhpStorm-2018.3.4.tar.gz"
+      }
+    ]
+  },
+  {
+    "category": "app",
+    "distro": "Android Studio 3.3.1 正式版",
+    "urls": [
+      {
+        "name": "android-studio-ide-182.5199772-windows.exe",
+        "url": "https://dl.google.com/dl/android/studio/install/3.3.1.0/android-studio-ide-182.5264788-windows.exe"
+      },
+      {
+        "name": "android-studio-ide-182.5199772-windows.zip",
+        "url": "https://dl.google.com/dl/android/studio/ide-zips/3.3.1.0/android-studio-ide-182.5264788-windows.zip"
+      },
+      {
+        "name": "android-studio-ide-182.5199772-mac.dmg",
+        "url": "https://dl.google.com/dl/android/studio/ide-zips/3.3.1.0/android-studio-ide-182.5264788-mac.dmg"
+      },
+      {
+        "name": "android-studio-ide-182.5199772-linux.zip",
+        "url": "https://dl.google.com/dl/android/studio/ide-zips/3.3.1.0/android-studio-ide-182.5264788-linux.zip"
+      }
+    ]
+  },
+  {
+    "category": "app",
+    "distro": "Android Studio 3.2.1 正式版",
+    "urls": [
+      {
+        "name": "android-studio-ide-181.5056338-windows.exe",
+        "url": "https://dl.google.com/dl/android/studio/install/3.2.1.0/android-studio-ide-181.5056338-windows.exe"
+      },
+      {
+        "name": "android-studio-ide-181.5056338-windows.zip",
+        "url": "https://dl.google.com/dl/android/studio/ide-zips/3.2.1.0/android-studio-ide-181.5056338-windows.zip"
+      },
+      {
+        "name": "android-studio-ide-181.5056338-mac.dmg",
+        "url": "https://dl.google.com/dl/android/studio/install/3.2.1.0/android-studio-ide-181.5056338-mac.dmg"
+      },
+      {
+        "name": "android-studio-ide-181.5056338-linux.zip",
+        "url": "https://dl.google.com/dl/android/studio/ide-zips/3.2.1.0/android-studio-ide-181.5056338-linux.zip"
+      }
+    ]
+  },
+  {
+    "category": "app",
+    "distro": "jmeter",
+    "urls": [
+      {
+        "name": "apache-jmeter-5.0.zip",
+        "url": "/apache/jmeter/binaries/apache-jmeter-5.0.zip"
+      }
+    ]
+  },
+  {
+    "category": "app",
+    "distro": "git-for-windows",
+    "urls": [
+      {
+        "name": "Git-2.20.1-64-bit.exe",
+        "url": "/git-for-windows/v2.20.1.windows.1/Git-2.20.1-64-bit.exe"
+      }
+    ]
+  },
+  {
+    "category": "app",
+    "distro": "git-for-macos",
+    "urls": [
+      {
+        "name": "git-2.20.1-intel-universal-mavericks.dmg",
+        "url": "/git-for-macos/git-2.20.1-intel-universal-mavericks.dmg"
+      }
+    ]
+  },
+  {
+    "category": "app",
+    "distro": "python",
+    "urls": [
+      {
+        "name": "python-3.8.0a1-amd64.exe",
+        "url": "/python/3.8.0/python-3.8.0a1-amd64.exe"
+      },
+      {
+        "name": "python-3.8.0a1.exe",
+        "url": "/python/3.8.0/python-3.8.0a1.exe"
+      },
+      {
+        "name": "python-3.7.2-amd64.exe",
+        "url": "/python/3.7.2/python-3.7.2-amd64.exe"
+      },
+      {
+        "name": "python-3.7.2.exe",
+        "url": "/python/3.7.2/python-3.7.2.exe"
+      },
+      {
+        "name": "python-3.6.8-amd64.exe",
+        "url": "/python/3.6.8/python-3.6.8-amd64.exe"
+      },
+      {
+        "name": "python-3.6.8.exe",
+        "url": "https://mirrors.huaweicloud.com/python/3.6.8/python-3.6.8.exe"
+      }
+    ]
+  },
+  {
+    "category": "app",
+    "distro": "nodejs",
+    "urls": [
+      {
+        "name": "node-v8.15.0-x64.msi",
+        "url": "/nodejs-release/v8.15.0/node-v8.15.0-x64.msi"
+      },
+      {
+        "name": "node-v9.11.2-x64.msi",
+        "url": "/nodejs-release/v9.11.2/node-v9.11.2-x64.msi"
+      },
+      {
+        "name": "node-v10.15.1-x64.msi",
+        "url": "/nodejs-release/v10.15.1/node-v10.15.1-x64.msi"
+      },
+      {
+        "name": "node-v11.9.0-x64.msi",
+        "url": "/nodejs-release/v11.9.0/node-v11.9.0-x64.msi"
+      }
+    ]
+  },
+  {
+    "category": "app",
+    "distro": "gradle",
+    "urls": [
+      {
+        "name": "gradle-4.4-all.zip",
+        "url": "/gradle/gradle-4.4-all.zip"
+      },
+      {
+        "name": "gradle-4.6-all.zip",
+        "url": "/gradle/gradle-4.6-all.zip"
+      },
+      {
+        "name": "gradle-4.10-all.zip",
+        "url": "/gradle/gradle-4.10-all.zip"
+      }
+    ]
+  },
+  {
+    "category": "app",
+    "distro": "VSCode",
+    "urls": [
+      {
+        "name": "VSCodeUserSetup-x64-1.31.1.exe",
+        "url": "https://vscode.cdn.azure.cn/stable/1b8e8302e405050205e69b59abb3559592bb9e60/VSCodeUserSetup-x64-1.31.1.exe"
+      }
+    ]
+  }
+
+]
