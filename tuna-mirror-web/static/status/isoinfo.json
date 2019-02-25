@@ -156,32 +156,32 @@
     "distro": "mysql",
     "urls": [
       {
-        "name": "mysql-installer-community-5.7.24.0.msi",
-        "url": "https://mirrors.tuna.tsinghua.edu.cn/mysql/downloads/MySQLInstaller/mysql-installer-community-5.7.24.0.msi"
+        "name": "mysql-installer-community-5.7.25.0.msi",
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/mysql/downloads/MySQLInstaller/mysql-installer-community-5.7.25.0.msi"
       },
       {
-        "name": "mysql-5.7.24-winx64.zip",
-        "url": "https://mirrors.tuna.tsinghua.edu.cn/mysql/downloads/MySQL-5.7/mysql-5.7.24-winx64.zip"
+        "name": "mysql-5.7.25-winx64.zip",
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/mysql/downloads/MySQL-5.7/mysql-5.7.25-winx64.zip"
       },
       {
-        "name": "mysql-5.7.24-macos10.14-x86_64.dmg",
-        "url": "https://mirrors.tuna.tsinghua.edu.cn/mysql/downloads/MySQL-5.7/mysql-5.7.24-macos10.14-x86_64.dmg"
+        "name": "mysql-5.7.25-macos10.14-x86_64.dmg",
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/mysql/downloads/MySQL-5.7/mysql-5.7.25-macos10.14-x86_64.dmg"
       },
       {
         "name": "mysql-5.7.23-macos10.13-x86_64.dmg",
         "url": "https://mirrors.tuna.tsinghua.edu.cn/mysql/downloads/MySQL-5.7/mysql-5.7.23-macos10.13-x86_64.dmg"
       },
       {
-        "name": "mysql-installer-community-8.0.13.0.msi",
-        "url": "https://mirrors.tuna.tsinghua.edu.cn/mysql/downloads/MySQLInstaller/mysql-installer-community-8.0.13.0.msi"
+        "name": "mysql-installer-community-8.0.15.0.msi",
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/mysql/downloads/MySQLInstaller/mysql-installer-community-8.0.15.0.msi"
       },
       {
-        "name": "mysql-8.0.13-winx64.zip",
-        "url": "https://mirrors.tuna.tsinghua.edu.cn/mysql/downloads/MySQL-8.0/mysql-8.0.13-winx64.zip"
+        "name": "mysql-8.0.15-winx64.zip",
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/mysql/downloads/MySQL-8.0/mysql-8.0.15-winx64.zip"
       },
       {
-        "name": "mysql-8.0.13-macos10.14-x86_64.dmg",
-        "url": "https://mirrors.tuna.tsinghua.edu.cn/mysql/downloads/MySQL-8.0/mysql-8.0.13-macos10.14-x86_64.dmg"
+        "name": "mysql-8.0.15-macos10.14-x86_64.dmg",
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/mysql/downloads/MySQL-8.0/mysql-8.0.15-macos10.14-x86_64.dmg"
       },
       {
         "name": "mysql-8.0.12-macos10.13-x86_64.dmg",
@@ -204,20 +204,20 @@
     "distro": "tomcat",
     "urls": [
       {
-        "name": "apache-tomcat-9.0.14-windows-x64.zip",
-        "url": "https://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-9/v9.0.14/bin/apache-tomcat-9.0.14-windows-x64.zip"
+        "name": "apache-tomcat-9.0.16-windows-x64.zip",
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-9/v9.0.16/bin/apache-tomcat-9.0.16-windows-x64.zip"
       },
       {
-        "name": "apache-tomcat-9.0.14.tar.gz",
-        "url": "https://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-9/v9.0.14/bin/apache-tomcat-9.0.14.tar.gz"
+        "name": "apache-tomcat-9.0.16.tar.gz",
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-9/v9.0.16/bin/apache-tomcat-9.0.16.tar.gz"
       },
       {
-        "name": "apache-tomcat-9.0.14.exe",
-        "url": "https://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-9/v9.0.14/bin/apache-tomcat-9.0.14.exe"
+        "name": "apache-tomcat-9.0.16.exe",
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-9/v9.0.16/bin/apache-tomcat-9.0.16.exe"
       },
       {
         "name": "apache-tomcat-8.5.37-windows-x64.zip",
-        "url": "https://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-9/v9.0.14/bin/apache-tomcat-8.5.37-windows-x64.zip"
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-9/v8.5.37/bin/apache-tomcat-8.5.37-windows-x64.zip"
       },
       {
         "name": "apache-tomcat-8.5.37.tar.gz",
@@ -248,6 +248,114 @@
       {
         "name": "apache-jmeter-5.0.zip",
         "url": "https://mirrors.tuna.tsinghua.edu.cn/apache/jmeter/binaries/apache-jmeter-5.0.zip"
+      }
+    ]
+  },
+  {
+    "category": "app",
+    "distro": "Jetbrains系列",
+    "urls": [
+      {
+        "name": "ideaIC-2018.3.4.win.zip",
+        "url": "https://download.jetbrains.8686c.com/idea/ideaIC-2018.3.4.win.zip"
+      },
+      {
+        "name": "ideaIC-2018.3.4.dmg",
+        "url": "https://download.jetbrains.8686c.com/idea/ideaIC-2018.3.4.dmg"
+      },
+      {
+        "name": "ideaIC-2018.3.4.tar.gz",
+        "url": "https://download.jetbrains.8686c.com/idea/ideaIC-2018.3.4.tar.gz"
+      },
+      {
+        "name": "ideaIU-2018.3.4.win.zip",
+        "url": "https://download.jetbrains.8686c.com/idea/ideaIU-2018.3.4.win.zip"
+      },
+      {
+        "name": "ideaIU-2018.3.4.dmg",
+        "url": "https://download.jetbrains.8686c.com/idea/ideaIU-2018.3.4.dmg"
+      },
+      {
+        "name": "ideaIU-2018.3.4.tar.gz",
+        "url": "https://download.jetbrains.8686c.com/idea/ideaIU-2018.3.4.tar.gz"
+      },
+      {
+        "name": "WebStorm-2018.3.4.exe",
+        "url": "https://download.jetbrains.8686c.com/webstorm/WebStorm-2018.3.4.exe"
+      },
+      {
+        "name": "WebStorm-2018.3.4.dmg",
+        "url": "https://download.jetbrains.8686c.com/webstorm/WebStorm-2018.3.4.dmg"
+      },
+      {
+        "name": "WebStorm-2018.3.4.tar.gz",
+        "url": "https://download.jetbrains.8686c.com/webstorm/WebStorm-2018.3.4.tar.gz"
+      },
+      {
+        "name": "pycharm-professional-2018.3.4.exe",
+        "url": "https://download.jetbrains.8686c.com/python/pycharm-professional-2018.3.4.exe"
+      },
+      {
+        "name": "pycharm-professional-2018.3.4.dmg",
+        "url": "https://download.jetbrains.8686c.com/python/pycharm-professional-2018.3.4.dmg"
+      },
+      {
+        "name": "pycharm-professional-2018.3.4.tar.gz",
+        "url": "https://download.jetbrains.8686c.com/python/pycharm-professional-2018.3.4.tar.gz"
+      },
+      {
+        "name": "CLion-2018.3.4.zip",
+        "url": "https://download.jetbrains.8686c.com/cpp/CLion-2018.3.4.zip"
+      },
+      {
+        "name": "CLion-2018.3.4.dmg",
+        "url": "https://download.jetbrains.8686c.com/cpp/CLion-2018.3.4.zip"
+      },
+      {
+        "name": "CLion-2018.3.4.tar.gz",
+        "url": "https://download.jetbrains.8686c.com/cpp/CLion-2018.3.4.tar.gz"
+      },
+      {
+        "name": "PhpStorm-2018.3.4.exe",
+        "url": "https://download.jetbrains.8686c.com/webide/PhpStorm-2018.3.4.exe"
+      },
+      {
+        "name": "PhpStorm-2018.3.4.dmg",
+        "url": "https://download.jetbrains.8686c.com/webide/PhpStorm-2018.3.4.dmg"
+      },
+      {
+        "name": "PhpStorm-2018.3.4.tar.gz",
+        "url": "https://download.jetbrains.8686c.com/webide/PhpStorm-2018.3.4.tar.gz"
+      }
+    ]
+  },
+  {
+    "category": "app",
+    "distro": "eclipse",
+    "urls": [
+      {
+        "name": "eclipse-jee-2019-03-M2-win32-x86_64.zip",
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/eclipse/2019-03/M2/eclipse-jee-2019-03-M2-win32-x86_64.zip"
+      },
+      {
+        "name": "eclipse-jee-2018-12-R-win32-x86_64.zip",
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/eclipse/2018-12/R/eclipse-jee-2018-12-R-win32-x86_64.zip"
+      },
+      {
+        "name": "eclipse-jee-2018-09-win32-x86_64.zip",
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/eclipse/2018-09/R/eclipse-jee-2018-09-win32-x86_64.zip"
+      },
+      {
+        "name": "eclipse-jee-photon-R-win32-x86_64.zip",
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/eclipse/photon/R/eclipse-jee-photon-R-win32-x86_64.zip"
+      },
+      {
+        "name": "eclipse-jee-oxygen-3a-win32-x86_64.zip",
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/eclipse/oxygen/3a/eclipse-jee-oxygen-3a-win32-x86_64.zip"
+      },
+      {
+        "name": "eclipse-jee-neon-3-win32-x86_64.zip",
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/eclipse/neon/3/eclipse-jee-neon-3-win32-x86_64.zip"
       }
     ]
   },
@@ -305,6 +413,14 @@
     "category": "app",
     "distro": "python",
     "urls": [
+      {
+        "name": "python-3.8.0a1-amd64.exe",
+        "url": "https://mirrors.huaweicloud.com/python/3.8.0/python-3.8.0a1-amd64.exe"
+      },
+      {
+        "name": "python-3.8.0a1.exe",
+        "url": "https://mirrors.huaweicloud.com/python/3.8.0/python-3.8.0a1.exe"
+      },
       {
         "name": "python-3.7.2-amd64.exe",
         "url": "https://mirrors.huaweicloud.com/python/3.7.2/python-3.7.2-amd64.exe"
@@ -365,23 +481,23 @@
   },
   {
     "category": "app",
-    "distro": "Android Studio 3.3 正式版",
+    "distro": "Android Studio 3.3.1 正式版",
     "urls": [
       {
         "name": "android-studio-ide-182.5199772-windows.exe",
-        "url": "https://dl.google.com/dl/android/studio/install/3.3.0.20/android-studio-ide-182.5199772-windows.exe"
+        "url": "https://dl.google.com/dl/android/studio/install/3.3.1.0/android-studio-ide-182.5264788-windows.exe"
       },
       {
         "name": "android-studio-ide-182.5199772-windows.zip",
-        "url": "https://dl.google.com/dl/android/studio/ide-zips/3.3.0.20/android-studio-ide-182.5199772-windows.zip"
+        "url": "https://dl.google.com/dl/android/studio/ide-zips/3.3.1.0/android-studio-ide-182.5264788-windows.zip"
       },
       {
         "name": "android-studio-ide-182.5199772-mac.dmg",
-        "url": "https://dl.google.com/dl/android/studio/ide-zips/3.3.0.20/android-studio-ide-182.5199772-mac.dmg"
+        "url": "https://dl.google.com/dl/android/studio/ide-zips/3.3.1.0/android-studio-ide-182.5264788-mac.dmg"
       },
       {
         "name": "android-studio-ide-182.5199772-linux.zip",
-        "url": "https://dl.google.com/dl/android/studio/ide-zips/3.3.0.20/android-studio-ide-182.5199772-linux.zip"
+        "url": "https://dl.google.com/dl/android/studio/ide-zips/3.3.1.0/android-studio-ide-182.5264788-linux.zip"
       }
     ]
   },
@@ -404,6 +520,16 @@
       {
         "name": "android-studio-ide-181.5056338-linux.zip",
         "url": "https://dl.google.com/dl/android/studio/ide-zips/3.2.1.0/android-studio-ide-181.5056338-linux.zip"
+      }
+    ]
+  },
+  {
+    "category": "app",
+    "distro": "VSCode",
+    "urls": [
+      {
+        "name": "VSCodeUserSetup-x64-1.31.1.exe",
+        "url": "https://vscode.cdn.azure.cn/stable/1b8e8302e405050205e69b59abb3559592bb9e60/VSCodeUserSetup-x64-1.31.1.exe"
       }
     ]
   }
