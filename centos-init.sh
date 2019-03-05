@@ -1,6 +1,7 @@
 #!/bin/bash
 # curl https://yiyingcanfeng.github.io/centos-init.sh | bash
 
+function system_config() {
 # 修改主机名
 #hostnamectl set-hostname aaa
 # 禁用selinux
@@ -12,7 +13,9 @@ grub2-mkconfig -o /boot/grub2/grub.cfg
 # 请根据具体情况来决定是否关闭防火墙
 systemctl  stop firewalld
 systemctl  disable  firewalld
+}
 
+function config_mirror_and_update() {
 #更换yum源,使用阿里云的源
 mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.backup
 curl -o /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo
@@ -32,19 +35,20 @@ cat > /etc/yum.repos.d/ius.repo <<- "EOF"
 name=ius
 baseurl=https://mirrors.aliyun.com/ius/stable/CentOS/7/$basearch
 gpgcheck=0
-enable=1
+enabled=1
 
 EOF
 yum makecache
 yum update -y
+}
 
-
+function install_usual_software() {
 #一些实用工具,这些大部分在EPEL源里
 yum install -y bash-completion git wget vim nano yum-utils unar screen lrzsz supervisor iotop iftop jnettop mytop apachetop atop htop ncdu nmap pv net-tools sl lynx links crudini the_silver_searcher tig cloc nload w3m axel tmux mc glances multitail
 # python3.6,包括对应版本的pip,php72
 yum install python36u-pip php72u redis5 -y
 # 使用国内pypi源,使用阿里云的源
-# 备选：http://pypi.douban.com/simple/  https://pypi.tuna.tsinghua.edu.cn/simple/
+# 备选：http://pypi.douban.com/simple/  https://pypi.tuna.tsinghua.edu.cn/simple/  https://mirrors.aliyun.com/pypi/simple/
 mkdir -p ~/.pip
 cat > ~/.pip/pip.conf <<- "EOF"
 [global]
@@ -58,7 +62,10 @@ pip3.6 install --upgrade pip
 # 一些基于python的实用或者有意思的工具
 pip3.6 install cheat mycli icdiff you-get lolcat youtube-dl
 
-#配置nodejs10的yum源，安装 nodejs 10(epel源里有nodejs，但版本比较老),使用清华大学的源
+}
+
+function install_nodejs_and_config() {
+#配置nodejs的yum源，安装 nodejs (epel源里有nodejs，但版本比较老),使用清华大学的源
 yum install https://mirrors.tuna.tsinghua.edu.cn/nodesource/rpm_10.x/el/7/x86_64/nodesource-release-el7-1.noarch.rpm -y
 cat > /etc/yum.repos.d/nodesource-el7.repo <<- "EOF"
 [nodesource]
@@ -77,12 +84,17 @@ EOF
 yum makecache
 yum install nodejs -y
 # 更换国内npm源
-npm config set registry https://registry.npm.taobao.org/
-# 备选：https://mirrors.huaweicloud.com/repository/npm/
+npm config set registry https://mirrors.huaweicloud.com/repository/npm/
+# 备选：npm config set registry https://mirrors.huaweicloud.com/repository/npm/
+# npm config set registry https://registry.npm.taobao.org/
 npm cache clean -f
 # 一些基于nodejs的实用或者有意思的工具
-npm install --global get-port-cli hasha-cli http-server
+npm install --global n npm get-port-cli hasha-cli http-server
 
+}
+
+#命令行小游戏哦
+function install_cmd_game() {
 # 2048游戏的shell实现
 curl https://raw.githubusercontent.com/mydzor/bash2048/master/bash2048.sh -o 2048.sh && chmod 755 2048.sh
 # 扫雷游戏的shell实现
@@ -91,6 +103,10 @@ curl https://raw.githubusercontent.com/feherke/Bash-script/master/minesweeper/mi
 git clone https://github.com/uuner/sedtris.git
 chmod 755 sedtris/*
 # ./sedtris/sedtris.sh
+}
+
+#安装jdk和tomcat
+function install_jdk_and_tomcat() {
 #安装openjdk
 yum install java-1.8.0-openjdk-devel.x86_64 -y
 
@@ -108,20 +124,19 @@ yum install java-1.8.0-openjdk-devel.x86_64 -y
 #安装tomcat
 #https://tomcat.apache.org/download-90.cgi 注：请随时关注官网的最新版本，新版本发布后旧版本的链接会失效！
 cd /usr
-wget https://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-9/v9.0.14/bin/apache-tomcat-9.0.14.tar.gz
-tar -zxf apache-tomcat-9.0.14.tar.gz
-touch /usr/lib/systemd/system/tomcat.service
+wget https://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-9/v9.0.16/bin/apache-tomcat-9.0.16.tar.gz
+tar -zxf apache-tomcat-9.0.16.tar.gz
 cat > /usr/lib/systemd/system/tomcat.service <<- "EOF"
 [Unit]
-Description=Tomcat9.0.14
+Description=Tomcat9.0.16
 After=syslog.target network.target remote-fs.target nss-lookup.target
 
 [Service]
 Type=forking
 Environment='CATALINA_OPTS=-Xms128M -Xmx512M -server -XX:+UseParallelGC'
-WorkingDirectory=/usr/apache-tomcat-9.0.14
+WorkingDirectory=/usr/apache-tomcat-9.0.16
 
-ExecStart=/usr/apache-tomcat-9.0.14/bin/startup.sh
+ExecStart=/usr/apache-tomcat-9.0.16/bin/startup.sh
 ExecReload=/bin/kill -s HUP $MAINPID
 ExecStop=/bin/kill -s QUIT $MAINPID
 PrivateTmp=true
@@ -133,7 +148,10 @@ EOF
 systemctl daemon-reload
 systemctl start tomcat
 
+}
+
 #安装mysql5.7 http://mirrors.tuna.tsinghua.edu.cn/mysql,使用清华大学的源
+function install_mysql_and_config() {
 cat > /etc/yum.repos.d/mysql-community.repo <<- "EOF"
 [mysql-connectors-community]
 name=MySQL Connectors Community
@@ -186,7 +204,10 @@ mysql -uroot -p"${pass}" -e"set password=password('${MYSQL_PASSWORD}');" --conne
 mysql -uroot -p"${MYSQL_PASSWORD}" -e"update mysql.user set host='%' where user='root';" --connect-expired-password
 mysql -uroot -p"${MYSQL_PASSWORD}" -e"flush privileges;" --connect-expired-password
 
+}
+
 #安装mongodb,使用清华大学的源
+function install_mongodb() {
 echo "" > /etc/yum.repos.d/mongodb.repo
 for version in "3.0" "3.2" "3.4" "3.6" "4.0"; do
 cat >> /etc/yum.repos.d/mongodb.repo <<- EOF
@@ -201,91 +222,94 @@ done
 yum makecache
 yum install mongodb-org -y
 
+}
+
 #安装docker,使用清华大学的源
+function install_docker() {
 cat > /etc/yum.repos.d/docker-ce.repo <<- "EOF"
 [docker-ce-stable]
 name=Docker CE Stable - $basearch
-baseurl=https://mirrors.tuna.tsinghua.edu.cn/docker-ce/linux/centos/7/$basearch/stable
+baseurl=https://mirrors.aliyun.com/docker-ce/linux/centos/7/$basearch/stable
 enabled=1
 gpgcheck=1
-gpgkey=https://mirrors.tuna.tsinghua.edu.cn/docker-ce/linux/centos/gpg
+gpgkey=https://mirrors.aliyun.com/docker-ce/linux/centos/gpg
 
 [docker-ce-stable-debuginfo]
 name=Docker CE Stable - Debuginfo $basearch
-baseurl=https://mirrors.tuna.tsinghua.edu.cn/docker-ce/linux/centos/7/debug-$basearch/stable
+baseurl=https://mirrors.aliyun.com/docker-ce/linux/centos/7/debug-$basearch/stable
 enabled=0
 gpgcheck=1
 gpgkey=https://mirrors.tuna.tsinghua.edu.cn/docker-ce/linux/centos/gpg
 
 [docker-ce-stable-source]
 name=Docker CE Stable - Sources
-baseurl=https://mirrors.tuna.tsinghua.edu.cn/docker-ce/linux/centos/7/source/stable
+baseurl=https://mirrors.aliyun.com/docker-ce/linux/centos/7/source/stable
 enabled=0
 gpgcheck=1
-gpgkey=https://mirrors.tuna.tsinghua.edu.cn/docker-ce/linux/centos/gpg
+gpgkey=https://mirrors.aliyun.com/docker-ce/linux/centos/gpg
 
 [docker-ce-edge]
 name=Docker CE Edge - $basearch
-baseurl=https://mirrors.tuna.tsinghua.edu.cn/docker-ce/linux/centos/7/$basearch/edge
+baseurl=https://mirrors.aliyun.com/docker-ce/linux/centos/7/$basearch/edge
 enabled=0
 gpgcheck=1
-gpgkey=https://mirrors.tuna.tsinghua.edu.cn/docker-ce/linux/centos/gpg
+gpgkey=https://mirrors.aliyun.com/docker-ce/linux/centos/gpg
 
 [docker-ce-edge-debuginfo]
 name=Docker CE Edge - Debuginfo $basearch
-baseurl=https://mirrors.tuna.tsinghua.edu.cn/docker-ce/linux/centos/7/debug-$basearch/edge
+baseurl=https://mirrors.aliyun.com/docker-ce/linux/centos/7/debug-$basearch/edge
 enabled=0
 gpgcheck=1
-gpgkey=https://mirrors.tuna.tsinghua.edu.cn/docker-ce/linux/centos/gpg
+gpgkey=https://mirrors.aliyun.com/docker-ce/linux/centos/gpg
 
 [docker-ce-edge-source]
 name=Docker CE Edge - Sources
-baseurl=https://mirrors.tuna.tsinghua.edu.cn/docker-ce/linux/centos/7/source/edge
+baseurl=https://mirrors.aliyun.com/docker-ce/linux/centos/7/source/edge
 enabled=0
 gpgcheck=1
 gpgkey=https://mirrors.tuna.tsinghua.edu.cn/docker-ce/linux/centos/gpg
 
 [docker-ce-test]
 name=Docker CE Test - $basearch
-baseurl=https://mirrors.tuna.tsinghua.edu.cn/docker-ce/linux/centos/7/$basearch/test
+baseurl=https://mirrors.aliyun.com/docker-ce/linux/centos/7/$basearch/test
 enabled=0
 gpgcheck=1
-gpgkey=https://mirrors.tuna.tsinghua.edu.cn/docker-ce/linux/centos/gpg
+gpgkey=https://mirrors.aliyun.com/docker-ce/linux/centos/gpg
 
 [docker-ce-test-debuginfo]
 name=Docker CE Test - Debuginfo $basearch
-baseurl=https://mirrors.tuna.tsinghua.edu.cn/docker-ce/linux/centos/7/debug-$basearch/test
+baseurl=https://mirrors.aliyun.com/docker-ce/linux/centos/7/debug-$basearch/test
 enabled=0
 gpgcheck=1
-gpgkey=https://mirrors.tuna.tsinghua.edu.cn/docker-ce/linux/centos/gpg
+gpgkey=https://mirrors.aliyun.com/docker-ce/linux/centos/gpg
 
 [docker-ce-test-source]
 name=Docker CE Test - Sources
-baseurl=https://mirrors.tuna.tsinghua.edu.cn/docker-ce/linux/centos/7/source/test
+baseurl=https://mirrors.aliyun.com/docker-ce/linux/centos/7/source/test
 enabled=0
 gpgcheck=1
-gpgkey=https://mirrors.tuna.tsinghua.edu.cn/docker-ce/linux/centos/gpg
+gpgkey=https://mirrors.aliyun.com/docker-ce/linux/centos/gpg
 
 [docker-ce-nightly]
 name=Docker CE Nightly - $basearch
-baseurl=https://mirrors.tuna.tsinghua.edu.cn/docker-ce/linux/centos/7/$basearch/nightly
+baseurl=https://mirrors.aliyun.com/docker-ce/linux/centos/7/$basearch/nightly
 enabled=0
 gpgcheck=1
-gpgkey=https://mirrors.tuna.tsinghua.edu.cn/docker-ce/linux/centos/gpg
+gpgkey=https://mirrors.aliyun.com/docker-ce/linux/centos/gpg
 
 [docker-ce-nightly-debuginfo]
 name=Docker CE Nightly - Debuginfo $basearch
-baseurl=https://mirrors.tuna.tsinghua.edu.cn/docker-ce/linux/centos/7/debug-$basearch/nightly
+baseurl=https://mirrors.aliyun.com/docker-ce/linux/centos/7/debug-$basearch/nightly
 enabled=0
 gpgcheck=1
-gpgkey=https://mirrors.tuna.tsinghua.edu.cn/docker-ce/linux/centos/gpg
+gpgkey=https://mirrors.aliyun.com/docker-ce/linux/centos/gpg
 
 [docker-ce-nightly-source]
 name=Docker CE Nightly - Sources
-baseurl=https://mirrors.tuna.tsinghua.edu.cn/docker-ce/linux/centos/7/source/nightly
+baseurl=https://mirrors.aliyun.com/docker-ce/linux/centos/7/source/nightly
 enabled=0
 gpgcheck=1
-gpgkey=https://mirrors.tuna.tsinghua.edu.cn/docker-ce/linux/centos/gpg
+gpgkey=https://mirrors.aliyun.com/docker-ce/linux/centos/gpg
 
 EOF
 yum install docker-ce -y
@@ -297,3 +321,13 @@ cat > /etc/docker/daemon.json <<- "EOF"
 }
 EOF
 systemctl restart docker
+}
+system_config
+config_mirror_and_update
+install_usual_software
+install_nodejs_and_config
+install_cmd_game
+install_jdk_and_tomcat
+install_mysql_and_config
+install_mongodb
+install_docker
