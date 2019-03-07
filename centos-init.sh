@@ -17,44 +17,15 @@ function system_config() {
 }
 
 function config_mirror_and_update() {
-#更换yum源
-    mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.backup
+    MIRROR="https://mirrors.huaweicloud.com"
+    #更换yum源
+    cp /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.backup
     #curl -o /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo
-    cat > /etc/yum.repos.d/CentOS-Base.repo <<- "EOF"
-[base]
-name=CentOS-$releasever - Base
-baseurl=https://mirrors.tuna.tsinghua.edu.cn/centos/$releasever/os/$basearch/
-#mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=os
-gpgcheck=1
-gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
-
-#released updates
-[updates]
-name=CentOS-$releasever - Updates
-baseurl=https://mirrors.tuna.tsinghua.edu.cn/centos/$releasever/updates/$basearch/
-#mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=updates
-gpgcheck=1
-gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
-
-#additional packages that may be useful
-[extras]
-name=CentOS-$releasever - Extras
-baseurl=https://mirrors.tuna.tsinghua.edu.cn/centos/$releasever/extras/$basearch/
-#mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=extras
-gpgcheck=1
-gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
-
-#additional packages that extend functionality of existing packages
-[centosplus]
-name=CentOS-$releasever - Plus
-baseurl=https://mirrors.tuna.tsinghua.edu.cn/centos/$releasever/centosplus/$basearch/
-#mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=centosplus
-gpgcheck=1
-enabled=0
-gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
-
-EOF
+    sed -i "s/#baseurl/baseurl/g" /etc/yum.repos.d/CentOS-Base.repo
+    sed -i "s/mirrorlist=http/#mirrorlist=http/g" /etc/yum.repos.d/CentOS-Base.repo
+    sed -i "s@http://mirror.centos.org@$MIRROR@g" /etc/yum.repos.d/CentOS-Base.repo
     yum makecache
+
     #同步时间
     yum install -y ntpdate
     ntpdate time.windows.com
@@ -62,45 +33,20 @@ EOF
     #配置EPEL源
     #EPEL (Extra Packages for Enterprise Linux) 是由 Fedora Special Interest Group 为企业 Linux 创建、维护和管理的一个高质量附加包集合，适用于但不仅限于 Red Hat Enterprise Linux (RHEL), CentOS, Scientific Linux (SL), Oracle Linux (OL)
     yum install -y epel-release
-    mv /etc/yum.repos.d/epel.repo /etc/yum.repos.d/epel.repo.backup
+    cp /etc/yum.repos.d/epel.repo /etc/yum.repos.d/epel.repo.backup
     mv /etc/yum.repos.d/epel-testing.repo /etc/yum.repos.d/epel-testing.repo.backup
-    #curl -o /etc/yum.repos.d/epel.repo http://mirrors.aliyun.com/repo/epel-7.repo
-    cat > /etc/yum.repos.d/epel.repo <<- "EOF"
-[epel]
-name=Extra Packages for Enterprise Linux 7 - $basearch
-baseurl=https://mirrors.tuna.tsinghua.edu.cn/epel/7/$basearch
-#mirrorlist=https://mirrors.fedoraproject.org/metalink?repo=epel-7&arch=$basearch
-failovermethod=priority
-enabled=1
-gpgcheck=1
-gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-7
-
-[epel-debuginfo]
-name=Extra Packages for Enterprise Linux 7 - $basearch - Debug
-baseurl=https://mirrors.tuna.tsinghua.edu.cn/epel/7/$basearch/debug
-#mirrorlist=https://mirrors.fedoraproject.org/metalink?repo=epel-debug-7&arch=$basearch
-failovermethod=priority
-enabled=0
-gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-7
-gpgcheck=1
-
-[epel-source]
-name=Extra Packages for Enterprise Linux 7 - $basearch - Source
-baseurl=https://mirrors.tuna.tsinghua.edu.cn/epel/7/SRPMS
-#mirrorlist=https://mirrors.fedoraproject.org/metalink?repo=epel-source-7&arch=$basearch
-failovermethod=priority
-enabled=0
-gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-7
-gpgcheck=1
-EOF
+    # curl -o /etc/yum.repos.d/epel.repo http://mirrors.aliyun.com/repo/epel-7.repo
+    sed -i "s/#baseurl/baseurl/g" /etc/yum.repos.d/epel.repo
+    sed -i "s/metalink/#metalink/g" /etc/yum.repos.d/epel.repo
+    sed -i "s@http://download.fedoraproject.org/pub@$MIRROR@g" /etc/yum.repos.d/epel.repo
 
 #配置ius源
 #IUS只为RHEL和CentOS这两个发行版提供较新版本的rpm包。如果在os或epel找不到某个软件的新版rpm，软件官方又只提供源代码包的时候，可以来ius源中找，几乎都能找到。比如，python3.6(包括对应版本的pip，epel源里有python3.6但没有对应版本的pip),php7.2,redis5等等
+# https://mirrors.aliyun.com  https://mirrors.tuna.tsinghua.edu.cn
     cat > /etc/yum.repos.d/ius.repo <<- "EOF"
 [ius]
 name=ius
-baseurl=https://mirrors.tuna.tsinghua.edu.cn/ius/stable/CentOS/7/$basearch
-#baseurl=https://mirrors.aliyun.com/ius/stable/CentOS/7/$basearch
+baseurl=https://mirrors.aliyun.com/ius/stable/CentOS/7/$basearch
 gpgcheck=0
 enabled=1
 
@@ -116,11 +62,11 @@ function install_usual_software() {
 }
 
 function install_python() {
-# python3.6,包括对应版本的pip
-yum install python36u-pip -y
-# 使用国内pypi源,使用阿里云的源
-# 备选：http://pypi.douban.com/simple/  https://pypi.tuna.tsinghua.edu.cn/simple/  https://mirrors.aliyun.com/pypi/simple/
-mkdir -p ~/.pip
+    # python3.6,包括对应版本的pip
+    yum install python36u-pip -y
+    # 使用国内pypi源,使用阿里云的源
+    # 备选：http://pypi.douban.com/simple/  https://pypi.tuna.tsinghua.edu.cn/simple/  https://mirrors.aliyun.com/pypi/simple/
+    mkdir -p ~/.pip
     cat > ~/.pip/pip.conf <<- "EOF"
 [global]
 index-url = https://mirrors.aliyun.com/pypi/simple/
@@ -168,13 +114,13 @@ EOF
 
 }
 
-#命令行小游戏哦
+#命令行小游戏
 function install_cmd_game() {
-    # 2048游戏的shell实现
+    # 2048
     curl https://raw.githubusercontent.com/mydzor/bash2048/master/bash2048.sh -o 2048.sh && chmod 755 2048.sh
-    # 扫雷游戏的shell实现
+    # 扫雷
     curl https://raw.githubusercontent.com/feherke/Bash-script/master/minesweeper/minesweeper.sh -o minesweeper.sh && chmod 755 minesweeper.sh
-    # 命令行下的俄罗斯方块游戏
+    # 俄罗斯方块
     git clone https://github.com/uuner/sedtris.git
     chmod 755 sedtris/*
     # ./sedtris/sedtris.sh
@@ -299,94 +245,10 @@ EOF
 
 }
 
-#安装docker,使用清华大学的源
+#安装docker
 function install_docker() {
-    cat > /etc/yum.repos.d/docker-ce.repo <<- "EOF"
-[docker-ce-stable]
-name=Docker CE Stable - $basearch
-baseurl=https://mirrors.aliyun.com/docker-ce/linux/centos/7/$basearch/stable
-enabled=1
-gpgcheck=1
-gpgkey=https://mirrors.aliyun.com/docker-ce/linux/centos/gpg
-
-[docker-ce-stable-debuginfo]
-name=Docker CE Stable - Debuginfo $basearch
-baseurl=https://mirrors.aliyun.com/docker-ce/linux/centos/7/debug-$basearch/stable
-enabled=0
-gpgcheck=1
-gpgkey=https://mirrors.tuna.tsinghua.edu.cn/docker-ce/linux/centos/gpg
-
-[docker-ce-stable-source]
-name=Docker CE Stable - Sources
-baseurl=https://mirrors.aliyun.com/docker-ce/linux/centos/7/source/stable
-enabled=0
-gpgcheck=1
-gpgkey=https://mirrors.aliyun.com/docker-ce/linux/centos/gpg
-
-[docker-ce-edge]
-name=Docker CE Edge - $basearch
-baseurl=https://mirrors.aliyun.com/docker-ce/linux/centos/7/$basearch/edge
-enabled=0
-gpgcheck=1
-gpgkey=https://mirrors.aliyun.com/docker-ce/linux/centos/gpg
-
-[docker-ce-edge-debuginfo]
-name=Docker CE Edge - Debuginfo $basearch
-baseurl=https://mirrors.aliyun.com/docker-ce/linux/centos/7/debug-$basearch/edge
-enabled=0
-gpgcheck=1
-gpgkey=https://mirrors.aliyun.com/docker-ce/linux/centos/gpg
-
-[docker-ce-edge-source]
-name=Docker CE Edge - Sources
-baseurl=https://mirrors.aliyun.com/docker-ce/linux/centos/7/source/edge
-enabled=0
-gpgcheck=1
-gpgkey=https://mirrors.tuna.tsinghua.edu.cn/docker-ce/linux/centos/gpg
-
-[docker-ce-test]
-name=Docker CE Test - $basearch
-baseurl=https://mirrors.aliyun.com/docker-ce/linux/centos/7/$basearch/test
-enabled=0
-gpgcheck=1
-gpgkey=https://mirrors.aliyun.com/docker-ce/linux/centos/gpg
-
-[docker-ce-test-debuginfo]
-name=Docker CE Test - Debuginfo $basearch
-baseurl=https://mirrors.aliyun.com/docker-ce/linux/centos/7/debug-$basearch/test
-enabled=0
-gpgcheck=1
-gpgkey=https://mirrors.aliyun.com/docker-ce/linux/centos/gpg
-
-[docker-ce-test-source]
-name=Docker CE Test - Sources
-baseurl=https://mirrors.aliyun.com/docker-ce/linux/centos/7/source/test
-enabled=0
-gpgcheck=1
-gpgkey=https://mirrors.aliyun.com/docker-ce/linux/centos/gpg
-
-[docker-ce-nightly]
-name=Docker CE Nightly - $basearch
-baseurl=https://mirrors.aliyun.com/docker-ce/linux/centos/7/$basearch/nightly
-enabled=0
-gpgcheck=1
-gpgkey=https://mirrors.aliyun.com/docker-ce/linux/centos/gpg
-
-[docker-ce-nightly-debuginfo]
-name=Docker CE Nightly - Debuginfo $basearch
-baseurl=https://mirrors.aliyun.com/docker-ce/linux/centos/7/debug-$basearch/nightly
-enabled=0
-gpgcheck=1
-gpgkey=https://mirrors.aliyun.com/docker-ce/linux/centos/gpg
-
-[docker-ce-nightly-source]
-name=Docker CE Nightly - Sources
-baseurl=https://mirrors.aliyun.com/docker-ce/linux/centos/7/source/nightly
-enabled=0
-gpgcheck=1
-gpgkey=https://mirrors.aliyun.com/docker-ce/linux/centos/gpg
-
-EOF
+    yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+    sed -i "s@https://download.docker.com@https://mirrors.aliyun.com/docker-ce@g"  /etc/yum.repos.d/docker-ce.repo
     yum install docker-ce -y
     systemctl start docker
 #配置国内docker加速器
