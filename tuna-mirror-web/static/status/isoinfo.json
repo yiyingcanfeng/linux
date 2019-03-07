@@ -217,7 +217,7 @@
       },
       {
         "name": "apache-tomcat-8.5.37-windows-x64.zip",
-        "url": "https://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-9/v8.5.37/bin/apache-tomcat-8.5.37-windows-x64.zip"
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-8/v8.5.37/bin/apache-tomcat-8.5.37-windows-x64.zip"
       },
       {
         "name": "apache-tomcat-8.5.37.tar.gz",
@@ -481,23 +481,23 @@
   },
   {
     "category": "app",
-    "distro": "Android Studio 3.3.1 正式版",
+    "distro": "Android Studio 3.3.2 正式版",
     "urls": [
       {
-        "name": "android-studio-ide-182.5199772-windows.exe",
-        "url": "https://dl.google.com/dl/android/studio/install/3.3.1.0/android-studio-ide-182.5264788-windows.exe"
+        "name": "android-studio-ide-182.5264788-windows.exe",
+        "url": "https://dl.google.com/dl/android/studio/install/3.3.2.0/android-studio-ide-182.5314842-windows.exe"
       },
       {
-        "name": "android-studio-ide-182.5199772-windows.zip",
-        "url": "https://dl.google.com/dl/android/studio/ide-zips/3.3.1.0/android-studio-ide-182.5264788-windows.zip"
+        "name": "android-studio-ide-182.5264788-windows.zip",
+        "url": "https://dl.google.com/dl/android/studio/ide-zips/3.3.2.0/android-studio-ide-182.5314842-windows.zip"
       },
       {
-        "name": "android-studio-ide-182.5199772-mac.dmg",
-        "url": "https://dl.google.com/dl/android/studio/ide-zips/3.3.1.0/android-studio-ide-182.5264788-mac.dmg"
+        "name": "android-studio-ide-182.5264788-mac.dmg",
+        "url": "https://dl.google.com/dl/android/studio/install/3.3.2.0/android-studio-ide-182.5314842-mac.dmg"
       },
       {
-        "name": "android-studio-ide-182.5199772-linux.zip",
-        "url": "https://dl.google.com/dl/android/studio/ide-zips/3.3.1.0/android-studio-ide-182.5264788-linux.zip"
+        "name": "android-studio-ide-182.5264788-5264788.zip",
+        "url": "https://dl.google.com/dl/android/studio/ide-zips/3.3.2.0/android-studio-ide-182.5314842-linux.zip"
       }
     ]
   },
