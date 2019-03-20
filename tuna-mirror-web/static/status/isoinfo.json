@@ -566,6 +566,28 @@
         "url": "https://dl.google.com/release2/chrome/Y-iTj8UsZ5o_73.0.3683.75/GoogleChrome-73.0.3683.75.dmg"
       }
     ]
+  },
+  {
+    "category": "app",
+    "distro": "VirtualBox",
+    "urls": [
+      {
+        "name": "VirtualBox-6.0.4-128413-Win.exe",
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/virtualbox/6.0.4/VirtualBox-6.0.4-128413-Win.exe"
+      },
+      {
+        "name": "VirtualBox-6.0.4-128413-OSX.dmg",
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/virtualbox/6.0.4/VirtualBox-6.0.4-128413-OSX.dmg"
+      },
+      {
+        "name": "VirtualBox-5.2.22-126460-Win.exe",
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/virtualbox/5.2.22/VirtualBox-5.2.22-126460-Win.exe"
+      },
+      {
+        "name": "VirtualBox-5.2.22-126460-OSX.dmg",
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/virtualbox/5.2.22/VirtualBox-5.2.22-126460-OSX.dmg"
+      }
+    ]
   }
 
 ]
