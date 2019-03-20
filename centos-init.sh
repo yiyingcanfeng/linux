@@ -145,19 +145,19 @@ function install_jdk_and_tomcat() {
 #安装tomcat
 #https://tomcat.apache.org/download-90.cgi 注：请随时关注官网的最新版本，新版本发布后旧版本的链接会失效！
     cd /usr
-    wget https://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-9/v9.0.16/bin/apache-tomcat-9.0.16.tar.gz
-    tar -zxf apache-tomcat-9.0.16.tar.gz
+    wget https://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-9/v9.0.17/bin/apache-tomcat-9.0.17.tar.gz
+    tar -zxf apache-tomcat-9.0.17.tar.gz
     cat > /usr/lib/systemd/system/tomcat.service <<- "EOF"
 [Unit]
-Description=Tomcat9.0.16
+Description=Tomcat9.0.17
 After=syslog.target network.target remote-fs.target nss-lookup.target
 
 [Service]
 Type=forking
 Environment='CATALINA_OPTS=-Xms128M -Xmx512M -server -XX:+UseParallelGC'
-WorkingDirectory=/usr/apache-tomcat-9.0.16
+WorkingDirectory=/usr/apache-tomcat-9.0.17
 
-ExecStart=/usr/apache-tomcat-9.0.16/bin/startup.sh
+ExecStart=/usr/apache-tomcat-9.0.17/bin/startup.sh
 ExecReload=/bin/kill -s HUP $MAINPID
 ExecStop=/bin/kill -s QUIT $MAINPID
 PrivateTmp=true
@@ -207,7 +207,8 @@ EOF
     yum install mysql-community-server -y
     #mysql配置
     if [[ "${MYSQL_PASSWORD}" == "" ]];then
-    MYSQL_PASSWORD=1111 #root用户密码
+    #root用户密码
+    MYSQL_PASSWORD=1111
     fi
     systemctl start mysqld
     systemctl enable mysqld
