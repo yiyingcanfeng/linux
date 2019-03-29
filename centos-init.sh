@@ -1,6 +1,8 @@
 #!/bin/bash
 # curl https://yiyingcanfeng.github.io/centos-init.sh | bash
-# curl https://yiyingcanfeng.github.io/centos-init.sh | bash -s python php nodejs cmd_game jdk mysql mongodb docker
+# 可选参数base python php nodejs cmd_game jdk mysql mongodb docker
+# 比如
+# curl https://yiyingcanfeng.github.io/centos-init.sh | bash -s base
 
 function system_config() {
     # 修改主机名
@@ -12,8 +14,8 @@ function system_config() {
     sed -i 's/GRUB_TIMEOUT=.*/GRUB_TIMEOUT=2/g' /etc/default/grub
     grub2-mkconfig -o /boot/grub2/grub.cfg
     # 请根据具体情况来决定是否关闭防火墙
-    systemctl  stop firewalld
-    systemctl  disable  firewalld
+    systemctl stop firewalld
+    systemctl disable  firewalld
 }
 
 function config_mirror_and_update() {
@@ -23,7 +25,7 @@ function config_mirror_and_update() {
     #curl -o /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo
     sed -i "s/#baseurl/baseurl/g" /etc/yum.repos.d/CentOS-Base.repo
     sed -i "s/mirrorlist=http/#mirrorlist=http/g" /etc/yum.repos.d/CentOS-Base.repo
-    sed -i "s@http://mirror.centos.org@$MIRROR@g" /etc/yum.repos.d/CentOS-Base.repo
+    sed -i "s@baseurl=.*/centos@baseurl=$MIRROR/centos@g" /etc/yum.repos.d/CentOS-Base.repo
     yum makecache
 
     #同步时间
@@ -38,9 +40,9 @@ function config_mirror_and_update() {
     # curl -o /etc/yum.repos.d/epel.repo http://mirrors.aliyun.com/repo/epel-7.repo
     sed -i "s/#baseurl/baseurl/g" /etc/yum.repos.d/epel.repo
     sed -i "s/metalink/#metalink/g" /etc/yum.repos.d/epel.repo
-    sed -i "s@http://download.fedoraproject.org/pub@$MIRROR@g" /etc/yum.repos.d/epel.repo
+    sed -i "s@baseurl=.*/epel@baseurl=$MIRROR/epel@g" /etc/yum.repos.d/epel.repo
 
-#配置ius源
+#配置ius源  https://ius.io/
 #IUS只为RHEL和CentOS这两个发行版提供较新版本的rpm包。如果在os或epel找不到某个软件的新版rpm，软件官方又只提供源代码包的时候，可以来ius源中找，几乎都能找到。比如，python3.6(包括对应版本的pip，epel源里有python3.6但没有对应版本的pip),php7.2,redis5等等
 # https://mirrors.aliyun.com  https://mirrors.tuna.tsinghua.edu.cn
     cat > /etc/yum.repos.d/ius.repo <<- "EOF"
@@ -53,12 +55,8 @@ enabled=1
 EOF
     yum makecache
     yum update -y
-}
-
-function install_usual_software() {
 #一些实用工具,这些大部分在EPEL源里
-    yum install -y bash-completion git wget vim nano yum-utils unar screen lrzsz supervisor iotop iftop jnettop mytop apachetop atop htop ncdu nmap pv net-tools sl lynx links crudini the_silver_searcher tig cloc nload w3m axel tmux mc glances multitail redis5
-
+    yum install -y bash-completion git wget vim nano yum-utils unar screen lrzsz supervisor iotop iftop jnettop mytop apachetop atop htop ncdu nmap pv net-tools sl lynx links crudini the_silver_searcher tig cloc nload w3m axel tmux mc glances multitail redis5 lftp vsftpd
 }
 
 function install_python() {
@@ -142,14 +140,15 @@ function install_jdk_and_tomcat() {
 # EOF
 # source /etc/profile
 
-#安装tomcat
+#安装tomcat9
 #https://tomcat.apache.org/download-90.cgi 注：请随时关注官网的最新版本，新版本发布后旧版本的链接会失效！
     cd /usr
-    wget https://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-9/v9.0.16/bin/apache-tomcat-9.0.16.tar.gz
-    tar -zxf apache-tomcat-9.0.16.tar.gz
+    TOMCAT_VERSION=$(lftp https://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-9/ -e "cls;bye" | awk -F '/' '{print $1}' | awk -F 'v' '{print $2}')
+    wget https://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-9/v${TOMCAT_VERSION}/bin/apache-tomcat-${TOMCAT_VERSION}.tar.gz
+    tar -zxf apache-tomcat-${TOMCAT_VERSION}.tar.gz
     cat > /usr/lib/systemd/system/tomcat.service <<- "EOF"
 [Unit]
-Description=Tomcat9.0.16
+Description=Tomcat-9.0.16
 After=syslog.target network.target remote-fs.target nss-lookup.target
 
 [Service]
@@ -166,6 +165,9 @@ PrivateTmp=true
 WantedBy=multi-user.target
 
 EOF
+    sed -i "s:Description=Tomcat-.*:Description=Tomcat-${TOMCAT_VERSION}:g" /usr/lib/systemd/system/tomcat.service
+    sed -i "s:WorkingDirectory=/usr/apache-tomcat-.*:WorkingDirectory=/usr/apache-tomcat-${TOMCAT_VERSION}:g" /usr/lib/systemd/system/tomcat.service
+    sed -i "s:ExecStart=/usr/apache-tomcat-.*:ExecStart=/usr/apache-tomcat-${TOMCAT_VERSION}/bin/startup.sh:g" /usr/lib/systemd/system/tomcat.service
     systemctl daemon-reload
     systemctl start tomcat
 
@@ -260,9 +262,9 @@ EOF
     systemctl restart docker
 }
 system_config
-config_mirror_and_update
-install_usual_software
+# 如果不指定参数，则执行所有功能模块
 if [[ -z $* ]]; then
+    config_mirror_and_update
     install_python
     install_php
     install_nodejs_and_config
@@ -275,6 +277,9 @@ fi
 
 for arg in $* ; do
     case $arg in
+    base)
+    config_mirror_and_update
+    ;;
     python)
     install_python
     ;;
