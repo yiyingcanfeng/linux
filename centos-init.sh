@@ -148,15 +148,15 @@ function install_jdk_and_tomcat() {
     tar -zxf apache-tomcat-${TOMCAT_VERSION}.tar.gz
     cat > /usr/lib/systemd/system/tomcat.service <<- "EOF"
 [Unit]
-Description=Tomcat-9.0.16
+Description=Tomcat9.0.17
 After=syslog.target network.target remote-fs.target nss-lookup.target
 
 [Service]
 Type=forking
 Environment='CATALINA_OPTS=-Xms128M -Xmx512M -server -XX:+UseParallelGC'
-WorkingDirectory=/usr/apache-tomcat-9.0.16
+WorkingDirectory=/usr/apache-tomcat-9.0.17
 
-ExecStart=/usr/apache-tomcat-9.0.16/bin/startup.sh
+ExecStart=/usr/apache-tomcat-9.0.17/bin/startup.sh
 ExecReload=/bin/kill -s HUP $MAINPID
 ExecStop=/bin/kill -s QUIT $MAINPID
 PrivateTmp=true
@@ -209,7 +209,8 @@ EOF
     yum install mysql-community-server -y
     #mysql配置
     if [[ "${MYSQL_PASSWORD}" == "" ]];then
-    MYSQL_PASSWORD=1111 #root用户密码
+    #root用户密码
+    MYSQL_PASSWORD=1111
     fi
     systemctl start mysqld
     systemctl enable mysqld

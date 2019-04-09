@@ -204,40 +204,40 @@
     "distro": "tomcat",
     "urls": [
       {
-        "name": "apache-tomcat-9.0.16-windows-x64.zip",
-        "url": "https://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-9/v9.0.16/bin/apache-tomcat-9.0.16-windows-x64.zip"
+        "name": "apache-tomcat-9.0.17-windows-x64.zip",
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-9/v9.0.17/bin/apache-tomcat-9.0.17-windows-x64.zip"
       },
       {
-        "name": "apache-tomcat-9.0.16.tar.gz",
-        "url": "https://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-9/v9.0.16/bin/apache-tomcat-9.0.16.tar.gz"
+        "name": "apache-tomcat-9.0.17.tar.gz",
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-9/v9.0.17/bin/apache-tomcat-9.0.17.tar.gz"
       },
       {
-        "name": "apache-tomcat-9.0.16.exe",
-        "url": "https://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-9/v9.0.16/bin/apache-tomcat-9.0.16.exe"
+        "name": "apache-tomcat-9.0.17.exe",
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-9/v9.0.17/bin/apache-tomcat-9.0.17.exe"
       },
       {
-        "name": "apache-tomcat-8.5.37-windows-x64.zip",
-        "url": "https://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-8/v8.5.37/bin/apache-tomcat-8.5.37-windows-x64.zip"
+        "name": "apache-tomcat-8.5.38-windows-x64.zip",
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-8/v8.5.38/bin/apache-tomcat-8.5.38-windows-x64.zip"
       },
       {
-        "name": "apache-tomcat-8.5.37.tar.gz",
-        "url": "https://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-8/v8.5.37/bin/apache-tomcat-8.5.37.tar.gz"
+        "name": "apache-tomcat-8.5.38.tar.gz",
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-8/v8.5.38/bin/apache-tomcat-8.5.38.tar.gz"
       },
       {
-        "name": "apache-tomcat-8.5.37.exe",
-        "url": "https://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-8/v8.5.37/bin/apache-tomcat-8.5.37.exe"
+        "name": "apache-tomcat-8.5.38.exe",
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-8/v8.5.38/bin/apache-tomcat-8.5.38.exe"
       },
       {
-        "name": "apache-tomcat-7.0.92-windows-x64.zip",
-        "url": "https://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-7/v7.0.92/bin/apache-tomcat-7.0.92-windows-x64.zip"
+        "name": "apache-tomcat-7.0.93-windows-x64.zip",
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-7/v7.0.93/bin/apache-tomcat-7.0.93-windows-x64.zip"
       },
       {
-        "name": "apache-tomcat-7.0.92.tar.gz",
-        "url": "https://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-7/v7.0.92/bin/apache-tomcat-7.0.92.tar.gz"
+        "name": "apache-tomcat-7.0.93.tar.gz",
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-7/v7.0.93/bin/apache-tomcat-7.0.93.tar.gz"
       },
       {
-        "name": "apache-tomcat-7.0.92.exe",
-        "url": "https://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-7/v7.0.92/bin/apache-tomcat-7.0.92.exe"
+        "name": "apache-tomcat-7.0.93.exe",
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-7/v7.0.93/bin/apache-tomcat-7.0.93.exe"
       }
     ]
   },
@@ -246,8 +246,8 @@
     "distro": "jmeter",
     "urls": [
       {
-        "name": "apache-jmeter-5.0.zip",
-        "url": "https://mirrors.tuna.tsinghua.edu.cn/apache/jmeter/binaries/apache-jmeter-5.0.zip"
+        "name": "apache-jmeter-5.1.1.zip",
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/apache/jmeter/binaries/apache-jmeter-5.1.1.zip"
       }
     ]
   },
@@ -256,52 +256,100 @@
     "distro": "Jetbrains系列",
     "urls": [
       {
-        "name": "ideaIC-2018.3.4.win.zip",
-        "url": "https://download.jetbrains.8686c.com/idea/ideaIC-2018.3.4.win.zip"
+        "name": "ideaIC-2019.1.win.zip",
+        "url": "https://download.jetbrains.8686c.com/idea/ideaIC-2019.1.win.zip"
       },
       {
-        "name": "ideaIC-2018.3.4.dmg",
-        "url": "https://download.jetbrains.8686c.com/idea/ideaIC-2018.3.4.dmg"
+        "name": "ideaIC-2019.1.dmg",
+        "url": "https://download.jetbrains.8686c.com/idea/ideaIC-2019.1.dmg"
       },
       {
-        "name": "ideaIC-2018.3.4.tar.gz",
-        "url": "https://download.jetbrains.8686c.com/idea/ideaIC-2018.3.4.tar.gz"
+        "name": "ideaIC-2019.1.tar.gz",
+        "url": "https://download.jetbrains.8686c.com/idea/ideaIC-2019.1.tar.gz"
       },
       {
-        "name": "ideaIU-2018.3.4.win.zip",
-        "url": "https://download.jetbrains.8686c.com/idea/ideaIU-2018.3.4.win.zip"
+        "name": "ideaIC-2018.3.6.win.zip",
+        "url": "https://download.jetbrains.8686c.com/idea/ideaIC-2018.3.6.win.zip"
       },
       {
-        "name": "ideaIU-2018.3.4.dmg",
-        "url": "https://download.jetbrains.8686c.com/idea/ideaIU-2018.3.4.dmg"
+        "name": "ideaIC-2018.3.6.dmg",
+        "url": "https://download.jetbrains.8686c.com/idea/ideaIC-2018.3.6.dmg"
       },
       {
-        "name": "ideaIU-2018.3.4.tar.gz",
-        "url": "https://download.jetbrains.8686c.com/idea/ideaIU-2018.3.4.tar.gz"
+        "name": "ideaIC-2018.3.6.tar.gz",
+        "url": "https://download.jetbrains.8686c.com/idea/ideaIC-2018.3.6.tar.gz"
       },
       {
-        "name": "WebStorm-2018.3.4.exe",
-        "url": "https://download.jetbrains.8686c.com/webstorm/WebStorm-2018.3.4.exe"
+        "name": "ideaIU-2019.1.win.zip",
+        "url": "https://download.jetbrains.8686c.com/idea/ideaIU-2019.1.win.zip"
       },
       {
-        "name": "WebStorm-2018.3.4.dmg",
-        "url": "https://download.jetbrains.8686c.com/webstorm/WebStorm-2018.3.4.dmg"
+        "name": "ideaIU-2019.1.dmg",
+        "url": "https://download.jetbrains.8686c.com/idea/ideaIU-2019.1.dmg"
       },
       {
-        "name": "WebStorm-2018.3.4.tar.gz",
-        "url": "https://download.jetbrains.8686c.com/webstorm/WebStorm-2018.3.4.tar.gz"
+        "name": "ideaIU-2019.1.tar.gz",
+        "url": "https://download.jetbrains.8686c.com/idea/ideaIU-2019.1.tar.gz"
       },
       {
-        "name": "pycharm-professional-2018.3.4.exe",
-        "url": "https://download.jetbrains.8686c.com/python/pycharm-professional-2018.3.4.exe"
+        "name": "ideaIU-2018.3.6.win.zip",
+        "url": "https://download.jetbrains.8686c.com/idea/ideaIU-2018.3.6.win.zip"
       },
       {
-        "name": "pycharm-professional-2018.3.4.dmg",
-        "url": "https://download.jetbrains.8686c.com/python/pycharm-professional-2018.3.4.dmg"
+        "name": "ideaIU-2018.3.6.dmg",
+        "url": "https://download.jetbrains.8686c.com/idea/ideaIU-2018.3.6.dmg"
       },
       {
-        "name": "pycharm-professional-2018.3.4.tar.gz",
-        "url": "https://download.jetbrains.8686c.com/python/pycharm-professional-2018.3.4.tar.gz"
+        "name": "ideaIU-2018.3.6.tar.gz",
+        "url": "https://download.jetbrains.8686c.com/idea/ideaIU-2018.3.6.tar.gz"
+      },
+      {
+        "name": "WebStorm-2019.1.exe",
+        "url": "https://download.jetbrains.8686c.com/webstorm/WebStorm-2019.1.exe"
+      },
+      {
+        "name": "WebStorm-2019.1.dmg",
+        "url": "https://download.jetbrains.8686c.com/webstorm/WebStorm-2019.1.dmg"
+      },
+      {
+        "name": "WebStorm-2019.1.tar.gz",
+        "url": "https://download.jetbrains.8686c.com/webstorm/WebStorm-2019.1.tar.gz"
+      },
+      {
+        "name": "WebStorm-2018.3.6.exe",
+        "url": "https://download.jetbrains.8686c.com/webstorm/WebStorm-2018.3.6.exe"
+      },
+      {
+        "name": "WebStorm-2018.3.6.dmg",
+        "url": "https://download.jetbrains.8686c.com/webstorm/WebStorm-2018.3.6.dmg"
+      },
+      {
+        "name": "WebStorm-2018.3.6.tar.gz",
+        "url": "https://download.jetbrains.8686c.com/webstorm/WebStorm-2018.3.6.tar.gz"
+      },
+      {
+        "name": "pycharm-professional-2019.1.exe",
+        "url": "https://download.jetbrains.8686c.com/python/pycharm-professional-2019.1.exe"
+      },
+      {
+        "name": "pycharm-professional-2019.1.dmg",
+        "url": "https://download.jetbrains.8686c.com/python/pycharm-professional-2019.1.dmg"
+      },
+      {
+        "name": "pycharm-professional-2019.1.tar.gz",
+        "url": "https://download.jetbrains.8686c.com/python/pycharm-professional-2019.1.tar.gz"
+      },
+      {
+        "name": "pycharm-professional-2018.3.6.exe",
+        "url": "https://download.jetbrains.8686c.com/python/pycharm-professional-2018.3.6.exe"
+      },
+      {
+        "name": "pycharm-professional-2018.3.6.dmg",
+        "url": "https://download.jetbrains.8686c.com/python/pycharm-professional-2018.3.6.dmg"
+      },
+      {
+        "name": "pycharm-professional-2018.3.6.tar.gz",
+        "url": "https://download.jetbrains.8686c.com/python/pycharm-professional-2018.3.6.tar.gz"
       },
       {
         "name": "CLion-2018.3.4.zip",
@@ -316,16 +364,16 @@
         "url": "https://download.jetbrains.8686c.com/cpp/CLion-2018.3.4.tar.gz"
       },
       {
-        "name": "PhpStorm-2018.3.4.exe",
-        "url": "https://download.jetbrains.8686c.com/webide/PhpStorm-2018.3.4.exe"
+        "name": "PhpStorm-2019.1.exe",
+        "url": "https://download.jetbrains.8686c.com/webide/PhpStorm-2019.1.exe"
       },
       {
-        "name": "PhpStorm-2018.3.4.dmg",
-        "url": "https://download.jetbrains.8686c.com/webide/PhpStorm-2018.3.4.dmg"
+        "name": "PhpStorm-2019.1.dmg",
+        "url": "https://download.jetbrains.8686c.com/webide/PhpStorm-2019.1.dmg"
       },
       {
-        "name": "PhpStorm-2018.3.4.tar.gz",
-        "url": "https://download.jetbrains.8686c.com/webide/PhpStorm-2018.3.4.tar.gz"
+        "name": "PhpStorm-2019.1.tar.gz",
+        "url": "https://download.jetbrains.8686c.com/webide/PhpStorm-2019.1.tar.gz"
       }
     ]
   },
@@ -333,6 +381,18 @@
     "category": "app",
     "distro": "eclipse",
     "urls": [
+      {
+        "name": "eclipse-jee-2019-03-RC1-win32-x86_64.zip",
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/eclipse/2019-03/RC1/eclipse-jee-2019-03-RC1-win32-x86_64.zip"
+      },
+      {
+        "name": "eclipse-jee-2019-03-RC1-macosx-cocoa-x86_64.dmg",
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/eclipse/2019-03/RC1/eclipse-jee-2019-03-RC1-macosx-cocoa-x86_64.dmg"
+      },
+      {
+        "name": "eclipse-jee-2019-03-RC1-linux-gtk-x86_64.tar.gz",
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/eclipse/2019-03/RC1/eclipse-jee-2019-03-RC1-linux-gtk-x86_64.tar.gz"
+      },
       {
         "name": "eclipse-jee-2019-03-M2-win32-x86_64.zip",
         "url": "https://mirrors.tuna.tsinghua.edu.cn/eclipse/2019-03/M2/eclipse-jee-2019-03-M2-win32-x86_64.zip"
@@ -380,12 +440,32 @@
         "url": "https://mirrors.huaweicloud.com/java/jdk/11.0.2+9/jdk-11.0.2_windows-x64_bin.exe"
       },
       {
+        "name": "jdk-11.0.2_windows-x64_bin.zip",
+        "url": "https://mirrors.huaweicloud.com/java/jdk/11.0.2+9/jdk-11.0.2_windows-x64_bin.zip"
+      },
+      {
         "name": "jdk-11.0.2_osx-x64_bin.dmg",
         "url": "https://mirrors.huaweicloud.com/java/jdk/11.0.2+9/jdk-11.0.2_osx-x64_bin.dmg"
       },
       {
         "name": "jdk-11.0.2_linux-x64_bin.tar.gz",
         "url": "https://mirrors.huaweicloud.com/java/jdk/11.0.2+9/jdk-11.0.2_linux-x64_bin.tar.gz"
+      },
+      {
+        "name": "jdk-12_windows-x64_bin.exe",
+        "url": "https://mirrors.huaweicloud.com/java/jdk/12+33/jdk-11.0.2_windows-x64_bin.exe"
+      },
+      {
+        "name": "jdk-12_windows-x64_bin.zip",
+        "url": "https://mirrors.huaweicloud.com/java/jdk/12+33/jdk-12_windows-x64_bin.zip"
+      },
+      {
+        "name": "jdk-12_osx-x64_bin.dmg",
+        "url": "https://mirrors.huaweicloud.com/java/jdk/12+33/jdk-12_osx-x64_bin.dmg"
+      },
+      {
+        "name": "jdk-12_linux-x64_bin.tar.gz",
+        "url": "https://mirrors.huaweicloud.com/java/jdk/12+33/jdk-12_linux-x64_bin.tar.gz"
       }
     ]
   },
@@ -394,8 +474,8 @@
     "distro": "git-for-windows",
     "urls": [
       {
-        "name": "Git-2.20.1-64-bit.exe",
-        "url": "https://mirrors.huaweicloud.com/git-for-windows/v2.20.1.windows.1/Git-2.20.1-64-bit.exe"
+        "name": "Git-2.21.0-64-bit.exe",
+        "url": "https://mirrors.huaweicloud.com/git-for-windows/v2.21.0.windows.1/Git-2.21.0-64-bit.exe"
       }
     ]
   },
@@ -452,12 +532,12 @@
         "url": "https://mirrors.tuna.tsinghua.edu.cn/nodejs-release/v9.11.2/node-v9.11.2-x64.msi"
       },
       {
-        "name": "node-v10.15.0-x64.msi",
-        "url": "https://mirrors.tuna.tsinghua.edu.cn/nodejs-release/v10.15.0/node-v10.15.0-x64.msi"
+        "name": "node-v10.15.3-x64.msi",
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/nodejs-release/v10.15.3/node-v10.15.3-x64.msi"
       },
       {
-        "name": "node-v11.7.0-x64.msi",
-        "url": "https://mirrors.tuna.tsinghua.edu.cn/nodejs-release/v11.7.0/node-v11.7.0-x64.msi"
+        "name": "node-v11.13.0-x64.msi",
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/nodejs-release/v11.13.0/node-v11.13.0-x64.msi"
       }
     ]
   },
@@ -474,8 +554,8 @@
         "url": "http://210.28.8.231/gradle/gradle-4.6-all.zip"
       },
       {
-        "name": "gradle-4.10-all.zip",
-        "url": "http://210.28.8.231/gradle/gradle-4.10-all.zip"
+        "name": "gradle-4.10.2-all.zip",
+        "url": "http://210.28.8.231/gradle/gradle-4.10.2-all.zip"
       }
     ]
   },
@@ -528,8 +608,64 @@
     "distro": "VSCode",
     "urls": [
       {
-        "name": "VSCodeUserSetup-x64-1.31.1.exe",
-        "url": "https://vscode.cdn.azure.cn/stable/1b8e8302e405050205e69b59abb3559592bb9e60/VSCodeUserSetup-x64-1.31.1.exe"
+        "name": "VSCodeUserSetup-x64-1.33.0.exe",
+        "url": "https://vscode.cdn.azure.cn/stable/0dd516dd412d42323fc3464531b1c715d51c4c1a/VSCodeUserSetup-x64-1.33.0.exe"
+      }
+    ]
+  },
+  {
+    "category": "app",
+    "distro": "Notepad++",
+    "urls": [
+      {
+        "name": "npp.7.6.6.Installer.exe",
+        "url": "https://notepad-plus-plus.org/repository/7.x/7.6.6/npp.7.6.6.Installer.exe"
+      }
+    ]
+  },
+  {
+    "category": "app",
+    "distro": "WinSCP",
+    "urls": [
+      {
+        "name": "WinSCP-5.15-Setup.exe",
+        "url": "https://nchc.dl.sourceforge.net/project/winscp/WinSCP/5.15/WinSCP-5.15-Setup.exe"
+      }
+    ]
+  },
+  {
+    "category": "app",
+    "distro": "Chrome",
+    "urls": [
+      {
+        "name": "73.0.3683.103_chrome_installer.exe",
+        "url": "https://dl.google.com/release2/chrome/AJSw3HH2riQ3_73.0.3683.103/73.0.3683.103_chrome_installer.exe"
+      },
+      {
+        "name": "GoogleChrome-73.0.3683.103.dmg",
+        "url": "https://dl.google.com/release2/chrome/APAZHIMjCY0z_73.0.3683.103/GoogleChrome-73.0.3683.103.dmg"
+      }
+    ]
+  },
+  {
+    "category": "app",
+    "distro": "VirtualBox",
+    "urls": [
+      {
+        "name": "VirtualBox-6.0.4-128413-Win.exe",
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/virtualbox/6.0.4/VirtualBox-6.0.4-128413-Win.exe"
+      },
+      {
+        "name": "VirtualBox-6.0.4-128413-OSX.dmg",
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/virtualbox/6.0.4/VirtualBox-6.0.4-128413-OSX.dmg"
+      },
+      {
+        "name": "VirtualBox-5.2.22-126460-Win.exe",
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/virtualbox/5.2.22/VirtualBox-5.2.22-126460-Win.exe"
+      },
+      {
+        "name": "VirtualBox-5.2.22-126460-OSX.dmg",
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/virtualbox/5.2.22/VirtualBox-5.2.22-126460-OSX.dmg"
       }
     ]
   }
