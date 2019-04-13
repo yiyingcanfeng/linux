@@ -1,6 +1,6 @@
 #!/bin/bash
 # curl https://yiyingcanfeng.github.io/centos-init.sh | bash
-# 可选参数base python php nodejs cmd_game jdk mysql mongodb docker
+# 可选参数base kernel python php nodejs cmd_game jdk mysql mongodb docker
 # 比如
 # curl https://yiyingcanfeng.github.io/centos-init.sh | bash -s base
 
@@ -57,6 +57,23 @@ EOF
     yum update -y
 #一些实用工具,这些大部分在EPEL源里
     yum install -y bash-completion git2u wget vim nano yum-utils unar screen lrzsz supervisor iotop iftop jnettop mytop apachetop atop htop ncdu nmap pv net-tools sl lynx links crudini the_silver_searcher tig cloc nload w3m axel tmux mc glances multitail redis5 lftp vsftpd
+}
+
+# 更新内核为主分支ml(mainline)版本
+function update_kernel() {
+    rpm --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org
+    rpm -Uvh http://www.elrepo.org/elrepo-release-7.0-2.el7.elrepo.noarch.rpm
+    sed -i "s/mirrorlist=http/#mirrorlist=http/g" /etc/yum.repos.d/elrepo.repo
+    crudini --set /etc/yum.repos.d/elrepo.repo elrepo baseurl "https://mirrors.tuna.tsinghua.edu.cn/elrepo/elrepo/el7/\$basearch"
+    crudini --set /etc/yum.repos.d/elrepo.repo elrepo-testing baseurl "https://mirrors.tuna.tsinghua.edu.cn/elrepo/testing/el7/\$basearch"
+    crudini --set /etc/yum.repos.d/elrepo.repo elrepo-kernel baseurl "https://mirrors.tuna.tsinghua.edu.cn/elrepo/kernel/el7/\$basearch/"
+    crudini --set /etc/yum.repos.d/elrepo.repo elrepo-extras baseurl "https://mirrors.tuna.tsinghua.edu.cn/elrepo/extras/el7/\$basearch/"
+    yum-config-manager --enable elrepo-kernel
+    yum install kernel-ml-devel kernel-ml -y
+    KERNEL_VERSION=$(yum list kernel-ml | grep kernel.*@elrepo-kernel |  awk -F ' ' '{print $2}')
+    GRUB_ITEM=$(awk -F\' '$1=="menuentry " {print $2}' /etc/grub2.cfg | grep ${KERNEL_VERSION})
+    grub2-set-default '${GRUB_ITEM}'
+    echo '请重启后执行uname -r查看是否生效'
 }
 
 function install_python() {
@@ -266,6 +283,7 @@ system_config
 # 如果不指定参数，则执行所有功能模块
 if [[ -z $* ]]; then
     config_mirror_and_update
+    update_kernel
     install_python
     install_php
     install_nodejs_and_config
@@ -277,32 +295,44 @@ if [[ -z $* ]]; then
 fi
 
 for arg in $* ; do
-    case $arg in
+    case ${arg} in
     base)
     config_mirror_and_update
     ;;
+    kernel)
+    config_mirror_and_update
+    update_kernel
+    ;;
     python)
+    config_mirror_and_update
     install_python
     ;;
     php)
+    config_mirror_and_update
     install_php
     ;;
     nodejs)
+    config_mirror_and_update
     install_nodejs_and_config
     ;;
     cmd_game)
+    config_mirror_and_update
     install_cmd_game
     ;;
     jdk)
+    config_mirror_and_update
     install_jdk_and_tomcat
     ;;
     mysql)
+    config_mirror_and_update
     install_mysql_and_config
     ;;
     mongodb)
+    config_mirror_and_update
     install_mongodb
     ;;
     docker)
+    config_mirror_and_update
     install_docker
     ;;
     esac
