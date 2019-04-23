@@ -204,40 +204,40 @@
     "distro": "tomcat",
     "urls": [
       {
-        "name": "apache-tomcat-9.0.17-windows-x64.zip",
-        "url": "https://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-9/v9.0.17/bin/apache-tomcat-9.0.17-windows-x64.zip"
+        "name": "apache-tomcat-9.0.19-windows-x64.zip",
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-9/v9.0.19/bin/apache-tomcat-9.0.19-windows-x64.zip"
       },
       {
-        "name": "apache-tomcat-9.0.17.tar.gz",
-        "url": "https://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-9/v9.0.17/bin/apache-tomcat-9.0.17.tar.gz"
+        "name": "apache-tomcat-9.0.19.tar.gz",
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-9/v9.0.19/bin/apache-tomcat-9.0.19.tar.gz"
       },
       {
-        "name": "apache-tomcat-9.0.17.exe",
-        "url": "https://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-9/v9.0.17/bin/apache-tomcat-9.0.17.exe"
+        "name": "apache-tomcat-9.0.19.exe",
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-9/v9.0.19/bin/apache-tomcat-9.0.19.exe"
       },
       {
-        "name": "apache-tomcat-8.5.38-windows-x64.zip",
-        "url": "https://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-8/v8.5.38/bin/apache-tomcat-8.5.38-windows-x64.zip"
+        "name": "apache-tomcat-8.5.40-windows-x64.zip",
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-8/v8.5.40/bin/apache-tomcat-8.5.40-windows-x64.zip"
       },
       {
-        "name": "apache-tomcat-8.5.38.tar.gz",
-        "url": "https://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-8/v8.5.38/bin/apache-tomcat-8.5.38.tar.gz"
+        "name": "apache-tomcat-8.5.40.tar.gz",
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-8/v8.5.40/bin/apache-tomcat-8.5.40.tar.gz"
       },
       {
-        "name": "apache-tomcat-8.5.38.exe",
-        "url": "https://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-8/v8.5.38/bin/apache-tomcat-8.5.38.exe"
+        "name": "apache-tomcat-8.5.40.exe",
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-8/v8.5.40/bin/apache-tomcat-8.5.40.exe"
       },
       {
-        "name": "apache-tomcat-7.0.93-windows-x64.zip",
-        "url": "https://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-7/v7.0.93/bin/apache-tomcat-7.0.93-windows-x64.zip"
+        "name": "apache-tomcat-7.0.94-windows-x64.zip",
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-7/v7.0.94/bin/apache-tomcat-7.0.94-windows-x64.zip"
       },
       {
-        "name": "apache-tomcat-7.0.93.tar.gz",
-        "url": "https://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-7/v7.0.93/bin/apache-tomcat-7.0.93.tar.gz"
+        "name": "apache-tomcat-7.0.94.tar.gz",
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-7/v7.0.94/bin/apache-tomcat-7.0.94.tar.gz"
       },
       {
-        "name": "apache-tomcat-7.0.93.exe",
-        "url": "https://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-7/v7.0.93/bin/apache-tomcat-7.0.93.exe"
+        "name": "apache-tomcat-7.0.94.exe",
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-7/v7.0.94/bin/apache-tomcat-7.0.94.exe"
       }
     ]
   },

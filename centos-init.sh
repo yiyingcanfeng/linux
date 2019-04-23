@@ -56,7 +56,7 @@ EOF
     yum makecache
     yum update -y
 #一些实用工具,这些大部分在EPEL源里
-    yum install -y bash-completion git2u wget vim nano yum-utils unar screen lrzsz supervisor iotop iftop jnettop mytop apachetop atop htop ncdu nmap pv net-tools sl lynx links crudini the_silver_searcher tig cloc nload w3m axel tmux mc glances multitail redis5 lftp vsftpd
+    yum install -y bash-completion git2u wget tree vim emacs nano yum-utils unar screen lrzsz supervisor iotop iftop jnettop mytop apachetop atop htop ncdu nmap pv net-tools sl lynx links crudini the_silver_searcher tig cloc nload w3m axel tmux mc glances multitail redis5 lftp vsftpd
 }
 
 # 更新内核为主分支ml(mainline)版本
@@ -92,7 +92,7 @@ trusted-host=mirrors.aliyun.com
 EOF
     pip3.6 install --upgrade pip
     # 一些基于python的实用或者有意思的工具
-    pip3.6 install cheat mycli icdiff you-get lolcat youtube-dl
+    pip3.6 install cheat mycli icdiff you-get lolcat youtube-dl speedtest-cli
 
 }
 
@@ -160,12 +160,16 @@ function install_jdk_and_tomcat() {
 #安装tomcat9
 #https://tomcat.apache.org/download-90.cgi 注：请随时关注官网的最新版本，新版本发布后旧版本的链接会失效！
     cd /usr
-    TOMCAT_VERSION=$(lftp https://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-9/ -e "cls;bye" | awk -F '/' '{print $1}' | awk -F 'v' '{print $2}')
+    TOMCAT_VERSION=$(lftp https://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-9/ -e "cls;bye" | awk -F '/' '{print $1}' | awk -F 'v' '{print $2}' | xargs | awk -F ' ' '{print $2}')
+    if [[ -z ${TOMCAT_VERSION} ]]; then
+        TOMCAT_VERSION=$(lftp https://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-9/ -e "cls;bye" | awk -F '/' '{print $1}' | awk -F 'v' '{print $2}' | xargs | awk -F ' ' '{print $1}')
+    fi
+
     wget https://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-9/v${TOMCAT_VERSION}/bin/apache-tomcat-${TOMCAT_VERSION}.tar.gz
     tar -zxf apache-tomcat-${TOMCAT_VERSION}.tar.gz
     cat > /usr/lib/systemd/system/tomcat.service <<- "EOF"
 [Unit]
-Description=Tomcat9.0.17
+Description=Tomcat-9.0.17
 After=syslog.target network.target remote-fs.target nss-lookup.target
 
 [Service]
