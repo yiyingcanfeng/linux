@@ -1,6 +1,6 @@
 #!/bin/bash
 # curl https://yiyingcanfeng.github.io/centos-init.sh | bash
-# 可选参数base kernel python php nodejs cmd_game jdk mysql mongodb docker
+# 可选参数base kernel python php nodejs cmd_game jdk mysql57 mysql8 mongodb docker
 # 比如
 # curl https://yiyingcanfeng.github.io/centos-init.sh | bash -s base
 
@@ -56,7 +56,7 @@ EOF
     yum makecache
     yum update -y
 #一些实用工具,这些大部分在EPEL源里
-    yum install -y bash-completion git2u wget tree vim emacs nano yum-utils unar screen lrzsz supervisor iotop iftop jnettop mytop apachetop atop htop ncdu nmap pv net-tools sl lynx links crudini the_silver_searcher tig cloc nload w3m axel tmux mc glances multitail redis5 lftp vsftpd
+    yum install -y bash-completion git2u wget hdparm tree zip unzip hdparm vim emacs nano yum-utils unar screen lrzsz supervisor iotop iftop jnettop mytop apachetop atop htop ncdu nmap pv net-tools sl lynx links crudini the_silver_searcher tig cloc nload w3m axel tmux mc glances multitail redis5 lftp vsftpd
 }
 
 # 更新内核为主分支ml(mainline)版本
@@ -98,6 +98,8 @@ EOF
 
 function install_php() {
     yum install php72u* nginx -y
+    systemctl start php-fpm.service
+    systemctl enable php-fpm.service
 }
 
 function install_nodejs_and_config() {
@@ -195,7 +197,7 @@ EOF
 }
 
 #安装mysql5.7 http://mirrors.tuna.tsinghua.edu.cn/mysql,使用清华大学的源
-function install_mysql_and_config() {
+function install_mysql57_and_config() {
     cat > /etc/yum.repos.d/mysql-community.repo <<- "EOF"
 [mysql-connectors-community]
 name=MySQL Connectors Community
@@ -240,12 +242,79 @@ EOF
     mysql -uroot -p"${pass}" -e"alter user root@localhost identified by 'QQQqqq111...' " --connect-expired-password
     pass=QQQqqq111...
     mysql -uroot -p"${pass}" -e"set global validate_password_policy=0;" --connect-expired-password
+#    mysql -uroot -p"${pass}" -e"set global validate_password.policy=0;" --connect-expired-password
     mysql -uroot -p"${pass}" -e"set global validate_password_length=4;" --connect-expired-password
+#    mysql -uroot -p"${pass}" -e"set global validate_password.length=4;" --connect-expired-password
     mysql -uroot -p"${pass}" -e"set global validate_password_mixed_case_count=0;" --connect-expired-password
+#    mysql -uroot -p"${pass}" -e"set global validate_password.mixed_case_count=0;" --connect-expired-password
     mysql -uroot -p"${pass}" -e"set global validate_password_number_count=0;" --connect-expired-password
+#    mysql -uroot -p"${pass}" -e"set global validate_password.number_count=0;" --connect-expired-password
+    echo 'enter your mysql password'
+    #read password
+#    mysql -uroot -p"${pass}" -e"set password=password('${MYSQL_PASSWORD}');" --connect-expired-password
+    mysql -uroot -p"${pass}" -e"alter user 'root'@'localhost' identified with mysql_native_password by '${MYSQL_PASSWORD}';" --connect-expired-password
+    mysql -uroot -p"${MYSQL_PASSWORD}" -e"update mysql.user set host='%' where user='root';" --connect-expired-password
+    mysql -uroot -p"${MYSQL_PASSWORD}" -e"flush privileges;" --connect-expired-password
+
+}
+
+#安装mysql8 http://mirrors.tuna.tsinghua.edu.cn/mysql,使用清华大学的源
+function install_mysql8_and_config() {
+    cat > /etc/yum.repos.d/mysql-community.repo <<- "EOF"
+[mysql-connectors-community]
+name=MySQL Connectors Community
+baseurl=http://mirrors.tuna.tsinghua.edu.cn/mysql/yum/mysql-connectors-community-el7
+enabled=1
+gpgcheck=0
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-mysql
+
+[mysql-tools-community]
+name=MySQL Tools Community
+baseurl=http://mirrors.tuna.tsinghua.edu.cn/mysql/yum/mysql-tools-community-el7
+enabled=1
+gpgcheck=0
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-mysql
+
+[mysql57-community]
+name=MySQL 5.7 Community Server
+baseurl=http://mirrors.tuna.tsinghua.edu.cn/mysql/yum/mysql57-community-el7
+enabled=0
+gpgcheck=0
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-mysql
+
+[mysql80-community]
+name=MySQL 8.0 Community Server
+baseurl=http://mirrors.tuna.tsinghua.edu.cn/mysql/yum/mysql80-community-el7
+enabled=1
+gpgcheck=0
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-mysql
+
+EOF
+
+    yum install mysql-community-server -y
+    #mysql配置
+    if [[ "${MYSQL_PASSWORD}" == "" ]];then
+    #root用户密码
+    MYSQL_PASSWORD=1111
+    fi
+    systemctl start mysqld
+    systemctl enable mysqld
+    passlog=$(grep 'temporary password'  /var/log/mysqld.log)
+    pass=${passlog:${#passlog}-12:${#passlog}}
+    mysql -uroot -p"${pass}" -e"alter user root@localhost identified by 'QQQqqq111...' " --connect-expired-password
+    pass=QQQqqq111...
+    #mysql -uroot -p"${pass}" -e"set global validate_password_policy=0;" --connect-expired-password
+    mysql -uroot -p"${pass}" -e"set global validate_password.policy=0;" --connect-expired-password
+#    mysql -uroot -p"${pass}" -e"set global validate_password_length=4;" --connect-expired-password
+    mysql -uroot -p"${pass}" -e"set global validate_password.length=4;" --connect-expired-password
+#    mysql -uroot -p"${pass}" -e"set global validate_password_mixed_case_count=0;" --connect-expired-password
+    mysql -uroot -p"${pass}" -e"set global validate_password.mixed_case_count=0;" --connect-expired-password
+#    mysql -uroot -p"${pass}" -e"set global validate_password_number_count=0;" --connect-expired-password
+    mysql -uroot -p"${pass}" -e"set global validate_password.number_count=0;" --connect-expired-password
     #echo 'enter your mysql password'
     #read password
-    mysql -uroot -p"${pass}" -e"set password=password('${MYSQL_PASSWORD}');" --connect-expired-password
+#    mysql -uroot -p"${pass}" -e"set password=password('${MYSQL_PASSWORD}');" --connect-expired-password
+    mysql -uroot -p"${pass}" -e"alter user 'root'@'localhost' identified with mysql_native_password by '${MYSQL_PASSWORD}';" --connect-expired-password
     mysql -uroot -p"${MYSQL_PASSWORD}" -e"update mysql.user set host='%' where user='root';" --connect-expired-password
     mysql -uroot -p"${MYSQL_PASSWORD}" -e"flush privileges;" --connect-expired-password
 
@@ -283,9 +352,62 @@ cat > /etc/docker/daemon.json <<- "EOF"
 EOF
     systemctl restart docker
 }
-system_config
+
 # 如果不指定参数，则执行所有功能模块
 if [[ -z $* ]]; then
+    echo "脚本执行后会：
+修改yum源 (base源和epel源默认为 https://mirrors.huaweicloud.com
+其他源是 https://mirrors.tuna.tsinghua.edu.cn
+)
+安装一些生产环境可能必备的软件：
+OpenJDK 1.8
+Apache Tomcat 9
+MySQL 8(不加参数默认为8)
+mongodb-org 4
+Redis 5
+docker-ce
+Python36-pip(python3.6会作为依赖被安装)
+PHP 7.2(Apache httpd会作为依赖被安装)
+
+配置MySQL
+默认开启远程访问，root默认密码为1111
+如需修改默认密码，执行之前修改脚本中的MYSQL_PASSWORD变量的值即可
+或者执行前先导入MYSQL_PASSWORD变量
+
+export MYSQL_PASSWORD=your_password
+
+将pip源更换成国内源
+默认是 http://mirrors.aliyun.com/pypi/simple/
+
+将npm源更换成国内源
+默认是 淘宝 NPM 镜像
+
+修改docker镜像源
+默认是 https://registry.docker-cn.com
+
+安装一些实用的命令行工具：
+通过yum安装的：
+
+bash-completion git wget vim nano yum-utils unar screen lrzsz supervisor iotop iftop jnettop mytop apachetop atop htop ncdu nmap pv net-tools sl lynx links crudini the_silver_searcher tig cloc nload w3m axel tmux mc glances multitail
+通过pip安装的：
+
+cheat mycli icdiff you-get lolcat youtube-dl
+通过npm安装的：
+
+get-port-cli hasha-cli http-server
+
+安装几个基于命令行的小游戏：
+2048
+扫雷
+俄罗斯方块
+"
+    echo "可选参数 all(执行所有模块) base kernel python php nodejs cmd_game jdk mysql57 mysql8 mongodb docker"
+
+fi
+for arg in $* ; do
+    system_config
+    case ${arg} in
+    all)
     config_mirror_and_update
     update_kernel
     install_python
@@ -293,13 +415,10 @@ if [[ -z $* ]]; then
     install_nodejs_and_config
     install_cmd_game
     install_jdk_and_tomcat
-    install_mysql_and_config
+    install_mysql8_and_config
     install_mongodb
     install_docker
-fi
-
-for arg in $* ; do
-    case ${arg} in
+    ;;
     base)
     config_mirror_and_update
     ;;
@@ -327,9 +446,13 @@ for arg in $* ; do
     config_mirror_and_update
     install_jdk_and_tomcat
     ;;
-    mysql)
+    mysql57)
     config_mirror_and_update
-    install_mysql_and_config
+    install_mysql57_and_config
+    ;;
+    mysql8)
+    config_mirror_and_update
+    install_mysql8_and_config
     ;;
     mongodb)
     config_mirror_and_update
