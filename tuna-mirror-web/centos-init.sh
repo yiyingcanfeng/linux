@@ -194,6 +194,17 @@ EOF
     systemctl daemon-reload
     systemctl start tomcat
 
+    #安装maven
+    MAVEN_VERSION=$(lftp https://mirrors.tuna.tsinghua.edu.cn/apache/maven/maven-3/ -e "cls;bye" | sort -rV | xargs | awk -F ' ' '{print $1}' | awk -F '/' '{print $1}')
+    wget https://mirrors.tuna.tsinghua.edu.cn/apache/maven/maven-3/${MAVEN_VERSION}/binaries/apache-maven-${MAVEN_VERSION}-bin.tar.gz
+    tar -zxvf apache-maven-${MAVEN_VERSION}-bin.tar.gz
+    cat >> /etc/profile <<- "EOF"
+export M2_HOME=/usr/apache-maven-3.6
+export PATH=$M2_HOME/bin:$PATH
+EOF
+    sed -i "s:M2_HOME=.*:M2_HOME=/usr/apache-maven-${MAVEN_VERSION}:g" /etc/profile
+    source /etc/profile
+
 }
 
 #安装mysql5.7 http://mirrors.tuna.tsinghua.edu.cn/mysql,使用清华大学的源
