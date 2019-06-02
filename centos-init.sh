@@ -23,8 +23,8 @@ function config_mirror_and_update() {
     #更换yum源
     cp /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.backup
     #curl -o /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo
-    sed -i "s/#baseurl/baseurl/g" /etc/yum.repos.d/CentOS-Base.repo
-    sed -i "s/mirrorlist=http/#mirrorlist=http/g" /etc/yum.repos.d/CentOS-Base.repo
+    sed -i "s@#baseurl@baseurl@g" /etc/yum.repos.d/CentOS-Base.repo
+    sed -i "s@mirrorlist=http@#mirrorlist=http@g" /etc/yum.repos.d/CentOS-Base.repo
     sed -i "s@baseurl=.*/centos@baseurl=$MIRROR/centos@g" /etc/yum.repos.d/CentOS-Base.repo
     yum makecache
 
@@ -38,8 +38,8 @@ function config_mirror_and_update() {
     cp /etc/yum.repos.d/epel.repo /etc/yum.repos.d/epel.repo.backup
     mv /etc/yum.repos.d/epel-testing.repo /etc/yum.repos.d/epel-testing.repo.backup
     # curl -o /etc/yum.repos.d/epel.repo http://mirrors.aliyun.com/repo/epel-7.repo
-    sed -i "s/#baseurl/baseurl/g" /etc/yum.repos.d/epel.repo
-    sed -i "s/metalink/#metalink/g" /etc/yum.repos.d/epel.repo
+    sed -i "s@#baseurl@baseurl@g" /etc/yum.repos.d/epel.repo
+    sed -i "s@metalink@#metalink@g" /etc/yum.repos.d/epel.repo
     sed -i "s@baseurl=.*/epel@baseurl=$MIRROR/epel@g" /etc/yum.repos.d/epel.repo
 
 #配置ius源  https://ius.io/
@@ -56,7 +56,14 @@ EOF
     yum makecache
     yum update -y
 #一些实用工具,这些大部分在EPEL源里
-    yum install -y bash-completion git2u wget hdparm tree zip unzip hdparm vim emacs nano yum-utils unar screen lrzsz supervisor iotop iftop jnettop mytop apachetop atop htop ncdu nmap pv net-tools sl lynx links crudini the_silver_searcher tig cloc nload w3m axel tmux mc glances multitail redis5 lftp vsftpd
+    yum install -y bash-completion git2u wget hdparm tree zip unzip vim emacs nano yum-utils unar screen lrzsz supervisor iotop iftop jnettop mytop apachetop atop htop ncdu nmap pv net-tools sl lynx links crudini the_silver_searcher tig cloc nload w3m axel tmux mc glances multitail redis5 lftp vsftpd
+    cat >> ~/.bashrc  <<- "EOF"   
+alias top='top -c'
+alias historygrep='history|grep $1'
+alias port='netstat -apn|grep $1'
+alias iftop='iftop -B'
+EOF
+    source ~/.bashrc
 }
 
 # 更新内核为主分支ml(mainline)版本
@@ -92,7 +99,7 @@ trusted-host=mirrors.aliyun.com
 EOF
     pip3.6 install --upgrade pip
     # 一些基于python的实用或者有意思的工具
-    pip3.6 install cheat mycli icdiff you-get lolcat youtube-dl speedtest-cli
+    pip3.6 install cheat mycli icdiff you-get lolcat youtube-dl speedtest-cli supervisor
 
 }
 
@@ -127,7 +134,7 @@ EOF
     # npm config set registry https://registry.npm.taobao.org/
     npm cache clean -f
     # 一些基于nodejs的实用或者有意思的工具
-    npm install --global n npm get-port-cli hasha-cli http-server
+    npm install n npm get-port-cli hasha-cli http-server live-server -g
 
 }
 
@@ -203,6 +210,29 @@ export PATH=$M2_HOME/bin:$PATH
 EOF
     sed -i "s:M2_HOME=.*:M2_HOME=/usr/apache-maven-${MAVEN_VERSION}:g" /etc/profile
     source /etc/profile
+    mvn
+    mkdir -p ~/.m2
+    # 创建maven配置文件，并配置阿里云的maven源
+    cat > ~/.m2/settings.xml <<- "EOF"
+<?xml version="1.0" encoding="UTF-8"?>
+<settings
+    xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
+    <pluginGroups></pluginGroups>
+    <proxies></proxies>
+    <servers></servers>
+    <mirrors>
+        <mirror>
+            <id>alimaven</id>
+            <name>aliyun maven</name>
+            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+            <mirrorOf>central</mirrorOf>
+        </mirror>
+    </mirrors>
+    <profiles></profiles>
+</settings>
+EOF
 
 }
 
@@ -330,14 +360,14 @@ EOF
 
 }
 
-#安装mongodb,使用清华大学的源
+#安装mongodb,使用阿里云的源
 function install_mongodb() {
     echo "" > /etc/yum.repos.d/mongodb.repo
-    for version in "3.0" "3.2" "3.4" "3.6" "4.0"; do
+    for version in "3.6" "3.7" "4.0" "4.1"; do
     cat >> /etc/yum.repos.d/mongodb.repo <<- EOF
 [mongodb-org-$version]
 name=MongoDB Repository
-baseurl=https://mirrors.tuna.tsinghua.edu.cn/mongodb/yum/el7-$version/
+baseurl=https://mirrors.aliyun.com/mongodb/yum/redhat/7/mongodb-org/$version/x86_64
 gpgcheck=0
 enabled=1
 
@@ -412,10 +442,11 @@ get-port-cli hasha-cli http-server
 俄罗斯方块
 "
     echo "可选参数 all(执行所有模块) base kernel python php nodejs cmd_game jdk mysql57 mysql8 mongodb docker"
-
-fi
+    
+else
+system_config
+config_mirror_and_update
 for arg in $* ; do
-    system_config
     case ${arg} in
     all)
     config_mirror_and_update
@@ -433,44 +464,37 @@ for arg in $* ; do
     config_mirror_and_update
     ;;
     kernel)
-    config_mirror_and_update
     update_kernel
     ;;
     python)
-    config_mirror_and_update
     install_python
     ;;
     php)
-    config_mirror_and_update
     install_php
     ;;
     nodejs)
-    config_mirror_and_update
     install_nodejs_and_config
     ;;
     cmd_game)
-    config_mirror_and_update
     install_cmd_game
     ;;
     jdk)
-    config_mirror_and_update
     install_jdk_and_tomcat
     ;;
     mysql57)
-    config_mirror_and_update
     install_mysql57_and_config
     ;;
     mysql8)
-    config_mirror_and_update
     install_mysql8_and_config
     ;;
     mongodb)
-    config_mirror_and_update
     install_mongodb
     ;;
     docker)
-    config_mirror_and_update
     install_docker
     ;;
     esac
 done
+
+fi
+
