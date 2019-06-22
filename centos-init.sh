@@ -1,8 +1,9 @@
 #!/bin/bash
-# curl https://yiyingcanfeng.github.io/centos-init.sh | bash
+# curl https://yiycf.com/centos-init.sh | bash
 # 可选参数base kernel python php nodejs cmd_game jdk mysql57 mysql8 mongodb docker
 # 比如
-# curl https://yiyingcanfeng.github.io/centos-init.sh | bash -s base
+# curl https://yiycf.com/centos-init.sh | bash -s base
+# curl https://yiycf.com/centos-init.sh | bash -s python php nodejs cmd_game jdk mysql8 mongodb docker
 
 function system_config() {
     # 修改主机名
@@ -40,24 +41,19 @@ function config_mirror_and_update() {
     # curl -o /etc/yum.repos.d/epel.repo http://mirrors.aliyun.com/repo/epel-7.repo
     sed -i "s@#baseurl@baseurl@g" /etc/yum.repos.d/epel.repo
     sed -i "s@metalink@#metalink@g" /etc/yum.repos.d/epel.repo
-    sed -i "s@baseurl=.*/epel@baseurl=$MIRROR/epel@g" /etc/yum.repos.d/epel.repo
+    sed -i "s@baseurl.*=.*/epel@baseurl=$MIRROR/epel@g" /etc/yum.repos.d/epel.repo
 
 #配置ius源  https://ius.io/
 #IUS只为RHEL和CentOS这两个发行版提供较新版本的rpm包。如果在os或epel找不到某个软件的新版rpm，软件官方又只提供源代码包的时候，可以来ius源中找，几乎都能找到。比如，python3.6(包括对应版本的pip，epel源里有python3.6但没有对应版本的pip),php7.2,redis5等等
 # https://mirrors.aliyun.com  https://mirrors.tuna.tsinghua.edu.cn
-    cat > /etc/yum.repos.d/ius.repo <<- "EOF"
-[ius]
-name=ius
-baseurl=https://mirrors.aliyun.com/ius/stable/CentOS/7/$basearch
-gpgcheck=0
-enabled=1
-
-EOF
+    IUS_MIRROR=https://mirrors.aliyun.com/ius
+    yum install -y https://centos7.iuscommunity.org/ius-release.rpm
+    sed -i "s@baseurl.*=.*/7@baseurl=$IUS_MIRROR/7@g" /etc/yum.repos.d/ius.repo
     yum makecache
     yum update -y
 #一些实用工具,这些大部分在EPEL源里
-    yum install -y bash-completion git2u wget hdparm tree zip unzip vim emacs nano yum-utils unar screen lrzsz supervisor iotop iftop jnettop mytop apachetop atop htop ncdu nmap pv net-tools sl lynx links crudini the_silver_searcher tig cloc nload w3m axel tmux mc glances multitail redis5 lftp vsftpd
-    cat >> ~/.bashrc  <<- "EOF"   
+    yum install -y bash-completion git2u wget hdparm tree zip unzip vim emacs nano yum-utils unar screen lrzsz supervisor iotop iftop jnettop apachetop atop htop ncdu nmap pv net-tools sl lynx links crudini the_silver_searcher tig cloc nload w3m axel tmux mc glances multitail redis5 lftp vsftpd
+    cat >> ~/.bashrc  <<- "EOF"
 alias top='top -c'
 alias historygrep='history|grep $1'
 alias port='netstat -apn|grep $1'
@@ -99,7 +95,7 @@ trusted-host=mirrors.aliyun.com
 EOF
     pip3.6 install --upgrade pip
     # 一些基于python的实用或者有意思的工具
-    pip3.6 install cheat mycli icdiff you-get lolcat youtube-dl speedtest-cli supervisor
+    pip3.6 install cheat mycli icdiff you-get lolcat youtube-dl speedtest-cli supervisor gixy
 
 }
 
@@ -442,7 +438,7 @@ get-port-cli hasha-cli http-server
 俄罗斯方块
 "
     echo "可选参数 all(执行所有模块) base kernel python php nodejs cmd_game jdk mysql57 mysql8 mongodb docker"
-    
+
 else
 system_config
 config_mirror_and_update
