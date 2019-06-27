@@ -28,23 +28,26 @@
                 return 10;
             case 'Dec':
                 return 11;
+            default:
+                return month
         }
     }
-    !function () {
-        var website_title = '';
-        var datetime_format = '%d-%b-%Y %H:%M';
-        var show_readme_md = true;
-        var max_name_length = 50;
 
-        var dom = {
+    !function () {
+        let website_title = '';
+        let datetime_format = '%d-%b-%Y %H:%M';
+        let show_readme_md = true;
+        let max_name_length = 50;
+
+        let dom = {
             element: null,
             get: function (o) {
-                var obj = Object.create(this);
+                let obj = Object.create(this);
                 obj.element = (typeof o == "object") ? o : document.createElement(o);
                 return obj;
             },
             add: function (o) {
-                var obj = dom.get(o);
+                let obj = dom.get(o);
                 this.element.appendChild(obj.element);
                 return obj;
             },
@@ -84,10 +87,10 @@
             return
         }
 
-        var bodylines = document.body.innerHTML.split('\n');
+        let bodylines = document.body.innerHTML.split('\n');
         document.body.innerHTML = '';
 
-        var titlehtml = document.title.replace(/\/$/, '').split('/').slice(1).reduce(function (acc, v, i, a) {
+        let titlehtml = document.title.replace(/\/$/, '').split('/').slice(1).reduce(function (acc, v, i, a) {
             return acc + '<a href="/' + a.slice(0, i + 1).join('/') + '/">' + v + '</a>/'
         }, 'Index of /');
         if (website_title) {
@@ -98,18 +101,18 @@
         div.add('table').add('tbody').add('tr').add('th').html(titlehtml);
         tbody = div.add('table').attr('class', 'table-hover').add('tbody');
 
-        var insert = function (filename, datetime, size) {
+        let insert = function (filename, datetime, size) {
             if (/\/$/.test(filename)) {
                 css = 'file-directory'
             } else if (/\.(zip|7z|bz2|gz|tar|tgz|tbz2|cab)$/.test(filename)) {
                 css = 'file-zip'
-            } else if (/\.(jpg|png|bmp|gif|ico|webp|flv|mp4|mkv|avi|mkv)$/.test(filename)) {
+            } else if (/\.(jpg|png|bmp|gif|ico|webp|flv|mp4|avi|mkv)$/.test(filename)) {
                 css = 'file-media'
             } else {
                 css = 'file'
             }
 
-            displayname = decodeURIComponent(filename.replace(/\/$/, ''))
+            displayname = decodeURIComponent(filename.replace(/\/$/, ''));
             if (displayname.length > max_name_length)
                 displayname = displayname.substring(0, max_name_length - 3) + '..>';
 
@@ -137,37 +140,76 @@
             tr.add('td').text(size)
         };
 
-        var readme = '';
+        let readme = '';
+        let mdFiles = [];
         tr = tbody.add('tr');
         tr.add('td').add('a').attr('class', 'sortBy').attr('id', 'sortByName').attr('href', '#').text('File Name ').add('span').text('↓');
         tr.add('td').add('a').attr('class', 'sortBy').attr('id', 'sortByDate').attr('href', '#').text('Date ').add('span').text('↓');
         tr.add('td').add('a').attr('class', 'sortBy').attr('id', 'sortBySize').attr('href', '#').text('Size ').add('span').text('↓');
         insert('../', '', '-');
-        for (var i in bodylines) {
-            if (m = /\s*<a href="(.+?)">(.+?)<\/a>\s+(\S+)\s+(\S+)\s+(\S+)\s*/.exec(bodylines[i])) {
+        for (let i in bodylines) {
+            if ((m = /\s*<a href="(.+?)">(.+?)<\/a>\s+(\S+)\s+(\S+)\s+(\S+)\s*/.exec(bodylines[i]))) {
                 filename = m[1];
                 datetime = m[3] + ' ' + m[4];
                 size = m[5];
                 insert(filename, datetime, size);
-                if (filename.toLowerCase() == 'readme.md') {
+                if (filename.toLowerCase() === 'readme.md') {
                     readme = filename
+                }
+                if (filename.includes('.md')) {
+                    mdFiles.push(filename);
                 }
             }
         }
 
         document.body.appendChild(div.element);
 
-        if (show_readme_md && readme != '') {
+        if ((show_readme_md && readme !== '') || mdFiles.length !== 0) {
+            if (readme === '') {
+                readme = mdFiles[0];
+            } else {
+                mdFiles.splice(mdFiles.indexOf(readme), 1);
+            }
+
             tbody = div.add('table').add('tbody');
-            tbody.add('tr').add('th').text(readme);
+            let mdTh = tbody.add('tr').add('th').add('select');
+            mdTh.attr('id', 'mdSelect').add('option').attr('value', readme).text(readme);
+            for (let mdFile of mdFiles) {
+                mdTh.add('option').attr('value', mdFile).text(mdFile);
+            }
+            let mdSelect = document.getElementById('mdSelect');
+            mdSelect.onchange = function () {
+                let mdFileName = mdSelect.options[mdSelect.selectedIndex].value;
+                let xhr = new XMLHttpRequest();
+                xhr.open('GET', location.pathname + mdFileName, true);
+                xhr.onload = function () {
+                    if (xhr.status >= 200 && xhr.status < 400) {
+                        wait = function (name, callback) {
+                            let interval = 10; // ms
+                            window.setTimeout(function () {
+                                if (window[name]) {
+                                    callback(window[name])
+                                } else {
+                                    window.setTimeout(arguments.callee, interval)
+                                }
+                            }, interval)
+                        };
+                        wait('marked', function () {
+                            document.getElementById("readme").innerHTML = marked(xhr.responseText)
+                        })
+                    }
+                };
+                xhr.send();
+            };
+
             tbody.add('tr').add('td').add('div').attr('id', 'readme').attr('class', 'markdown-body');
 
-            var xhr = new XMLHttpRequest();
+            let xhr = new XMLHttpRequest();
             xhr.open('GET', location.pathname + readme, true);
             xhr.onload = function () {
                 if (xhr.status >= 200 && xhr.status < 400) {
                     wait = function (name, callback) {
-                        var interval = 10; // ms
+                        let interval = 10; // ms
                         window.setTimeout(function () {
                             if (window[name]) {
                                 callback(window[name])
@@ -186,12 +228,12 @@
             div.add('script').attr('src', 'https://cdn.jsdelivr.net/npm/marked');
             div.add('link').attr('rel', 'stylesheet').attr('href', 'https://cdn.jsdelivr.net/npm/github-markdown-css')
         }
-        var oTable = document.getElementsByClassName('table-hover')[0];
-        var oTbody = oTable.tBodies[0];
-        var trArray = [];//用来存放每一个tr
-        var isAsc = true;//用来判断升序，还是降序
-        for (var i = 0; i < oTbody.rows.length-2; i++) {
-            trArray[i] = oTbody.rows[i+2];//这里是把每一个tr存放到一个数组，而不是排序的依据（这里是cells[0].innerHTML）
+        let oTable = document.getElementsByClassName('table-hover')[0];
+        let oTbody = oTable.tBodies[0];
+        let trArray = [];//用来存放每一个tr
+        let isAsc = true;//用来判断升序，还是降序
+        for (let i = 0; i < oTbody.rows.length - 2; i++) {
+            trArray[i] = oTbody.rows[i + 2];//这里是把每一个tr存放到一个数组，而不是排序的依据（这里是cells[0].innerHTML）
         }
         let sortByNameATag = document.getElementById('sortByName');
         sortByNameATag.onclick = function () {
@@ -225,8 +267,7 @@
                 let year1 = parseInt(datestr1.split('-')[2]);
                 let hour1 = parseInt(datestr1.split(' ')[1].split(':')[0]);
                 let minute1 = parseInt(datestr1.split(' ')[1].split(':')[1]);
-                console.log(year1, month1, day1, hour1, minute1);
-                let date1 = new Date(year1,month1,day1,hour1,minute1,0,0);
+                let date1 = new Date(year1, month1, day1, hour1, minute1, 0, 0);
 
                 let datestr2 = td2.cells[1].innerText;
                 let day2 = parseInt(datestr2.split('-')[0]);
@@ -234,9 +275,8 @@
                 let year2 = parseInt(datestr2.split('-')[2]);
                 let hour2 = parseInt(datestr2.split(' ')[1].split(':')[0]);
                 let minute2 = parseInt(datestr2.split(' ')[1].split(':')[1]);
-                let date2 = new Date(year2,month2,day2,hour2,minute2,0,0);
+                let date2 = new Date(year2, month2, day2, hour2, minute2, 0, 0);
 
-                console.log(date1, date2);
                 if (isAsc) {
                     return date1.getTime() - date2.getTime();
                 } else {
@@ -299,6 +339,7 @@
         };
     }()
 </script>
+<!-- autoindex for nginx, see https://phuslu.github.io -->
 
 <style>
     body {
