@@ -167,6 +167,7 @@
         if ((show_readme_md && readme !== '') || mdFiles.length !== 0) {
             if (readme === '') {
                 readme = mdFiles[0];
+                mdFiles.splice(mdFiles.indexOf(readme), 1);
             } else {
                 mdFiles.splice(mdFiles.indexOf(readme), 1);
             }
