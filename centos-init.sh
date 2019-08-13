@@ -1,6 +1,6 @@
 #!/bin/bash
 # curl https://yiycf.com/centos-init.sh | bash
-# 可选参数base kernel python php nodejs cmd_game jdk mysql57 mysql8 mongodb docker
+# 可选参数base kernel python php nodejs cmd_game jdk mysql57 mysql8 mongodb docker golang
 # 比如
 # curl https://yiycf.com/centos-init.sh | bash -s base
 # curl https://yiycf.com/centos-init.sh | bash -s python php nodejs cmd_game jdk mysql8 mongodb docker
@@ -52,7 +52,7 @@ function config_mirror_and_update() {
     yum makecache
     yum update -y
 #一些实用工具,这些大部分在EPEL源里
-    yum install -y bash-completion git2u wget hdparm tree zip unzip vim emacs nano yum-utils unar screen lrzsz supervisor iotop iftop jnettop apachetop atop htop ncdu nmap pv net-tools sl lynx links crudini the_silver_searcher tig cloc nload w3m axel tmux mc glances multitail redis5 lftp vsftpd
+    yum install -y bash-completion git2u wget hdparm tree zip unzip vim emacs nano yum-utils unar screen lrzsz supervisor iotop iftop jnettop apachetop atop htop ncdu nmap pv net-tools sl lynx links crudini the_silver_searcher tig cloc nload w3m axel tmux mc glances multitail redis5 lftp vsftpd iptraf nethogs goacess
     cat >> ~/.bashrc  <<- "EOF"
 alias top='top -c'
 alias historygrep='history|grep $1'
@@ -99,6 +99,18 @@ EOF
 
 }
 
+function install_golang() {
+    # golang 稳定版
+    golang_version=$(curl https://golang.google.cn/dl/ | tr -d '\n'| grep -oP 'Stable.*Unstable' | grep -oP  'go[0-9|a-z|.]*linux-amd64.tar.gz' | sort -rV | xargs | awk -F ' ' '{print $1}')
+    echo ${golang_version}
+    cd /usr
+    wget https://dl.google.com/go/${golang_version}
+    tar -zxf ${golang_version}
+    echo "export PATH=$PATH:/usr/go/bin" >> /etc/profile
+    source /etc/profile
+    go version
+}
+
 function install_php() {
     yum install php72u* nginx -y
     systemctl start php-fpm.service
@@ -125,13 +137,19 @@ EOF
     yum makecache
     yum install nodejs -y
     # 更换国内npm源
-    npm config set registry https://mirrors.huaweicloud.com/repository/npm/
+    npm config set registry https://registry.npm.taobao.org/
+    npm config set registry https://registry.npm.taobao.org/
+npm config set sass_binary_site https://npm.taobao.org/mirrors/node-sass/
+npm config set electron_mirror https://npm.taobao.org/mirrors/electron/
     # 备选：npm config set registry https://mirrors.huaweicloud.com/repository/npm/
     # npm config set registry https://registry.npm.taobao.org/
     npm cache clean -f
     # 一些基于nodejs的实用或者有意思的工具
     npm install n npm get-port-cli hasha-cli http-server live-server -g
-
+    # 安装最新版和稳定版node，使用淘宝镜像源
+    export NODE_MIRROR=https://npm.taobao.org/mirrors/node/
+    n latest
+    n stable
 }
 
 #命令行小游戏
@@ -149,7 +167,7 @@ function install_cmd_game() {
 #安装jdk和tomcat
 function install_jdk_and_tomcat() {
 #安装openjdk
-    yum install java-1.8.0-openjdk-devel.x86_64 -y
+    yum install java-1.8.0-openjdk-devel.x86_64 java-11-openjdk-devel.x86_64 -y
 
 #或者 oraclejdk
 # wget https://mirrors.huaweicloud.com/java/jdk/8u202-b08/jdk-8u202-linux-x64.tar.gz
@@ -404,6 +422,7 @@ Redis 5
 docker-ce
 Python36-pip(python3.6会作为依赖被安装)
 PHP 7.2(Apache httpd会作为依赖被安装)
+golang 稳定版
 
 配置MySQL
 默认开启远程访问，root默认密码为1111
@@ -464,6 +483,9 @@ for arg in $* ; do
     ;;
     python)
     install_python
+    ;;
+    golang)
+    install_golang
     ;;
     php)
     install_php
