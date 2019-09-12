@@ -20,7 +20,7 @@ function system_config() {
 }
 
 function config_mirror_and_update() {
-    MIRROR="https://mirrors.huaweicloud.com"
+    MIRROR="https://mirrors.aliyun.com"
     #更换yum源
     cp /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.backup
     #curl -o /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo
@@ -37,29 +37,49 @@ function config_mirror_and_update() {
     #EPEL (Extra Packages for Enterprise Linux) 是由 Fedora Special Interest Group 为企业 Linux 创建、维护和管理的一个高质量附加包集合，适用于但不仅限于 Red Hat Enterprise Linux (RHEL), CentOS, Scientific Linux (SL), Oracle Linux (OL)
     yum install -y epel-release
     cp /etc/yum.repos.d/epel.repo /etc/yum.repos.d/epel.repo.backup
-    mv /etc/yum.repos.d/epel-testing.repo /etc/yum.repos.d/epel-testing.repo.backup
+    cp /etc/yum.repos.d/epel-testing.repo /etc/yum.repos.d/epel-testing.repo.backup
     # curl -o /etc/yum.repos.d/epel.repo http://mirrors.aliyun.com/repo/epel-7.repo
     sed -i "s@#baseurl@baseurl@g" /etc/yum.repos.d/epel.repo
     sed -i "s@metalink@#metalink@g" /etc/yum.repos.d/epel.repo
     sed -i "s@baseurl.*=.*/epel@baseurl=$MIRROR/epel@g" /etc/yum.repos.d/epel.repo
 
-#配置ius源  https://ius.io/
-#IUS只为RHEL和CentOS这两个发行版提供较新版本的rpm包。如果在os或epel找不到某个软件的新版rpm，软件官方又只提供源代码包的时候，可以来ius源中找，几乎都能找到。比如，python3.6(包括对应版本的pip，epel源里有python3.6但没有对应版本的pip),php7.2,redis5等等
-# https://mirrors.aliyun.com  https://mirrors.tuna.tsinghua.edu.cn
+    #配置ius源  https://ius.io/    #IUS只为RHEL和CentOS这两个发行版提供较新版本的rpm包。如果在os或epel找不到某个软件的新版rpm，软件官方又只提供源代码包的时候，可以来ius源中找，几乎都能找到。比如，python3.6(包括对应版本的pip，epel源里有python3.6但没有对应版本的pip),php7.2,redis5等等
+    # https://mirrors.aliyun.com  https://mirrors.tuna.tsinghua.edu.cn
     IUS_MIRROR=https://mirrors.aliyun.com/ius
     yum install -y https://centos7.iuscommunity.org/ius-release.rpm
     sed -i "s@baseurl.*=.*/7@baseurl=$IUS_MIRROR/7@g" /etc/yum.repos.d/ius.repo
     yum makecache
     yum update -y
-#一些实用工具,这些大部分在EPEL源里
+    #一些实用工具,这些大部分在EPEL源里
     yum install -y bash-completion git2u wget hdparm tree zip unzip vim emacs nano yum-utils unar screen lrzsz supervisor iotop iftop jnettop apachetop atop htop ncdu nmap pv net-tools sl lynx links crudini the_silver_searcher tig cloc nload w3m axel tmux mc glances multitail redis5 lftp vsftpd iptraf nethogs goacess
     cat >> ~/.bashrc  <<- "EOF"
 alias top='top -c'
 alias historygrep='history|grep $1'
 alias port='netstat -apn|grep $1'
-alias iftop='iftop -B'
+alias iftop='iftop -B -i $1'
 EOF
     source ~/.bashrc
+    # vim配置
+    cat >> ~/.vimrc <<- "EOF"
+syntax on  " 开启语法高亮，从vim7升级到vim8，语法高亮失效时加上
+
+" 记住上次编辑和浏览位置, yum源安装的vim7默认有这个功能，但自己编译的vim8默认没有这个功能
+if has("autocmd")
+  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+endif
+
+" tab设置为4个空格
+set ts=4
+set expandtab
+
+set pastetoggle=<F9>
+
+set fo-=r " 关闭自动注释
+set paste
+
+set backspace=2
+
+EOF
 }
 
 # 更新内核为主分支ml(mainline)版本
@@ -79,9 +99,65 @@ function update_kernel() {
     echo '请重启后执行uname -r查看是否生效'
 }
 
+function change_mirror(){
+    echo "
+1.阿里云
+2.华为云
+3.清华大学开源镜像站
+4.中国科技大学开源镜像站
+    "
+    read -a MIRROR -p "请输入数字:"
+    case ${MIRROR} in
+    1)
+    MIRROR="https://mirrors.aliyun.com"
+    ;;
+    2)
+    MIRROR="https://mirrors.huaweicloud.com"
+    ;;
+    3)
+    MIRROR="https://mirrors.tuna.tsinghua.edu.cn"
+    ;;
+    4)
+    MIRROR="https://mirrors.ustc.edu.cn"
+    ;;
+    *)
+    echo "输入错误"
+    ;;
+    esac
+
+    if [[ -s /etc/yum.repos.d/CentOS-Base.repo ]];then
+        sed -i "s@#baseurl@baseurl@g" /etc/yum.repos.d/CentOS-Base.repo
+        sed -i "s@mirrorlist=http@#mirrorlist=http@g" /etc/yum.repos.d/CentOS-Base.repo
+        sed -i "s@baseurl=.*/centos@baseurl=$MIRROR/centos@g" /etc/yum.repos.d/CentOS-Base.repo
+        echo "Base源配置成功"
+    fi
+    if [[ -s /etc/yum.repos.d/epel.repo ]];then
+        sed -i "s@#baseurl@baseurl@g" /etc/yum.repos.d/epel.repo
+        sed -i "s@metalink@#metalink@g" /etc/yum.repos.d/epel.repo
+        sed -i "s@baseurl=.*/epel@baseurl=$MIRROR/epel@g" /etc/yum.repos.d/epel.repo
+        echo "epel源配置成功"
+    else
+        echo "epel源不存在，即将安装 epel-release ..."
+        yum install -y epel-release
+        sed -i "s@baseurl=.*/epel@baseurl=$MIRROR/epel@g" /etc/yum.repos.d/epel.repo
+        sed -i "s@#baseurl@baseurl@g" /etc/yum.repos.d/epel.repo
+        sed -i "s@metalink@#metalink@g" /etc/yum.repos.d/epel.repo
+    fi
+    if [[ -s /etc/yum.repos.d/ius.repo ]];then
+        sed -i "s@baseurl.*=.*/7@baseurl=$MIRROR/ius/7@g" /etc/yum.repos.d/ius.repo
+        echo "ius源配置成功"
+    else
+        echo "ius源不存在，即将安装 ius-release ..."
+        yum install -y https://centos7.iuscommunity.org/ius-release.rpm
+        sed -i "s@baseurl.*=.*/7@baseurl=$MIRROR/ius/7@g" /etc/yum.repos.d/ius.repo
+    fi
+}
+
 function install_python() {
     # python3.6,包括对应版本的pip
     yum install python36u-pip -y
+    ln -s /usr/bin/python3.6 /bin/python3
+    ln -s /usr/bin/pip3.6 /bin/pip3
     # 使用国内pypi源,使用阿里云的源
     # 备选：http://pypi.douban.com/simple/  https://pypi.tuna.tsinghua.edu.cn/simple/  https://mirrors.aliyun.com/pypi/simple/
     mkdir -p ~/.pip
@@ -112,7 +188,7 @@ function install_golang() {
 }
 
 function install_php() {
-    yum install php72u* nginx -y
+    yum install php72u* nginx httpd -y
     systemctl start php-fpm.service
     systemctl enable php-fpm.service
 }
@@ -138,16 +214,19 @@ EOF
     yum install nodejs -y
     # 更换国内npm源
     npm config set registry https://registry.npm.taobao.org/
-    npm config set registry https://registry.npm.taobao.org/
-npm config set sass_binary_site https://npm.taobao.org/mirrors/node-sass/
-npm config set electron_mirror https://npm.taobao.org/mirrors/electron/
+    npm config set sass_binary_site https://npm.taobao.org/mirrors/node-sass/
+    npm config set electron_mirror https://npm.taobao.org/mirrors/electron/
     # 备选：npm config set registry https://mirrors.huaweicloud.com/repository/npm/
     # npm config set registry https://registry.npm.taobao.org/
     npm cache clean -f
+    # npm 命令 tab 补全配置
+    npm completion >> /etc/bash_completion.d/npm
     # 一些基于nodejs的实用或者有意思的工具
-    npm install n npm get-port-cli hasha-cli http-server live-server -g
+    npm install n npm get-port-cli hasha-cli http-server live-server prettier -g
     # 安装最新版和稳定版node，使用淘宝镜像源
     export NODE_MIRROR=https://npm.taobao.org/mirrors/node/
+    echo "export NODE_MIRROR=https://npm.taobao.org/mirrors/node/" >> /etc/profile
+    source /etc/profile
     n latest
     n stable
 }
@@ -165,10 +244,10 @@ function install_cmd_game() {
 }
 
 #安装jdk和tomcat
-function install_jdk_and_tomcat() {
+function install_tomcat_and_maven() {
 #安装openjdk
     yum install java-1.8.0-openjdk-devel.x86_64 java-11-openjdk-devel.x86_64 -y
-
+    ln -s /usr/lib/jvm/java-11/bin/java /bin/java11
 #或者 oraclejdk
 # wget https://mirrors.huaweicloud.com/java/jdk/8u202-b08/jdk-8u202-linux-x64.tar.gz
 # tar -zxvf jdk-8u202-linux-x64.tar.gz -C /usr/
@@ -248,6 +327,11 @@ EOF
 </settings>
 EOF
 
+}
+
+function install_jenkins() {
+    jenkins=$(lftp https://mirrors.huaweicloud.com/jenkins/redhat-stable/ -e "cls;bye"|sort -rV|xargs | awk -F ' ' '{print $1}')
+    yum install https://mirrors.huaweicloud.com/jenkins/redhat-stable/$jenkins -y
 }
 
 #安装mysql5.7 http://mirrors.tuna.tsinghua.edu.cn/mysql,使用清华大学的源
@@ -357,13 +441,9 @@ EOF
     pass=${passlog:${#passlog}-12:${#passlog}}
     mysql -uroot -p"${pass}" -e"alter user root@localhost identified by 'QQQqqq111...' " --connect-expired-password
     pass=QQQqqq111...
-    #mysql -uroot -p"${pass}" -e"set global validate_password_policy=0;" --connect-expired-password
     mysql -uroot -p"${pass}" -e"set global validate_password.policy=0;" --connect-expired-password
-#    mysql -uroot -p"${pass}" -e"set global validate_password_length=4;" --connect-expired-password
     mysql -uroot -p"${pass}" -e"set global validate_password.length=4;" --connect-expired-password
-#    mysql -uroot -p"${pass}" -e"set global validate_password_mixed_case_count=0;" --connect-expired-password
     mysql -uroot -p"${pass}" -e"set global validate_password.mixed_case_count=0;" --connect-expired-password
-#    mysql -uroot -p"${pass}" -e"set global validate_password_number_count=0;" --connect-expired-password
     mysql -uroot -p"${pass}" -e"set global validate_password.number_count=0;" --connect-expired-password
     #echo 'enter your mysql password'
     #read password
@@ -409,7 +489,8 @@ EOF
 
 # 如果不指定参数，则执行所有功能模块
 if [[ -z $* ]]; then
-    echo "脚本执行后会：
+    echo "
+脚本执行后会：
 修改yum源 (base源和epel源默认为 https://mirrors.huaweicloud.com
 其他源是 https://mirrors.tuna.tsinghua.edu.cn
 )
@@ -455,27 +536,46 @@ get-port-cli hasha-cli http-server
 2048
 扫雷
 俄罗斯方块
+
+参数：
+    c 切换yum源
+    all 等于以下所有参数
+    base 配置yum源以及安装一些基础软件
+    kernel 更新内核为主分支ml，即5.x 版本
+    python 安装python3.6 和 pip，以及一些在pypi上发布的软件包
+    nodejs 安装nodejs，以及一些基于npm发布的软件包
+    php 安装php7.2，附带安装nginx、apache
+    java 安装jdk1.8和jdk11，以及tomcat9和maven
+    jenkins 安装Jenkins
+    golang 安装golang
+    mysql57 安装mysql5.7，默认密码是1111
+    mysql8 安装mysql8，默认密码是1111
+    mongodb 安装mongodb
+    docker 安装docker
+
 "
     echo "可选参数 all(执行所有模块) base kernel python php nodejs cmd_game jdk mysql57 mysql8 mongodb docker"
 
 else
+if [[ $# -gt 1 ]]; then
 system_config
 config_mirror_and_update
 for arg in $* ; do
     case ${arg} in
     all)
     config_mirror_and_update
-    update_kernel
     install_python
     install_php
     install_nodejs_and_config
-    install_cmd_game
-    install_jdk_and_tomcat
+    install_golang
+    install_tomcat_and_maven
     install_mysql8_and_config
     install_mongodb
     install_docker
+    install_cmd_game
     ;;
     base)
+    system_config
     config_mirror_and_update
     ;;
     kernel)
@@ -496,8 +596,11 @@ for arg in $* ; do
     cmd_game)
     install_cmd_game
     ;;
-    jdk)
-    install_jdk_and_tomcat
+    java)
+    install_tomcat_and_maven
+    ;;
+    jenkins)
+    install_jenkins
     ;;
     mysql57)
     install_mysql57_and_config
@@ -511,8 +614,95 @@ for arg in $* ; do
     docker)
     install_docker
     ;;
+    c)
+    change_mirror
+    ;;
     esac
 done
+else
+    case $1 in
+    all)
+    config_mirror_and_update
+    install_python
+    install_php
+    install_nodejs_and_config
+    install_golang
+    install_tomcat_and_maven
+    install_jenkins
+    install_mysql8_and_config
+    install_mongodb
+    install_docker
+    install_cmd_game
+    ;;
+    base)
+    system_config
+    config_mirror_and_update
+    ;;
+    kernel)
+    system_config
+    config_mirror_and_update
+    update_kernel
+    ;;
+    python)
+    system_config
+    config_mirror_and_update
+    install_python
+    ;;
+    golang)
+    system_config
+    config_mirror_and_update
+    install_golang
+    ;;
+    php)
+    system_config
+    config_mirror_and_update
+    install_php
+    ;;
+    nodejs)
+    system_config
+    config_mirror_and_update
+    install_nodejs_and_config
+    ;;
+    cmd_game)
+    system_config
+    config_mirror_and_update
+    install_cmd_game
+    ;;
+    java)
+    system_config
+    config_mirror_and_update
+    install_tomcat_and_maven
+    ;;
+    java)
+    system_config
+    config_mirror_and_update
+    install_jenkins
+    ;;
+    mysql57)
+    system_config
+    config_mirror_and_update
+    install_mysql57_and_config
+    ;;
+    mysql8)
+    system_config
+    config_mirror_and_update
+    install_mysql8_and_config
+    ;;
+    mongodb)
+    system_config
+    config_mirror_and_update
+    install_mongodb
+    ;;
+    docker)
+    system_config
+    config_mirror_and_update
+    install_docker
+    ;;
+    c)
+    change_mirror
+    ;;
+    esac
 
+fi
 fi
 
