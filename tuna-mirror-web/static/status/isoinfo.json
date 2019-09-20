@@ -452,20 +452,20 @@
         "url": "https://mirrors.huaweicloud.com/java/jdk/11.0.2+9/jdk-11.0.2_linux-x64_bin.tar.gz"
       },
       {
-        "name": "jdk-12_windows-x64_bin.exe",
-        "url": "https://mirrors.huaweicloud.com/java/jdk/12+33/jdk-11.0.2_windows-x64_bin.exe"
+        "name": "jdk-12.0.2_windows-x64_bin.exe",
+        "url": "https://mirrors.huaweicloud.com/java/jdk/12.0.2+10/jdk-12.0.2_windows-x64_bin.exe"
       },
       {
-        "name": "jdk-12_windows-x64_bin.zip",
-        "url": "https://mirrors.huaweicloud.com/java/jdk/12+33/jdk-12_windows-x64_bin.zip"
+        "name": "jdk-12.0.2_windows-x64_bin.zip",
+        "url": "https://mirrors.huaweicloud.com/java/jdk/12.0.2+10/jdk-12.0.2_windows-x64_bin.zip"
       },
       {
-        "name": "jdk-12_osx-x64_bin.dmg",
-        "url": "https://mirrors.huaweicloud.com/java/jdk/12+33/jdk-12_osx-x64_bin.dmg"
+        "name": "jdk-12.0.2_osx-x64_bin.dmg",
+        "url": "https://mirrors.huaweicloud.com/java/jdk/12.0.2+10/jdk-12.0.2_osx-x64_bin.dmg"
       },
       {
-        "name": "jdk-12_linux-x64_bin.tar.gz",
-        "url": "https://mirrors.huaweicloud.com/java/jdk/12+33/jdk-12_linux-x64_bin.tar.gz"
+        "name": "jdk-12.0.2_linux-x64_bin.tar.gz",
+        "url": "https://mirrors.huaweicloud.com/java/jdk/12.0.2+10/jdk-12.0.2_linux-x64_bin.tar.gz"
       }
     ]
   },
@@ -474,8 +474,8 @@
     "distro": "git-for-windows",
     "urls": [
       {
-        "name": "Git-2.21.0-64-bit.exe",
-        "url": "https://mirrors.huaweicloud.com/git-for-windows/v2.21.0.windows.1/Git-2.21.0-64-bit.exe"
+        "name": "Git-2.23.0-64-bit.exe",
+        "url": "https://mirrors.huaweicloud.com/git-for-windows/v2.23.0.windows.1/Git-2.23.0-64-bit.exe"
       }
     ]
   },
@@ -494,20 +494,20 @@
     "distro": "python",
     "urls": [
       {
-        "name": "python-3.8.0a1-amd64.exe",
-        "url": "https://mirrors.huaweicloud.com/python/3.8.0/python-3.8.0a1-amd64.exe"
+        "name": "python-3.8.0a4-amd64.exe",
+        "url": "https://mirrors.huaweicloud.com/python/3.8.0/python-3.8.0a4-amd64.exe"
       },
       {
-        "name": "python-3.8.0a1.exe",
-        "url": "https://mirrors.huaweicloud.com/python/3.8.0/python-3.8.0a1.exe"
+        "name": "python-3.8.0a4.exe",
+        "url": "https://mirrors.huaweicloud.com/python/3.8.0/python-3.8.0a4.exe"
       },
       {
-        "name": "python-3.7.2-amd64.exe",
-        "url": "https://mirrors.huaweicloud.com/python/3.7.2/python-3.7.2-amd64.exe"
+        "name": "python-3.7.4-amd64.exe",
+        "url": "https://mirrors.huaweicloud.com/python/3.7.4/python-3.7.4-amd64.exe"
       },
       {
-        "name": "python-3.7.2.exe",
-        "url": "https://mirrors.huaweicloud.com/python/3.7.2/python-3.7.2.exe"
+        "name": "python-3.7.4.exe",
+        "url": "https://mirrors.huaweicloud.com/python/3.7.4/python-3.7.4.exe"
       },
       {
         "name": "python-3.6.8-amd64.exe",
@@ -532,12 +532,16 @@
         "url": "https://mirrors.tuna.tsinghua.edu.cn/nodejs-release/v9.11.2/node-v9.11.2-x64.msi"
       },
       {
-        "name": "node-v10.15.3-x64.msi",
-        "url": "https://mirrors.tuna.tsinghua.edu.cn/nodejs-release/v10.15.3/node-v10.15.3-x64.msi"
+        "name": "node-v10.16.3-x64.msi",
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/nodejs-release/v10.16.3/node-v10.16.3-x64.msi"
       },
       {
-        "name": "node-v11.13.0-x64.msi",
-        "url": "https://mirrors.tuna.tsinghua.edu.cn/nodejs-release/v11.13.0/node-v11.13.0-x64.msi"
+        "name": "node-v11.15.0-x64.msi",
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/nodejs-release/v11.15.0/node-v11.15.0-x64.msi"
+      },
+      {
+        "name": "node-v12.10.0-x64.msi",
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/nodejs-release/v12.10.0/node-v12.10.0-x64.msi"
       }
     ]
   },
@@ -556,6 +560,28 @@
       {
         "name": "gradle-4.10.2-all.zip",
         "url": "http://210.28.8.231/gradle/gradle-4.10.2-all.zip"
+      }
+    ]
+  },
+  {
+    "category": "app",
+    "distro": "Android Studio 3.5.0 正式版",
+    "urls": [
+      {
+        "name": "android-studio-ide-191.5791312-windows.exe",
+        "url": "https://dl.google.com/dl/android/studio/install/3.5.0.21/android-studio-ide-191.5791312-windows.exe"
+      },
+      {
+        "name": "android-studio-ide-191.5791312-windows.zip",
+        "url": "https://dl.google.com/dl/android/studio/ide-zips/3.5.0.21/android-studio-ide-191.5791312-windows.zip"
+      },
+      {
+        "name": "android-studio-ide-191.5791312-mac.dmg",
+        "url": "https://dl.google.com/dl/android/studio/install/3.5.0.21/android-studio-ide-191.5791312-mac.dmg"
+      },
+      {
+        "name": "android-studio-ide-191.5791312-linux.tar.gz",
+        "url": "https://dl.google.com/dl/android/studio/ide-zips/3.5.0.21/android-studio-ide-191.5791312-linux.tar.gz"
       }
     ]
   },
@@ -608,8 +634,8 @@
     "distro": "VSCode",
     "urls": [
       {
-        "name": "VSCodeUserSetup-x64-1.33.0.exe",
-        "url": "https://vscode.cdn.azure.cn/stable/0dd516dd412d42323fc3464531b1c715d51c4c1a/VSCodeUserSetup-x64-1.33.0.exe"
+        "name": "VSCodeUserSetup-x64-1.38.0.exe",
+        "url": "https://vscode.cdn.azure.cn/stable/3db7e09f3b61f915d03bbfa58e258d6eee843f35/VSCodeUserSetup-x64-1.38.0.exe"
       }
     ]
   },
@@ -618,8 +644,12 @@
     "distro": "Notepad++",
     "urls": [
       {
-        "name": "npp.7.6.6.Installer.exe",
-        "url": "https://notepad-plus-plus.org/repository/7.x/7.6.6/npp.7.6.6.Installer.exe"
+        "name": "npp.7.7.1.Installer.exe",
+        "url": "https://notepad-plus-plus.org/repository/7.x/7.7.1/npp.7.7.1.Installer.exe"
+      },
+      {
+        "name": "npp.7.7.1.Installer.x64.exe",
+        "url": "https://notepad-plus-plus.org/repository/7.x/7.7.1/npp.7.7.1.Installer.x64.exe"
       }
     ]
   },
@@ -628,8 +658,8 @@
     "distro": "WinSCP",
     "urls": [
       {
-        "name": "WinSCP-5.15-Setup.exe",
-        "url": "https://nchc.dl.sourceforge.net/project/winscp/WinSCP/5.15/WinSCP-5.15-Setup.exe"
+        "name": "WinSCP-5.15.3-Setup.exe",
+        "url": "https://jaist.dl.sourceforge.net/project/winscp/WinSCP/5.15.3/WinSCP-5.15.3-Setup.exe"
       }
     ]
   },

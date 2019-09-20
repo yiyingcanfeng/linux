@@ -195,17 +195,17 @@ function install_php() {
 
 function install_nodejs_and_config() {
 #配置nodejs的yum源，安装 nodejs (epel源里有nodejs，但版本比较老),使用清华大学的源
-    yum install https://mirrors.tuna.tsinghua.edu.cn/nodesource/rpm_10.x/el/7/x86_64/nodesource-release-el7-1.noarch.rpm -y
+    yum install https://mirrors.tuna.tsinghua.edu.cn/nodesource/rpm_12.x/el/7/x86_64/nodesource-release-el7-1.noarch.rpm -y
     cat > /etc/yum.repos.d/nodesource-el7.repo <<- "EOF"
 [nodesource]
 name=Node.js Packages for Enterprise Linux 7 - $basearch
-baseurl=https://mirrors.tuna.tsinghua.edu.cn/nodesource/rpm_10.x/el/7/$basearch
+baseurl=https://mirrors.tuna.tsinghua.edu.cn/nodesource/rpm_12.x/el/7/$basearch
 enabled=1
 gpgcheck=0
 
 [nodesource-source]
 name=Node.js for Enterprise Linux 7 - $basearch - Source
-baseurl=https://mirrors.tuna.tsinghua.edu.cn/nodesource/rpm_10.x/el/7/SRPMS
+baseurl=https://mirrors.tuna.tsinghua.edu.cn/nodesource/rpm_12.x/el/7/SRPMS
 enabled=0
 gpgcheck=1
 
