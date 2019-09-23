@@ -1,9 +1,9 @@
 #!/bin/bash
-# curl https://yiycf.com/centos-init.sh | bash
-# 可选参数base kernel python php nodejs cmd_game jdk mysql57 mysql8 mongodb docker golang
+# curl https://movefeng.com/centos-init.sh | bash
+# 可选参数: base kernel python php nodejs cmd_game jdk jenkins mysql57 mysql8 mongodb docker golang
 # 比如
-# curl https://yiycf.com/centos-init.sh | bash -s base
-# curl https://yiycf.com/centos-init.sh | bash -s python php nodejs cmd_game jdk mysql8 mongodb docker
+# curl https://movefeng.com/centos-init.sh | bash -s base
+# curl https://movefeng.com/centos-init.sh | bash -s python php nodejs cmd_game jdk mysql8 mongodb docker
 
 function system_config() {
     # 修改主机名
@@ -558,7 +558,7 @@ get-port-cli hasha-cli http-server
     docker 安装docker
 
 "
-    echo "可选参数 all(执行所有模块) base kernel python php nodejs cmd_game jdk mysql57 mysql8 mongodb docker"
+    echo "可选参数 all(执行所有模块) base kernel python php nodejs cmd_game jdk jenkins mysql57 mysql8 mongodb docker"
 
 else
 if [[ $# -gt 1 ]]; then
