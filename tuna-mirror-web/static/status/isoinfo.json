@@ -4,27 +4,27 @@
     "urls": [
       {
         "name": "7 (x86_64, NetInstall)",
-        "url": "https://mirrors.tuna.tsinghua.edu.cn/centos/7.6.1810/isos/x86_64/CentOS-7-x86_64-NetInstall-1810.iso"
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/centos/7/isos/x86_64/CentOS-7-x86_64-NetInstall-1810.iso"
       },
       {
         "name": "7 (x86_64, Minimal)",
-        "url": "https://mirrors.tuna.tsinghua.edu.cn/centos/7.6.1810/isos/x86_64/CentOS-7-x86_64-Minimal-1810.iso"
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/centos/7/isos/x86_64/CentOS-7-x86_64-Minimal-1908.iso"
       },
       {
         "name": "7 (x86_64, LiveKDE)",
-        "url": "https://mirrors.tuna.tsinghua.edu.cn/centos/7.6.1810/isos/x86_64/CentOS-7-x86_64-LiveKDE-1810.iso"
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/centos/7/isos/x86_64/CentOS-7-x86_64-LiveKDE-1908.iso"
       },
       {
         "name": "7 (x86_64, LiveGNOME)",
-        "url": "https://mirrors.tuna.tsinghua.edu.cn/centos/7.6.1810/isos/x86_64/CentOS-7-x86_64-LiveGNOME-1810.iso"
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/centos/7/isos/x86_64/CentOS-7-x86_64-LiveGNOME-1908.iso"
       },
       {
         "name": "7 (x86_64, Everything)",
-        "url": "https://mirrors.tuna.tsinghua.edu.cn/centos/7.6.1810/isos/x86_64/CentOS-7-x86_64-Everything-1810.iso"
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/centos/7/isos/x86_64/CentOS-7-x86_64-Everything-1908.iso"
       },
       {
         "name": "7 (x86_64, DVD)",
-        "url": "https://mirrors.tuna.tsinghua.edu.cn/centos/7.6.1810/isos/x86_64/CentOS-7-x86_64-DVD-1810.iso"
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/centos/7/isos/x86_64/CentOS-7-x86_64-DVD-1908.iso"
       },
       {
         "name": "6.10 (x86_64, netinstall)",

@@ -105,6 +105,7 @@ function change_mirror(){
 2.华为云
 3.清华大学开源镜像站
 4.中国科技大学开源镜像站
+5.腾讯云
     "
     read -a MIRROR -p "请输入数字:"
     case ${MIRROR} in
@@ -119,6 +120,9 @@ function change_mirror(){
     ;;
     4)
     MIRROR="https://mirrors.ustc.edu.cn"
+    ;;
+    5)
+    MIRROR="https://mirrors.cloud.tencent.com"
     ;;
     *)
     echo "输入错误"
@@ -154,10 +158,8 @@ function change_mirror(){
 }
 
 function install_python() {
-    # python3.6,包括对应版本的pip
-    yum install python36u-pip -y
-    ln -s /usr/bin/python3.6 /bin/python3
-    ln -s /usr/bin/pip3.6 /bin/pip3
+    # python3.6,包括对应版本的pip,从CentOS 7.7开始,base源内置python3.6版本,无需再从ius源安装
+    yum install python3-pip -y
     # 使用国内pypi源,使用阿里云的源
     # 备选：http://pypi.douban.com/simple/  https://pypi.tuna.tsinghua.edu.cn/simple/  https://mirrors.aliyun.com/pypi/simple/
     mkdir -p ~/.pip
@@ -169,10 +171,12 @@ index-url = https://mirrors.aliyun.com/pypi/simple/
 trusted-host=mirrors.aliyun.com
 
 EOF
-    pip3.6 install --upgrade pip
+    pip3 install --upgrade pip
     # 一些基于python的实用或者有意思的工具
-    pip3.6 install cheat mycli icdiff you-get lolcat youtube-dl speedtest-cli supervisor gixy
-
+    pip3 install cheat mycli icdiff you-get lolcat youtube-dl speedtest-cli supervisor gixy cowsay
+    # pip 命令自动补全
+    pip3 completion --bash >> /etc/profile
+    source /etc/profile
 }
 
 function install_golang() {
