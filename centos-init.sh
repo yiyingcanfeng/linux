@@ -51,7 +51,7 @@ function config_mirror_and_update() {
     yum makecache
     yum update -y
     #一些实用工具,这些大部分在EPEL源里
-    yum install -y bash-completion git2u wget hdparm tree zip unzip vim emacs nano yum-utils unar screen lrzsz supervisor iotop iftop jnettop apachetop atop htop ncdu nmap pv net-tools sl lynx links crudini the_silver_searcher tig cloc nload w3m axel tmux mc glances multitail redis5 lftp vsftpd iptraf nethogs goacess
+    yum install bash-completion git2u wget hdparm tree zip unzip vim emacs nano yum-utils unar screen lrzsz supervisor iotop iftop jnettop apachetop atop htop ncdu nmap pv net-tools sl lynx links crudini the_silver_searcher tig cloc nload w3m axel tmux mc glances multitail redis5 lftp vsftpd iptraf nethogs goacess socat -y
     cat >> ~/.bashrc  <<- "EOF"
 alias top='top -c'
 alias historygrep='history|grep $1'
@@ -94,8 +94,10 @@ function update_kernel() {
     yum-config-manager --enable elrepo-kernel
     yum install kernel-ml-devel kernel-ml -y
     KERNEL_VERSION=$(yum list kernel-ml | grep kernel.*@elrepo-kernel |  awk -F ' ' '{print $2}')
-    GRUB_ITEM=$(awk -F\' '$1=="menuentry " {print $2}' /etc/grub2.cfg | grep ${KERNEL_VERSION})
-    grub2-set-default '${GRUB_ITEM}'
+    GRUB_ITEM=$(awk -F\' '$1=="menuentry " {print $2}' /etc/grub2.cfg | grep "CentOS Linux (${KERNEL_VERSION}) 7 (Core)")
+    echo "${KERNEL_VERSION}"
+    echo "${GRUB_ITEM}"
+    grub2-set-default "${GRUB_ITEM}"
     echo '请重启后执行uname -r查看是否生效'
 }
 
@@ -160,17 +162,21 @@ function change_mirror(){
 function install_python() {
     # python3.6,包括对应版本的pip,从CentOS 7.7开始,base源内置python3.6版本,无需再从ius源安装
     yum install python3-pip -y
-    # 使用国内pypi源,使用阿里云的源
-    # 备选：http://pypi.douban.com/simple/  https://pypi.tuna.tsinghua.edu.cn/simple/  https://mirrors.aliyun.com/pypi/simple/
-    mkdir -p ~/.pip
-    cat > ~/.pip/pip.conf <<- "EOF"
-[global]
-index-url = https://mirrors.aliyun.com/pypi/simple/
+    # 使用国内pypi源
+    # 备选：https://pypi.douban.com/simple/  https://pypi.tuna.tsinghua.edu.cn/simple/  https://mirrors.aliyun.com/pypi/simple/
+    # 手动创建配置文件的方式
+    # mkdir -p ~/.pip
+    # cat > ~/.pip/pip.conf <<- "EOF"
+# [global]
+# index-url = https://mirrors.aliyun.com/pypi/simple/
 
-[install]
-trusted-host=mirrors.aliyun.com
+# [install]
+# trusted-host=mirrors.aliyun.com
 
-EOF
+# EOF
+    pip3 install -i https://pypi.tuna.tsinghua.edu.cn/simple pip -U
+    # 使用pip命令的方式配置
+    pip3 config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
     pip3 install --upgrade pip
     # 一些基于python的实用或者有意思的工具
     pip3 install cheat mycli icdiff you-get lolcat youtube-dl speedtest-cli supervisor gixy cowsay
@@ -181,12 +187,12 @@ EOF
 
 function install_golang() {
     # golang 稳定版
-    golang_version=$(curl https://golang.google.cn/dl/ | tr -d '\n'| grep -oP 'Stable.*Unstable' | grep -oP  'go[0-9|a-z|.]*linux-amd64.tar.gz' | sort -rV | xargs | awk -F ' ' '{print $1}')
+    golang_version=$(curl https://golang.google.cn/dl/ | tr -d '\n'| grep -oP 'Stable.*' | grep -oP  'go[0-9|a-z|.]*linux-amd64.tar.gz' | sort -rV | xargs | awk -F ' ' '{print $1}')
     echo ${golang_version}
     cd /usr
     wget https://dl.google.com/go/${golang_version}
     tar -zxf ${golang_version}
-    echo "export PATH=$PATH:/usr/go/bin" >> /etc/profile
+    echo "export PATH=\$PATH:/usr/go/bin" >> /etc/profile
     source /etc/profile
     go version
 }
@@ -220,6 +226,8 @@ EOF
     npm config set registry https://registry.npm.taobao.org/
     npm config set sass_binary_site https://npm.taobao.org/mirrors/node-sass/
     npm config set electron_mirror https://npm.taobao.org/mirrors/electron/
+    npm config set phantomjs_cdnurl https://npm.taobao.org/mirrors/phantomjs/
+    npm config set chromedriver_cdnurl http://npm.taobao.org/mirrors/chromedriver/
     # 备选：npm config set registry https://mirrors.huaweicloud.com/repository/npm/
     # npm config set registry https://registry.npm.taobao.org/
     npm cache clean -f
@@ -233,6 +241,9 @@ EOF
     source /etc/profile
     n latest
     n stable
+    # 安装yarn
+    curl --silent --location https://dl.yarnpkg.com/rpm/yarn.repo | sudo tee /etc/yum.repos.d/yarn.repo
+    yum install yarn -y
 }
 
 #命令行小游戏
@@ -333,9 +344,26 @@ EOF
 
 }
 
+# 安装Jenkins
 function install_jenkins() {
     jenkins=$(lftp https://mirrors.huaweicloud.com/jenkins/redhat-stable/ -e "cls;bye"|sort -rV|xargs | awk -F ' ' '{print $1}')
     yum install https://mirrors.huaweicloud.com/jenkins/redhat-stable/$jenkins -y
+}
+
+# 安装elasticsearch
+function install_elasticsearch() {
+    echo "" > /etc/yum.repos.d/elasticsearch.repo
+    cat >> /etc/yum.repos.d/elasticsearch.repo <<- EOF
+[elasticsearch]
+name=elasticsearch
+baseurl=https://mirrors.tuna.tsinghua.edu.cn/elasticstack/yum/elastic-7.x/
+enabled=1
+gpgcheck=0
+
+EOF
+    yum makecache
+    yum install elasticsearch -y
+
 }
 
 #安装mysql5.7 http://mirrors.tuna.tsinghua.edu.cn/mysql,使用清华大学的源
@@ -461,7 +489,7 @@ EOF
 #安装mongodb,使用阿里云的源
 function install_mongodb() {
     echo "" > /etc/yum.repos.d/mongodb.repo
-    for version in "3.6" "3.7" "4.0" "4.1"; do
+    for version in "3.7" "4.2"; do
     cat >> /etc/yum.repos.d/mongodb.repo <<- EOF
 [mongodb-org-$version]
 name=MongoDB Repository
@@ -551,6 +579,7 @@ get-port-cli hasha-cli http-server
     php 安装php7.2，附带安装nginx、apache
     java 安装jdk1.8和jdk11，以及tomcat9和maven
     jenkins 安装Jenkins
+    elasticsearch 安装elasticsearch
     golang 安装golang
     mysql57 安装mysql5.7，默认密码是1111
     mysql8 安装mysql8，默认密码是1111
@@ -573,6 +602,8 @@ for arg in $* ; do
     install_nodejs_and_config
     install_golang
     install_tomcat_and_maven
+    install_jenkins
+    install_elasticsearch
     install_mysql8_and_config
     install_mongodb
     install_docker
@@ -633,6 +664,7 @@ else
     install_golang
     install_tomcat_and_maven
     install_jenkins
+    install_elasticsearch
     install_mysql8_and_config
     install_mongodb
     install_docker
@@ -677,10 +709,15 @@ else
     config_mirror_and_update
     install_tomcat_and_maven
     ;;
-    java)
+    jenkins)
     system_config
     config_mirror_and_update
     install_jenkins
+    ;;
+    elasticsearch)
+    system_config
+    config_mirror_and_update
+    install_elasticsearch
     ;;
     mysql57)
     system_config
