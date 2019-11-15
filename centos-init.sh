@@ -174,12 +174,13 @@ function install_python() {
 # trusted-host=mirrors.aliyun.com
 
 # EOF
-    pip3 install -i https://pypi.tuna.tsinghua.edu.cn/simple pip -U
+    pip3 install -i https://mirrors.aliyun.com/pypi/simple/ pip -U
+	  source /etc/profile
     # 使用pip命令的方式配置
-    pip3 config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
+    pip3 config set global.index-url https://mirrors.aliyun.com/pypi/simple/
     pip3 install --upgrade pip
     # 一些基于python的实用或者有意思的工具
-    pip3 install cheat mycli icdiff you-get lolcat youtube-dl speedtest-cli supervisor gixy cowsay
+    pip3 install virtualenv cheat mycli icdiff you-get lolcat youtube-dl speedtest-cli supervisor gixy cowsay docker-compose
     # pip 命令自动补全
     pip3 completion --bash >> /etc/profile
     source /etc/profile
@@ -204,7 +205,7 @@ function install_php() {
 }
 
 function install_nodejs_and_config() {
-#配置nodejs的yum源，安装 nodejs (epel源里有nodejs，但版本比较老),使用清华大学的源
+	  #配置nodejs的yum源，安装 nodejs (epel源里有nodejs，但版本比较老),使用清华大学的源
     yum install https://mirrors.tuna.tsinghua.edu.cn/nodesource/rpm_12.x/el/7/x86_64/nodesource-release-el7-1.noarch.rpm -y
     cat > /etc/yum.repos.d/nodesource-el7.repo <<- "EOF"
 [nodesource]
@@ -235,12 +236,12 @@ EOF
     npm completion >> /etc/bash_completion.d/npm
     # 一些基于nodejs的实用或者有意思的工具
     npm install n npm get-port-cli hasha-cli http-server live-server prettier -g
-    # 安装最新版和稳定版node，使用淘宝镜像源
+    # 使用n管理node版本，使用淘宝镜像源
     export NODE_MIRROR=https://npm.taobao.org/mirrors/node/
     echo "export NODE_MIRROR=https://npm.taobao.org/mirrors/node/" >> /etc/profile
     source /etc/profile
     n latest
-    n stable
+    # n stable
     # 安装yarn
     curl --silent --location https://dl.yarnpkg.com/rpm/yarn.repo | sudo tee /etc/yum.repos.d/yarn.repo
     yum install yarn -y
@@ -248,6 +249,7 @@ EOF
 
 #命令行小游戏
 function install_cmd_game() {
+	  cd ~
     # 2048
     curl https://raw.githubusercontent.com/mydzor/bash2048/master/bash2048.sh -o 2048.sh && chmod 755 2048.sh
     # 扫雷
@@ -260,8 +262,11 @@ function install_cmd_game() {
 
 #安装jdk和tomcat
 function install_tomcat_and_maven() {
-#安装openjdk
-    yum install java-1.8.0-openjdk-devel.x86_64 java-11-openjdk-devel.x86_64 -y
+	  #安装openjdk
+	  # jdk 11
+    yum install java-11-openjdk-devel.x86_64 -y
+	  # jdk 1.8
+    # yum install java-1.8.0-openjdk-devel.x86_64 -y
     ln -s /usr/lib/jvm/java-11/bin/java /bin/java11
 #或者 oraclejdk
 # wget https://mirrors.huaweicloud.com/java/jdk/8u202-b08/jdk-8u202-linux-x64.tar.gz
@@ -668,7 +673,6 @@ else
     install_mysql8_and_config
     install_mongodb
     install_docker
-    install_cmd_game
     ;;
     base)
     system_config
