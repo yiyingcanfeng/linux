@@ -1,10 +1,16 @@
 [
 
   {
+    "category": "os",
+    "distro": "CentOS",
     "urls": [
       {
+        "name": "8 (x86_64, DVD)",
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/centos/8/isos/x86_64/CentOS-8-x86_64-1905-dvd1.iso"
+      },
+      {
         "name": "7 (x86_64, NetInstall)",
-        "url": "https://mirrors.tuna.tsinghua.edu.cn/centos/7/isos/x86_64/CentOS-7-x86_64-NetInstall-1810.iso"
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/centos/7/isos/x86_64/CentOS-7-x86_64-NetInstall-1908.iso"
       },
       {
         "name": "7 (x86_64, Minimal)",
@@ -66,44 +72,46 @@
         "name": "6.10 (i386, LiveDVD)",
         "url": "https://mirrors.tuna.tsinghua.edu.cn/centos/6.10/isos/i386/CentOS-6.10-i386-LiveDVD.iso"
       }
-    ],
-    "category": "os",
-    "distro": "CentOS"
+    ]
   },
 
   {
+    "category": "os",
+    "distro": "Deepin",
     "urls": [
       {
-        "name": "15.8 (amd64)",
-        "url": "https://mirrors.tuna.tsinghua.edu.cn/deepin-cd/15.8/deepin-15.8-amd64.iso"
+        "name": "15.11 (amd64)",
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/deepin-cd/15.11/deepin-15.11-amd64.iso"
       },
       {
-        "name": "15.9 (amd64)",
-        "url": "https://mirrors.tuna.tsinghua.edu.cn/deepin-cd/15.9/deepin-15.9-amd64.iso"
+        "name": "15.10.1 (amd64)",
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/deepin-cd/15.10.1/deepin-15.10.1-amd64.iso"
       }
-    ],
-    "category": "os",
-    "distro": "Deepin"
+    ]
   },
   {
     "distro": "Ubuntu",
     "category": "os",
     "urls": [
       {
-        "name": "18.10 (amd64, Desktop LiveDVD)",
-        "url": "https://mirrors.tuna.tsinghua.edu.cn/ubuntu-releases/cosmic/ubuntu-18.10-desktop-amd64.iso"
+        "name": "19.10 (amd64, Desktop LiveDVD)",
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/ubuntu-releases/19.10/ubuntu-19.10-desktop-amd64.iso"
       },
       {
-        "name": "18.04.1 (amd64, Desktop LiveDVD)",
-        "url": "https://mirrors.tuna.tsinghua.edu.cn/ubuntu-releases/bionic/ubuntu-18.04.1-desktop-amd64.iso"
+        "name": "19.04 (amd64, Desktop LiveDVD)",
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/ubuntu-releases/19.04/ubuntu-19.04-desktop-amd64.iso"
       },
       {
-        "name": "16.04.5 (amd64, Desktop LiveDVD)",
-        "url": "https://mirrors.tuna.tsinghua.edu.cn/ubuntu-releases/xenial/ubuntu-16.04.5-desktop-amd64.iso"
+        "name": "18.04.3 (amd64, Desktop LiveDVD)",
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/ubuntu-releases/bionic/ubuntu-18.04.3-desktop-amd64.iso"
       },
       {
-        "name": "16.04.5 (i386, Desktop LiveDVD)",
-        "url": "https://mirrors.tuna.tsinghua.edu.cn/ubuntu-releases/xenial/ubuntu-16.04.5-desktop-i386.iso"
+        "name": "16.04.6 (amd64, Desktop LiveDVD)",
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/ubuntu-releases/xenial/ubuntu-16.04.6-desktop-amd64.iso"
+      },
+      {
+        "name": "16.04.6 (i386, Desktop LiveDVD)",
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/ubuntu-releases/xenial/ubuntu-16.04.6-desktop-i386.iso"
       },
       {
         "name": "14.04.5 (amd64, Desktop LiveDVD)",
@@ -156,32 +164,32 @@
     "distro": "mysql",
     "urls": [
       {
-        "name": "mysql-installer-community-5.7.25.0.msi",
-        "url": "https://mirrors.tuna.tsinghua.edu.cn/mysql/downloads/MySQLInstaller/mysql-installer-community-5.7.25.0.msi"
+        "name": "mysql-installer-community-5.7.28.0.msi",
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/mysql/downloads/MySQLInstaller/mysql-installer-community-5.7.28.0.msi"
       },
       {
-        "name": "mysql-5.7.25-winx64.zip",
-        "url": "https://mirrors.tuna.tsinghua.edu.cn/mysql/downloads/MySQL-5.7/mysql-5.7.25-winx64.zip"
+        "name": "mysql-5.7.28-winx64.zip",
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/mysql/downloads/MySQL-5.7/mysql-5.7.28-winx64.zip"
       },
       {
-        "name": "mysql-5.7.25-macos10.14-x86_64.dmg",
-        "url": "https://mirrors.tuna.tsinghua.edu.cn/mysql/downloads/MySQL-5.7/mysql-5.7.25-macos10.14-x86_64.dmg"
+        "name": "mysql-5.7.28-macos10.14-x86_64.dmg",
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/mysql/downloads/MySQL-5.7/mysql-5.7.28-macos10.14-x86_64.dmg"
       },
       {
         "name": "mysql-5.7.23-macos10.13-x86_64.dmg",
         "url": "https://mirrors.tuna.tsinghua.edu.cn/mysql/downloads/MySQL-5.7/mysql-5.7.23-macos10.13-x86_64.dmg"
       },
       {
-        "name": "mysql-installer-community-8.0.15.0.msi",
-        "url": "https://mirrors.tuna.tsinghua.edu.cn/mysql/downloads/MySQLInstaller/mysql-installer-community-8.0.15.0.msi"
+        "name": "mysql-installer-community-8.0.18.0.msi",
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/mysql/downloads/MySQLInstaller/mysql-installer-community-8.0.18.0.msi"
       },
       {
-        "name": "mysql-8.0.15-winx64.zip",
-        "url": "https://mirrors.tuna.tsinghua.edu.cn/mysql/downloads/MySQL-8.0/mysql-8.0.15-winx64.zip"
+        "name": "mysql-8.0.18-winx64.zip",
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/mysql/downloads/MySQL-8.0/mysql-8.0.18-winx64.zip"
       },
       {
-        "name": "mysql-8.0.15-macos10.14-x86_64.dmg",
-        "url": "https://mirrors.tuna.tsinghua.edu.cn/mysql/downloads/MySQL-8.0/mysql-8.0.15-macos10.14-x86_64.dmg"
+        "name": "mysql-8.0.18-macos10.14-x86_64.dmg",
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/mysql/downloads/MySQL-8.0/mysql-8.0.18-macos10.14-x86_64.dmg"
       },
       {
         "name": "mysql-8.0.12-macos10.13-x86_64.dmg",
@@ -194,8 +202,8 @@
     "distro": "maven",
     "urls": [
       {
-        "name": "apache-maven-3.6.0-bin.zip",
-        "url": "https://mirrors.tuna.tsinghua.edu.cn/apache/maven/maven-3/3.6.0/binaries/apache-maven-3.6.0-bin.zip"
+        "name": "apache-maven-3.6.2-bin.zip",
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/apache/maven/maven-3/3.6.2/binaries/apache-maven-3.6.2-bin.zip"
       }
     ]
   },
@@ -204,40 +212,40 @@
     "distro": "tomcat",
     "urls": [
       {
-        "name": "apache-tomcat-9.0.19-windows-x64.zip",
-        "url": "https://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-9/v9.0.19/bin/apache-tomcat-9.0.19-windows-x64.zip"
+        "name": "apache-tomcat-9.0.27-windows-x64.zip",
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-9/v9.0.27/bin/apache-tomcat-9.0.27-windows-x64.zip"
       },
       {
-        "name": "apache-tomcat-9.0.19.tar.gz",
-        "url": "https://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-9/v9.0.19/bin/apache-tomcat-9.0.19.tar.gz"
+        "name": "apache-tomcat-9.0.27.tar.gz",
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-9/v9.0.27/bin/apache-tomcat-9.0.27.tar.gz"
       },
       {
-        "name": "apache-tomcat-9.0.19.exe",
-        "url": "https://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-9/v9.0.19/bin/apache-tomcat-9.0.19.exe"
+        "name": "apache-tomcat-9.0.27.exe",
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-9/v9.0.27/bin/apache-tomcat-9.0.27.exe"
       },
       {
-        "name": "apache-tomcat-8.5.40-windows-x64.zip",
-        "url": "https://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-8/v8.5.40/bin/apache-tomcat-8.5.40-windows-x64.zip"
+        "name": "apache-tomcat-8.5.47-windows-x64.zip",
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-8/v8.5.47/bin/apache-tomcat-8.5.47-windows-x64.zip"
       },
       {
-        "name": "apache-tomcat-8.5.40.tar.gz",
-        "url": "https://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-8/v8.5.40/bin/apache-tomcat-8.5.40.tar.gz"
+        "name": "apache-tomcat-8.5.47.tar.gz",
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-8/v8.5.47/bin/apache-tomcat-8.5.47.tar.gz"
       },
       {
-        "name": "apache-tomcat-8.5.40.exe",
-        "url": "https://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-8/v8.5.40/bin/apache-tomcat-8.5.40.exe"
+        "name": "apache-tomcat-8.5.47.exe",
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-8/v8.5.47/bin/apache-tomcat-8.5.47.exe"
       },
       {
-        "name": "apache-tomcat-7.0.94-windows-x64.zip",
-        "url": "https://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-7/v7.0.94/bin/apache-tomcat-7.0.94-windows-x64.zip"
+        "name": "apache-tomcat-7.0.96-windows-x64.zip",
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-7/v7.0.96/bin/apache-tomcat-7.0.96-windows-x64.zip"
       },
       {
-        "name": "apache-tomcat-7.0.94.tar.gz",
-        "url": "https://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-7/v7.0.94/bin/apache-tomcat-7.0.94.tar.gz"
+        "name": "apache-tomcat-7.0.96.tar.gz",
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-7/v7.0.96/bin/apache-tomcat-7.0.96.tar.gz"
       },
       {
-        "name": "apache-tomcat-7.0.94.exe",
-        "url": "https://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-7/v7.0.94/bin/apache-tomcat-7.0.94.exe"
+        "name": "apache-tomcat-7.0.96.exe",
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-7/v7.0.96/bin/apache-tomcat-7.0.96.exe"
       }
     ]
   },
@@ -246,8 +254,8 @@
     "distro": "jmeter",
     "urls": [
       {
-        "name": "apache-jmeter-5.1.1.zip",
-        "url": "https://mirrors.tuna.tsinghua.edu.cn/apache/jmeter/binaries/apache-jmeter-5.1.1.zip"
+        "name": "apache-jmeter-5.2.zip",
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/apache/jmeter/binaries/apache-jmeter-5.2.zip"
       }
     ]
   },
@@ -256,12 +264,24 @@
     "distro": "Jetbrains系列",
     "urls": [
       {
+        "name": "ideaIC-2019.2.4.win.zip",
+        "url": "https://download.jetbrains.8686c.com/idea/ideaIC-2019.2.4.win.zip"
+      },
+      {
         "name": "ideaIC-2019.1.win.zip",
         "url": "https://download.jetbrains.8686c.com/idea/ideaIC-2019.1.win.zip"
       },
       {
+        "name": "ideaIC-2019.2.4.dmg",
+        "url": "https://download.jetbrains.8686c.com/idea/ideaIC-2019.2.4.dmg"
+      },
+      {
         "name": "ideaIC-2019.1.dmg",
         "url": "https://download.jetbrains.8686c.com/idea/ideaIC-2019.1.dmg"
+      },
+      {
+        "name": "ideaIC-2019.2.4.tar.gz",
+        "url": "https://download.jetbrains.8686c.com/idea/ideaIC-2019.2.4.tar.gz"
       },
       {
         "name": "ideaIC-2019.1.tar.gz",
@@ -280,12 +300,24 @@
         "url": "https://download.jetbrains.8686c.com/idea/ideaIC-2018.3.6.tar.gz"
       },
       {
+        "name": "ideaIU-2019.2.4.win.zip",
+        "url": "https://download.jetbrains.8686c.com/idea/ideaIU-2019.2.4.win.zip"
+      },
+      {
         "name": "ideaIU-2019.1.win.zip",
         "url": "https://download.jetbrains.8686c.com/idea/ideaIU-2019.1.win.zip"
       },
       {
+        "name": "ideaIU-2019.2.4.dmg",
+        "url": "https://download.jetbrains.8686c.com/idea/ideaIU-2019.2.4.dmg"
+      },
+      {
         "name": "ideaIU-2019.1.dmg",
         "url": "https://download.jetbrains.8686c.com/idea/ideaIU-2019.1.dmg"
+      },
+      {
+        "name": "ideaIU-2019.2.4.tar.gz",
+        "url": "https://download.jetbrains.8686c.com/idea/ideaIU-2019.2.4.tar.gz"
       },
       {
         "name": "ideaIU-2019.1.tar.gz",
@@ -304,12 +336,24 @@
         "url": "https://download.jetbrains.8686c.com/idea/ideaIU-2018.3.6.tar.gz"
       },
       {
+        "name": "WebStorm-2019.2.4.exe",
+        "url": "https://download.jetbrains.8686c.com/webstorm/WebStorm-2019.2.4.exe"
+      },
+      {
         "name": "WebStorm-2019.1.exe",
         "url": "https://download.jetbrains.8686c.com/webstorm/WebStorm-2019.1.exe"
       },
       {
+        "name": "WebStorm-2019.2.4.dmg",
+        "url": "https://download.jetbrains.8686c.com/webstorm/WebStorm-2019.2.4.dmg"
+      },
+      {
         "name": "WebStorm-2019.1.dmg",
         "url": "https://download.jetbrains.8686c.com/webstorm/WebStorm-2019.1.dmg"
+      },
+      {
+        "name": "WebStorm-2019.2.4.tar.gz",
+        "url": "https://download.jetbrains.8686c.com/webstorm/WebStorm-2019.2.4.tar.gz"
       },
       {
         "name": "WebStorm-2019.1.tar.gz",
@@ -326,6 +370,18 @@
       {
         "name": "WebStorm-2018.3.6.tar.gz",
         "url": "https://download.jetbrains.8686c.com/webstorm/WebStorm-2018.3.6.tar.gz"
+      },
+      {
+        "name": "pycharm-professional-2019.2.4.exe",
+        "url": "https://download.jetbrains.8686c.com/python/pycharm-professional-2019.2.4.exe"
+      },
+      {
+        "name": "pycharm-professional-2019.2.4.dmg",
+        "url": "https://download.jetbrains.8686c.com/python/pycharm-professional-2019.2.4.dmg"
+      },
+      {
+        "name": "pycharm-professional-2019.2.4.tar.gz",
+        "url": "https://download.jetbrains.8686c.com/python/pycharm-professional-2019.2.4.tar.gz"
       },
       {
         "name": "pycharm-professional-2019.1.exe",
@@ -352,6 +408,18 @@
         "url": "https://download.jetbrains.8686c.com/python/pycharm-professional-2018.3.6.tar.gz"
       },
       {
+        "name": "CLion-2019.2.5.zip",
+        "url": "https://download.jetbrains.8686c.com/cpp/CLion-2019.2.5.win.zip"
+      },
+      {
+        "name": "CLion-2019.2.5.dmg",
+        "url": "https://download.jetbrains.8686c.com/cpp/CLion-2019.2.5.dmg"
+      },
+      {
+        "name": "CLion-2019.2.5.tar.gz",
+        "url": "https://download.jetbrains.8686c.com/cpp/CLion-2019.2.5.tar.gz"
+      },
+      {
         "name": "CLion-2018.3.4.zip",
         "url": "https://download.jetbrains.8686c.com/cpp/CLion-2018.3.4.zip"
       },
@@ -362,6 +430,18 @@
       {
         "name": "CLion-2018.3.4.tar.gz",
         "url": "https://download.jetbrains.8686c.com/cpp/CLion-2018.3.4.tar.gz"
+      },
+      {
+        "name": "PhpStorm-2019.2.5.exe",
+        "url": "https://download.jetbrains.8686c.com/webide/PhpStorm-2019.2.5.exe"
+      },
+      {
+        "name": "PhpStorm-2019.2.5.dmg",
+        "url": "https://download.jetbrains.8686c.com/webide/PhpStorm-2019.2.5.dmg"
+      },
+      {
+        "name": "PhpStorm-2019.2.5.tar.gz",
+        "url": "https://download.jetbrains.8686c.com/webide/PhpStorm-2019.2.5.tar.gz"
       },
       {
         "name": "PhpStorm-2019.1.exe",
@@ -466,6 +546,26 @@
       {
         "name": "jdk-12.0.2_linux-x64_bin.tar.gz",
         "url": "https://mirrors.huaweicloud.com/java/jdk/12.0.2+10/jdk-12.0.2_linux-x64_bin.tar.gz"
+      },
+      {
+        "name": "jdk-13_windows-x64_bin.exe",
+        "url": "https://mirrors.huaweicloud.com/java/jdk/13+33/jdk-13_windows-x64_bin.exe"
+      },
+      {
+        "name": "jdk-13_windows-x64_bin.zip",
+        "url": "https://mirrors.huaweicloud.com/java/jdk/13+33/jdk-13_windows-x64_bin.zip"
+      },
+      {
+        "name": "jdk-13_linux-x64_bin.tar.gz",
+        "url": "https://mirrors.huaweicloud.com/java/jdk/13+33/jdk-13_linux-x64_bin.tar.gz"
+      },
+      {
+        "name": "jdk-13_osx-x64_bin.dmg",
+        "url": "https://mirrors.huaweicloud.com/java/jdk/13+33/jdk-13_osx-x64_bin.dmg"
+      },
+      {
+        "name": "jdk-13_osx-x64_bin.tar.gz",
+        "url": "https://mirrors.huaweicloud.com/java/jdk/13+33/jdk-13_osx-x64_bin.tar.gz"
       }
     ]
   },
@@ -474,8 +574,8 @@
     "distro": "git-for-windows",
     "urls": [
       {
-        "name": "Git-2.23.0-64-bit.exe",
-        "url": "https://mirrors.huaweicloud.com/git-for-windows/v2.23.0.windows.1/Git-2.23.0-64-bit.exe"
+        "name": "Git-2.24.0.2-64-bit.exe",
+        "url": "https://mirrors.huaweicloud.com/git-for-windows/v2.24.0.windows.2/Git-2.24.0.2-64-bit.exe"
       }
     ]
   },
@@ -494,28 +594,28 @@
     "distro": "python",
     "urls": [
       {
-        "name": "python-3.8.0a4-amd64.exe",
-        "url": "https://mirrors.huaweicloud.com/python/3.8.0/python-3.8.0a4-amd64.exe"
+        "name": "python-3.8.0-amd64.exe",
+        "url": "https://mirrors.huaweicloud.com/python/3.8.0/python-3.8.0-amd64.exe"
       },
       {
-        "name": "python-3.8.0a4.exe",
-        "url": "https://mirrors.huaweicloud.com/python/3.8.0/python-3.8.0a4.exe"
+        "name": "python-3.8.0.exe",
+        "url": "https://mirrors.huaweicloud.com/python/3.8.0/python-3.8.0.exe"
       },
       {
-        "name": "python-3.7.4-amd64.exe",
-        "url": "https://mirrors.huaweicloud.com/python/3.7.4/python-3.7.4-amd64.exe"
+        "name": "python-3.7.5-amd64.exe",
+        "url": "https://mirrors.huaweicloud.com/python/3.7.5/python-3.7.5-amd64.exe"
       },
       {
-        "name": "python-3.7.4.exe",
-        "url": "https://mirrors.huaweicloud.com/python/3.7.4/python-3.7.4.exe"
+        "name": "python-3.7.5.exe",
+        "url": "https://mirrors.huaweicloud.com/python/3.7.5/python-3.7.5.exe"
       },
       {
-        "name": "python-3.6.8-amd64.exe",
-        "url": "https://mirrors.huaweicloud.com/python/3.6.8/python-3.6.8-amd64.exe"
+        "name": "python-3.6.9-amd64.exe",
+        "url": "https://mirrors.huaweicloud.com/python/3.6.9/python-3.6.9-amd64.exe"
       },
       {
-        "name": "python-3.6.8.exe",
-        "url": "https://mirrors.huaweicloud.com/python/3.6.8/python-3.6.8.exe"
+        "name": "python-3.6.9.exe",
+        "url": "https://mirrors.huaweicloud.com/python/3.6.9/python-3.6.9.exe"
       }
     ]
   },
@@ -540,8 +640,12 @@
         "url": "https://mirrors.tuna.tsinghua.edu.cn/nodejs-release/v11.15.0/node-v11.15.0-x64.msi"
       },
       {
-        "name": "node-v12.10.0-x64.msi",
-        "url": "https://mirrors.tuna.tsinghua.edu.cn/nodejs-release/v12.10.0/node-v12.10.0-x64.msi"
+        "name": "node-v12.13.0-x64.msi",
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/nodejs-release/v12.13.0/node-v12.13.0-x64.msi"
+      },
+      {
+        "name": "node-v13.1.0-x64.msi",
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/nodejs-release/v13.1.0/node-v13.1.0-x64.msi"
       }
     ]
   },
@@ -551,37 +655,45 @@
     "urls": [
       {
         "name": "gradle-4.4-all.zip",
-        "url": "http://210.28.8.231/gradle/gradle-4.4-all.zip"
+        "url": "https://services.gradle.org/distributions/gradle-4.4-all.zip"
       },
       {
         "name": "gradle-4.6-all.zip",
-        "url": "http://210.28.8.231/gradle/gradle-4.6-all.zip"
+        "url": "https://services.gradle.org/distributions/gradle-4.6-all.zip"
       },
       {
         "name": "gradle-4.10.2-all.zip",
-        "url": "http://210.28.8.231/gradle/gradle-4.10.2-all.zip"
+        "url": "https://services.gradle.org/distributions/gradle-4.10.2-all.zip"
+      },
+      {
+        "name": "gradle-5.4.1-all.zip",
+        "url": "https://services.gradle.org/distributions/gradle-5.4.1-all.zip"
+      },
+      {
+        "name": "gradle-6.0-all.zip",
+        "url": "https://services.gradle.org/distributions/gradle-6.0-all.zip"
       }
     ]
   },
   {
     "category": "app",
-    "distro": "Android Studio 3.5.0 正式版",
+    "distro": "Android Studio 3.5.2 正式版",
     "urls": [
       {
-        "name": "android-studio-ide-191.5791312-windows.exe",
-        "url": "https://dl.google.com/dl/android/studio/install/3.5.0.21/android-studio-ide-191.5791312-windows.exe"
+        "name": "android-studio-ide-191.5977832-windows.exe",
+        "url": "https://dl.google.com/dl/android/studio/install/3.5.2.0/android-studio-ide-191.5977832-windows.exe"
       },
       {
-        "name": "android-studio-ide-191.5791312-windows.zip",
-        "url": "https://dl.google.com/dl/android/studio/ide-zips/3.5.0.21/android-studio-ide-191.5791312-windows.zip"
+        "name": "android-studio-ide-191.5977832-windows.zip",
+        "url": "https://dl.google.com/dl/android/studio/ide-zips/3.5.2.0/android-studio-ide-191.5977832-windows.zip"
       },
       {
-        "name": "android-studio-ide-191.5791312-mac.dmg",
-        "url": "https://dl.google.com/dl/android/studio/install/3.5.0.21/android-studio-ide-191.5791312-mac.dmg"
+        "name": "android-studio-ide-191.5977832-mac.dmg",
+        "url": "https://dl.google.com/dl/android/studio/install/3.5.2.0/android-studio-ide-191.5977832-mac.dmg"
       },
       {
-        "name": "android-studio-ide-191.5791312-linux.tar.gz",
-        "url": "https://dl.google.com/dl/android/studio/ide-zips/3.5.0.21/android-studio-ide-191.5791312-linux.tar.gz"
+        "name": "android-studio-ide-191.5977832-linux.tar.gz",
+        "url": "https://dl.google.com/dl/android/studio/ide-zips/3.5.2.0/android-studio-ide-191.5977832-linux.tar.gz"
       }
     ]
   },
@@ -634,8 +746,8 @@
     "distro": "VSCode",
     "urls": [
       {
-        "name": "VSCodeUserSetup-x64-1.38.0.exe",
-        "url": "https://vscode.cdn.azure.cn/stable/3db7e09f3b61f915d03bbfa58e258d6eee843f35/VSCodeUserSetup-x64-1.38.0.exe"
+        "name": "VSCodeUserSetup-x64-1.40.1.exe",
+        "url": "https://vscode.cdn.azure.cn/stable/8795a9889db74563ddd43eb0a897a2384129a619/VSCodeUserSetup-x64-1.40.1.exe"
       }
     ]
   },
@@ -643,6 +755,14 @@
     "category": "app",
     "distro": "Notepad++",
     "urls": [
+      {
+        "name": "npp.7.8.0.Installer.exe",
+        "url": "http://download.notepad-plus-plus.org/repository/7.x/7.8.0/npp.7.8.0.Installer.exe"
+      },
+      {
+        "name": "npp.7.8.0.Installer.x64.exe",
+        "url": "http://download.notepad-plus-plus.org/repository/7.x/7.8.0/npp.7.8.0.Installer.x64.exe"
+      },
       {
         "name": "npp.7.7.1.Installer.exe",
         "url": "https://notepad-plus-plus.org/repository/7.x/7.7.1/npp.7.7.1.Installer.exe"
@@ -658,8 +778,8 @@
     "distro": "WinSCP",
     "urls": [
       {
-        "name": "WinSCP-5.15.3-Setup.exe",
-        "url": "https://jaist.dl.sourceforge.net/project/winscp/WinSCP/5.15.3/WinSCP-5.15.3-Setup.exe"
+        "name": "WinSCP-5.15.5-Setup.exe",
+        "url": "https://jaist.dl.sourceforge.net/project/winscp/WinSCP/5.15.5/WinSCP-5.15.5-Setup.exe"
       }
     ]
   },
@@ -669,11 +789,11 @@
     "urls": [
       {
         "name": "73.0.3683.103_chrome_installer.exe",
-        "url": "https://dl.google.com/release2/chrome/AJSw3HH2riQ3_73.0.3683.103/73.0.3683.103_chrome_installer.exe"
+        "url": "https://dl.google.com/release2/chrome/APxmP00ERnxueB1YewL8360_78.0.3904.97/78.0.3904.97_chrome_installer.exe"
       },
       {
-        "name": "GoogleChrome-73.0.3683.103.dmg",
-        "url": "https://dl.google.com/release2/chrome/APAZHIMjCY0z_73.0.3683.103/GoogleChrome-73.0.3683.103.dmg"
+        "name": "GoogleChrome-78.0.3904.97.dmg",
+        "url": "https://dl.google.com/release2/chrome/PVRkRUiA5YBwa12VXrihWA_78.0.3904.97/GoogleChrome-78.0.3904.97.dmg"
       }
     ]
   },
@@ -682,12 +802,12 @@
     "distro": "VirtualBox",
     "urls": [
       {
-        "name": "VirtualBox-6.0.4-128413-Win.exe",
-        "url": "https://mirrors.tuna.tsinghua.edu.cn/virtualbox/6.0.4/VirtualBox-6.0.4-128413-Win.exe"
+        "name": "VirtualBox-6.0.14-128413-Win.exe",
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/virtualbox/6.0.14/VirtualBox-6.0.14-128413-Win.exe"
       },
       {
-        "name": "VirtualBox-6.0.4-128413-OSX.dmg",
-        "url": "https://mirrors.tuna.tsinghua.edu.cn/virtualbox/6.0.4/VirtualBox-6.0.4-128413-OSX.dmg"
+        "name": "VirtualBox-6.0.14-128413-OSX.dmg",
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/virtualbox/6.0.14/VirtualBox-6.0.14-128413-OSX.dmg"
       },
       {
         "name": "VirtualBox-5.2.22-126460-Win.exe",
