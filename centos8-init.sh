@@ -35,7 +35,7 @@ function config_mirror_and_update() {
 
     #配置EPEL源
     #EPEL (Extra Packages for Enterprise Linux) 是由 Fedora Special Interest Group 为企业 Linux 创建、维护和管理的一个高质量附加包集合，适用于但不仅限于 Red Hat Enterprise Linux (RHEL), CentOS, Scientific Linux (SL), Oracle Linux (OL)
-    yum install -y epel-release
+    yum install epel-release -y 
     cp /etc/yum.repos.d/epel.repo /etc/yum.repos.d/epel.repo.backup
     cp /etc/yum.repos.d/epel-testing.repo /etc/yum.repos.d/epel-testing.repo.backup
     # curl -o /etc/yum.repos.d/epel.repo http://mirrors.aliyun.com/repo/epel-7.repo
@@ -43,39 +43,16 @@ function config_mirror_and_update() {
     sed -i "s@metalink@#metalink@g" /etc/yum.repos.d/epel.repo
     sed -i "s@baseurl.*=.*/epel@baseurl=$MIRROR/epel@g" /etc/yum.repos.d/epel.repo
 
-    #配置ius源  https://ius.io/    #IUS只为RHEL和CentOS这两个发行版提供较新版本的rpm包。如果在os或epel找不到某个软件的新版rpm，软件官方又只提供源代码包的时候，可以来ius源中找，几乎都能找到。比如，python3.6(包括对应版本的pip，epel源里有python3.6但没有对应版本的pip),php7.2,redis5等等
-    # https://mirrors.aliyun.com  https://mirrors.tuna.tsinghua.edu.cn
-    IUS_MIRROR=https://mirrors.aliyun.com/ius
-    yum install -y https://centos7.iuscommunity.org/ius-release.rpm
-    sed -i "s@baseurl.*=.*/7@baseurl=$IUS_MIRROR/7@g" /etc/yum.repos.d/ius.repo
     yum makecache
     yum update -y
     #一些实用工具,这些大部分在EPEL源里
-    yum install bash-completion git2u wget hdparm tree zip unzip vim emacs nano yum-utils unar screen lrzsz supervisor iotop iftop jnettop apachetop atop htop ncdu nmap pv net-tools sl lynx links crudini the_silver_searcher tig cloc nload w3m axel tmux mc glances multitail redis5 lftp vsftpd iptraf nethogs goacess socat -y
+    yum install bash-completion tar git wget hdparm tree zip unzip vim emacs nano yum-utils screen lrzsz iotop iftop apachetop atop htop ncdu nmap pv net-tools crudini tmux mc redis lftp vsftpd iptraf socat -y 
     cat >> ~/.bashrc  <<- "EOF"
 alias top='top -c'
 alias historygrep='history|grep $1'
 alias port='netstat -apn|grep $1'
 alias iftop='iftop -B -i $1'
 EOF
-	# 本地端口扫描脚本
-    cat > /usr/local/bin/scanPort  <<- "EOF"
-if [[ -z $* ]]; then
-  echo "命令格式:
-scanPort 8080 -> 检查8080端口是否被占用
-scanPort 8080 8090 -> 检查8080到8090范围的端口是否被占用"
-else
-  if [[ $# -gt 1 ]]; then
-    for ((i = $1; i <= $2; i++)); do
-      netstat -apn | grep "${i}"
-    done
-  else
-    netstat -apn | grep "$1"
-  fi
-fi
-
-EOF
-	chmod 755 /usr/local/bin/scanPort
     source ~/.bashrc
     # vim配置
     cat >> ~/.vimrc <<- "EOF"
@@ -98,25 +75,6 @@ set paste
 set backspace=2
 
 EOF
-}
-
-# 更新内核为主分支ml(mainline)版本
-function update_kernel() {
-    rpm --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org
-    rpm -Uvh http://www.elrepo.org/elrepo-release-7.0-2.el7.elrepo.noarch.rpm
-    sed -i "s/mirrorlist=http/#mirrorlist=http/g" /etc/yum.repos.d/elrepo.repo
-    crudini --set /etc/yum.repos.d/elrepo.repo elrepo baseurl "https://mirrors.tuna.tsinghua.edu.cn/elrepo/elrepo/el7/\$basearch"
-    crudini --set /etc/yum.repos.d/elrepo.repo elrepo-testing baseurl "https://mirrors.tuna.tsinghua.edu.cn/elrepo/testing/el7/\$basearch"
-    crudini --set /etc/yum.repos.d/elrepo.repo elrepo-kernel baseurl "https://mirrors.tuna.tsinghua.edu.cn/elrepo/kernel/el7/\$basearch/"
-    crudini --set /etc/yum.repos.d/elrepo.repo elrepo-extras baseurl "https://mirrors.tuna.tsinghua.edu.cn/elrepo/extras/el7/\$basearch/"
-    yum-config-manager --enable elrepo-kernel
-    yum install kernel-ml-devel kernel-ml -y
-    KERNEL_VERSION=$(yum list kernel-ml | grep kernel.*@elrepo-kernel |  awk -F ' ' '{print $2}')
-    GRUB_ITEM=$(awk -F\' '$1=="menuentry " {print $2}' /etc/grub2.cfg | grep "CentOS Linux (${KERNEL_VERSION}) 7 (Core)")
-    echo "${KERNEL_VERSION}"
-    echo "${GRUB_ITEM}"
-    grub2-set-default "${GRUB_ITEM}"
-    echo '请重启后执行uname -r查看是否生效'
 }
 
 function change_mirror(){
@@ -149,12 +107,66 @@ function change_mirror(){
     ;;
     esac
 
+    if [[ -s /etc/yum.repos.d/CentOS-AppStream.repo ]];then
+        \cp -a /etc/yum.repos.d/CentOS-AppStream.repo /etc/yum.repos.d/CentOS-AppStream.repo.bak
+        sed -i "s@#baseurl@baseurl@g" /etc/yum.repos.d/CentOS-AppStream.repo
+        sed -i "s@mirrorlist=http@#mirrorlist=http@g" /etc/yum.repos.d/CentOS-AppStream.repo
+        sed -i "s@baseurl=.*/\$contentdir@baseurl=$MIRROR/centos@g" /etc/yum.repos.d/CentOS-AppStream.repo
+        echo "AppStream源配置成功"
+    fi
     if [[ -s /etc/yum.repos.d/CentOS-Base.repo ]];then
+        \cp -a /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.bak
         sed -i "s@#baseurl@baseurl@g" /etc/yum.repos.d/CentOS-Base.repo
         sed -i "s@mirrorlist=http@#mirrorlist=http@g" /etc/yum.repos.d/CentOS-Base.repo
-        sed -i "s@baseurl=.*/centos@baseurl=$MIRROR/centos@g" /etc/yum.repos.d/CentOS-Base.repo
+        sed -i "s@baseurl=.*/\$contentdir@baseurl=$MIRROR/centos@g" /etc/yum.repos.d/CentOS-Base.repo
         echo "Base源配置成功"
     fi
+    if [[ -s /etc/yum.repos.d/CentOS-Extras.repo ]];then
+        \cp -a /etc/yum.repos.d/CentOS-Extras.repo /etc/yum.repos.d/CentOS-Extras.repo.bak
+        sed -i "s@#baseurl@baseurl@g" /etc/yum.repos.d/CentOS-Extras.repo
+        sed -i "s@mirrorlist=http@#mirrorlist=http@g" /etc/yum.repos.d/CentOS-Extras.repo
+        sed -i "s@baseurl=.*/\$contentdir@baseurl=$MIRROR/centos@g" /etc/yum.repos.d/CentOS-Extras.repo
+        echo "Extras源配置成功"
+    fi
+    if [[ -s /etc/yum.repos.d/CentOS-PowerTools.repo ]];then
+        \cp -a /etc/yum.repos.d/CentOS-PowerTools.repo /etc/yum.repos.d/CentOS-PowerTools.repo.bak
+        sed -i "s@enabled=0@enabled=1@g" /etc/yum.repos.d/CentOS-PowerTools.repo
+        sed -i "s@#baseurl@baseurl@g" /etc/yum.repos.d/CentOS-PowerTools.repo
+        sed -i "s@mirrorlist=http@#mirrorlist=http@g" /etc/yum.repos.d/CentOS-PowerTools.repo
+        sed -i "s@baseurl=.*/\$contentdir@baseurl=$MIRROR/centos@g" /etc/yum.repos.d/CentOS-PowerTools.repo
+        echo "PowerTools源配置成功"
+    fi
+    
+    if [[ -s /etc/yum.repos.d/CentOS-Stream-AppStream.repo ]];then
+        \cp -a /etc/yum.repos.d/CentOS-Stream-AppStream.repo /etc/yum.repos.d/CentOS-Stream-AppStream.repo.bak
+        sed -i "s@#baseurl@baseurl@g" /etc/yum.repos.d/CentOS-Stream-AppStream.repo
+        sed -i "s@mirrorlist=http@#mirrorlist=http@g" /etc/yum.repos.d/CentOS-Stream-AppStream.repo
+        sed -i "s@baseurl=.*/\$contentdir@baseurl=$MIRROR/centos@g" /etc/yum.repos.d/CentOS-Stream-AppStream.repo
+        echo "Stream-AppStream源配置成功"
+    fi
+    if [[ -s /etc/yum.repos.d/CentOS-Stream-Base.repo ]];then
+        \cp -a /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Stream-Base.repo.bak
+        sed -i "s@#baseurl@baseurl@g" /etc/yum.repos.d/CentOS-Stream-Base.repo
+        sed -i "s@mirrorlist=http@#mirrorlist=http@g" /etc/yum.repos.d/CentOS-Stream-Base.repo
+        sed -i "s@baseurl=.*/\$contentdir@baseurl=$MIRROR/centos@g" /etc/yum.repos.d/CentOS-Stream-Base.repo
+        echo "Stream-Base源配置成功"
+    fi
+    if [[ -s /etc/yum.repos.d/CentOS-Stream-Extras.repo ]];then
+        \cp -a /etc/yum.repos.d/CentOS-Extras.repo /etc/yum.repos.d/CentOS-Stream-Extras.repo.bak
+        sed -i "s@#baseurl@baseurl@g" /etc/yum.repos.d/CentOS-Stream-Extras.repo
+        sed -i "s@mirrorlist=http@#mirrorlist=http@g" /etc/yum.repos.d/CentOS-Stream-Extras.repo
+        sed -i "s@baseurl=.*/\$contentdir@baseurl=$MIRROR/centos@g" /etc/yum.repos.d/CentOS-Stream-Extras.repo
+        echo "Stream-Extras源配置成功"
+    fi
+    if [[ -s /etc/yum.repos.d/CentOS-Stream-PowerTools.repo ]];then
+        \cp -a /etc/yum.repos.d/CentOS-PowerTools.repo /etc/yum.repos.d/CentOS-Stream-PowerTools.repo.bak
+        sed -i "s@enabled=0@enabled=1@g" /etc/yum.repos.d/CentOS-Stream-PowerTools.repo
+        sed -i "s@#baseurl@baseurl@g" /etc/yum.repos.d/CentOS-Stream-PowerTools.repo
+        sed -i "s@mirrorlist=http@#mirrorlist=http@g" /etc/yum.repos.d/CentOS-Stream-PowerTools.repo
+        sed -i "s@baseurl=.*/\$contentdir@baseurl=$MIRROR/centos@g" /etc/yum.repos.d/CentOS-Stream-PowerTools.repo
+        echo "Stream-PowerTools源配置成功"
+    fi
+    
     if [[ -s /etc/yum.repos.d/epel.repo ]];then
         sed -i "s@#baseurl@baseurl@g" /etc/yum.repos.d/epel.repo
         sed -i "s@metalink@#metalink@g" /etc/yum.repos.d/epel.repo
@@ -167,38 +179,26 @@ function change_mirror(){
         sed -i "s@#baseurl@baseurl@g" /etc/yum.repos.d/epel.repo
         sed -i "s@metalink@#metalink@g" /etc/yum.repos.d/epel.repo
     fi
-    if [[ -s /etc/yum.repos.d/ius.repo ]];then
-        sed -i "s@baseurl.*=.*/7@baseurl=$MIRROR/ius/7@g" /etc/yum.repos.d/ius.repo
-        echo "ius源配置成功"
-    else
-        echo "ius源不存在，即将安装 ius-release ..."
-        yum install -y https://centos7.iuscommunity.org/ius-release.rpm
-        sed -i "s@baseurl.*=.*/7@baseurl=$MIRROR/ius/7@g" /etc/yum.repos.d/ius.repo
-    fi
 }
 
 function install_python() {
-    # python3.6,包括对应版本的pip,从CentOS 7.7开始,base源内置python3.6版本,无需再从ius源安装
+    # python3.6,包括对应版本的pip,从CentOS 8开始,默认源内置python3.6版本,无需再从ius源安装
     yum install python3-pip -y
-    # 使用国内pypi源
-    # 备选：https://pypi.douban.com/simple/  https://pypi.tuna.tsinghua.edu.cn/simple/  https://mirrors.aliyun.com/pypi/simple/
-    # 手动创建配置文件的方式
-    # mkdir -p ~/.pip
-    # cat > ~/.pip/pip.conf <<- "EOF"
-# [global]
-# index-url = https://mirrors.aliyun.com/pypi/simple/
+    # 使用国内pypi源,使用阿里云的源
+    # 备选：http://pypi.douban.com/simple/  https://pypi.tuna.tsinghua.edu.cn/simple/  https://mirrors.aliyun.com/pypi/simple/
+    mkdir -p ~/.pip
+    cat > ~/.pip/pip.conf <<- "EOF"
+[global]
+index-url = https://mirrors.aliyun.com/pypi/simple/
 
-# [install]
-# trusted-host=mirrors.aliyun.com
+[install]
+trusted-host=mirrors.aliyun.com
 
-# EOF
-    pip3 install -i https://mirrors.aliyun.com/pypi/simple/ pip -U
-	  source /etc/profile
-    # 使用pip命令的方式配置
-    pip3 config set global.index-url https://mirrors.aliyun.com/pypi/simple/
+EOF
     pip3 install --upgrade pip
+    source /etc/profile
     # 一些基于python的实用或者有意思的工具
-    pip3 install virtualenv cheat mycli icdiff you-get lolcat youtube-dl speedtest-cli supervisor gixy cowsay docker-compose
+    pip3 install cheat mycli icdiff you-get lolcat youtube-dl speedtest-cli supervisor gixy cowsay
     # pip 命令自动补全
     pip3 completion --bash >> /etc/profile
     source /etc/profile
@@ -217,49 +217,30 @@ function install_golang() {
 }
 
 function install_php() {
-    yum install php72u* nginx httpd -y
+    yum install php* nginx httpd -y
     systemctl start php-fpm.service
     systemctl enable php-fpm.service
 }
 
 function install_nodejs_and_config() {
-	  #配置nodejs的yum源，安装 nodejs (epel源里有nodejs，但版本比较老),使用清华大学的源
-    yum install https://mirrors.tuna.tsinghua.edu.cn/nodesource/rpm_12.x/el/7/x86_64/nodesource-release-el7-1.noarch.rpm -y
-    cat > /etc/yum.repos.d/nodesource-el7.repo <<- "EOF"
-[nodesource]
-name=Node.js Packages for Enterprise Linux 7 - $basearch
-baseurl=https://mirrors.tuna.tsinghua.edu.cn/nodesource/rpm_12.x/el/7/$basearch
-enabled=1
-gpgcheck=0
-
-[nodesource-source]
-name=Node.js for Enterprise Linux 7 - $basearch - Source
-baseurl=https://mirrors.tuna.tsinghua.edu.cn/nodesource/rpm_12.x/el/7/SRPMS
-enabled=0
-gpgcheck=1
-
-EOF
-    yum makecache
     yum install nodejs -y
     # 更换国内npm源
     npm config set registry https://registry.npm.taobao.org/
     npm config set sass_binary_site https://npm.taobao.org/mirrors/node-sass/
     npm config set electron_mirror https://npm.taobao.org/mirrors/electron/
-    npm config set phantomjs_cdnurl https://npm.taobao.org/mirrors/phantomjs/
-    npm config set chromedriver_cdnurl http://npm.taobao.org/mirrors/chromedriver/
     # 备选：npm config set registry https://mirrors.huaweicloud.com/repository/npm/
     # npm config set registry https://registry.npm.taobao.org/
     npm cache clean -f
     # npm 命令 tab 补全配置
     npm completion >> /etc/bash_completion.d/npm
     # 一些基于nodejs的实用或者有意思的工具
-    npm install n npm get-port-cli hasha-cli http-server live-server prettier -g
-    # 使用n管理node版本，使用淘宝镜像源
+    npm install n npm get-port-cli hasha-cli http-server live-server prettier cloc -g
+    # 安装最新版和稳定版node，使用淘宝镜像源
     export NODE_MIRROR=https://npm.taobao.org/mirrors/node/
     echo "export NODE_MIRROR=https://npm.taobao.org/mirrors/node/" >> /etc/profile
     source /etc/profile
     n latest
-    # n stable
+    n stable
     # 安装yarn
     curl --silent --location https://dl.yarnpkg.com/rpm/yarn.repo | sudo tee /etc/yum.repos.d/yarn.repo
     yum install yarn -y
@@ -267,7 +248,6 @@ EOF
 
 #命令行小游戏
 function install_cmd_game() {
-	  cd ~
     # 2048
     curl https://raw.githubusercontent.com/mydzor/bash2048/master/bash2048.sh -o 2048.sh && chmod 755 2048.sh
     # 扫雷
@@ -280,11 +260,8 @@ function install_cmd_game() {
 
 #安装jdk和tomcat
 function install_tomcat_and_maven() {
-	  #安装openjdk
-	  # jdk 11
-    yum install java-11-openjdk-devel.x86_64 -y
-	  # jdk 1.8
-    # yum install java-1.8.0-openjdk-devel.x86_64 -y
+#安装openjdk
+    yum install java-1.8.0-openjdk-devel.x86_64 java-11-openjdk-devel.x86_64 -y
     ln -s /usr/lib/jvm/java-11/bin/java /bin/java11
 #或者 oraclejdk
 # wget https://mirrors.huaweicloud.com/java/jdk/8u202-b08/jdk-8u202-linux-x64.tar.gz
@@ -367,26 +344,9 @@ EOF
 
 }
 
-# 安装Jenkins
 function install_jenkins() {
     jenkins=$(lftp https://mirrors.huaweicloud.com/jenkins/redhat-stable/ -e "cls;bye"|sort -rV|xargs | awk -F ' ' '{print $1}')
     yum install https://mirrors.huaweicloud.com/jenkins/redhat-stable/$jenkins -y
-}
-
-# 安装elasticsearch
-function install_elasticsearch() {
-    echo "" > /etc/yum.repos.d/elasticsearch.repo
-    cat >> /etc/yum.repos.d/elasticsearch.repo <<- EOF
-[elasticsearch]
-name=elasticsearch
-baseurl=https://mirrors.tuna.tsinghua.edu.cn/elasticstack/yum/elastic-7.x/
-enabled=1
-gpgcheck=0
-
-EOF
-    yum makecache
-    yum install elasticsearch -y
-
 }
 
 #安装mysql5.7 http://mirrors.tuna.tsinghua.edu.cn/mysql,使用清华大学的源
@@ -512,7 +472,7 @@ EOF
 #安装mongodb,使用阿里云的源
 function install_mongodb() {
     echo "" > /etc/yum.repos.d/mongodb.repo
-    for version in "3.7" "4.2"; do
+    for version in "3.6" "3.7" "4.0" "4.1" "4.2"; do
     cat >> /etc/yum.repos.d/mongodb.repo <<- EOF
 [mongodb-org-$version]
 name=MongoDB Repository
@@ -602,7 +562,6 @@ get-port-cli hasha-cli http-server
     php 安装php7.2，附带安装nginx、apache
     java 安装jdk1.8和jdk11，以及tomcat9和maven
     jenkins 安装Jenkins
-    elasticsearch 安装elasticsearch
     golang 安装golang
     mysql57 安装mysql5.7，默认密码是1111
     mysql8 安装mysql8，默认密码是1111
@@ -625,8 +584,6 @@ for arg in $* ; do
     install_nodejs_and_config
     install_golang
     install_tomcat_and_maven
-    install_jenkins
-    install_elasticsearch
     install_mysql8_and_config
     install_mongodb
     install_docker
@@ -635,9 +592,6 @@ for arg in $* ; do
     base)
     system_config
     config_mirror_and_update
-    ;;
-    kernel)
-    update_kernel
     ;;
     python)
     install_python
@@ -687,19 +641,14 @@ else
     install_golang
     install_tomcat_and_maven
     install_jenkins
-    install_elasticsearch
     install_mysql8_and_config
     install_mongodb
     install_docker
+    install_cmd_game
     ;;
     base)
     system_config
     config_mirror_and_update
-    ;;
-    kernel)
-    system_config
-    config_mirror_and_update
-    update_kernel
     ;;
     python)
     system_config
@@ -731,15 +680,10 @@ else
     config_mirror_and_update
     install_tomcat_and_maven
     ;;
-    jenkins)
+    java)
     system_config
     config_mirror_and_update
     install_jenkins
-    ;;
-    elasticsearch)
-    system_config
-    config_mirror_and_update
-    install_elasticsearch
     ;;
     mysql57)
     system_config
