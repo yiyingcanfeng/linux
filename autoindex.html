@@ -90,8 +90,10 @@
         let bodylines = document.body.innerHTML.split('\n');
         document.body.innerHTML = '';
 
+        let subLocation = location.pathname.replace(document.title.replace('Index of ',''),'')
         let titlehtml = document.title.replace(/\/$/, '').split('/').slice(1).reduce(function (acc, v, i, a) {
-            return acc + '<a href="/' + a.slice(0, i + 1).join('/') + '/">' + v + '</a>/'
+          // return acc + '<a href="/' + a.slice(0, i + 1).join('/') + '/">' + v + '</a>/'
+          return `${acc}<a href="${subLocation !== '' ? subLocation + '/' : '/'}${a.slice(0, i + 1).join('/')}/">${v}</a>/`
         }, 'Index of /');
         if (website_title) {
             document.title = website_title + ' - ' + document.title
